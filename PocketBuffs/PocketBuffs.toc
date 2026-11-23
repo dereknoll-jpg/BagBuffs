@@ -1,0 +1,18 @@
+## Interface: 16001
+## Title: PocketBuffs
+## Notes: Your bag buffs, potions, food and weapon enhancements in one quiet grid.
+## Author: Derek
+## Version: 1.0.0-rc.2
+## SavedVariablesPerCharacter: PocketBuffsDB
+## IconTexture: Interface\AddOns\PocketBuffs\Media\AddonIcon
+
+Core.lua
+Discovery.lua
+Placement.lua
+Editing.lua
+GridEditing.lua
+Cooldowns.lua
+UI.lua
+Settings.lua
+Bootstrap.lua
+Bindings.xml

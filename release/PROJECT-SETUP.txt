@@ -1,0 +1,47 @@
+PROJECT NAME
+PocketBuffs
+
+SUMMARY
+Paste SUMMARY.txt. The summary describes behavior; keep the project name short.
+
+GAME AND COMPATIBILITY
+World of Warcraft - Forever. Manifest interface: 16001.
+Select the matching Forever game flavor/version offered by the file uploader.
+Do not tag this build as Retail, Classic Era, Wrath or a private-server client.
+
+SUGGESTED CATEGORIES
+Main: Bags & Inventory
+Additional: Buffs & Debuffs; Action Bars
+
+FILE TO UPLOAD
+addon/PocketBuffs-1.0.0-rc.2.zip
+This is a release candidate: choose Beta until the short live-client checks pass.
+Do not upload the entire CurseForge kit as the addon.
+
+PROJECT AVATAR
+images/01-icon-400.png (400 x 400 PNG)
+
+GALLERY
+images/02-banner.png
+images/03-features.png
+Both are promotional illustrations, not gameplay screenshots, and are labeled.
+images/04-icon-1024.png is a larger optional branding image.
+
+DESCRIPTION
+Use text/DESCRIPTION.md in Markdown mode, or DESCRIPTION.txt for plain text.
+Image captions and disclosure are in text/IMAGE-CAPTIONS.txt.
+
+LICENSE
+All Rights Reserved is the conservative default supplied in LICENSE.txt.
+Change that choice and file before upload if you prefer another license.
+
+SUPPORT
+Enable project comments for bug reports.
+Leave Source/Issues URLs empty until you have a real public project URL.
+No GitHub repository, support address or published project URL is invented here.
+
+CHECKED GUIDANCE (November 22, 2026)
+https://support.curseforge.com/support/solutions/articles/9000199552-project-submission-guide-and-tips
+https://support.curseforge.com/support/solutions/articles/9000197279-moderation-policies
+
+No game launch, screenshot capture, GIF, CurseForge upload or publication was performed.

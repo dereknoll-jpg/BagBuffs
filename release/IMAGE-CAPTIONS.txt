@@ -1,0 +1,17 @@
+01-icon-400.png
+PocketBuffs - original pouch project icon.
+
+02-banner.png
+PocketBuffs: Good things. Already in your bags.
+AI-assisted promotional illustration; not an in-game screenshot.
+
+03-features.png
+Find supplies, customize the grid, reorder items and bind keys.
+AI-assisted feature illustration; diagrams are illustrative, not in-game screenshots.
+Supported behavior is described in the listing and included README.
+
+04-icon-1024.png
+PocketBuffs - large original pouch branding artwork.
+
+The in-game interface uses the game's item art and quiet charcoal/gold controls.
+The gallery images are branding/feature artwork and do not claim to be captured UI.

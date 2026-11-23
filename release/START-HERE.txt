@@ -1,0 +1,19 @@
+POCKETBUFFS - CURSEFORGE UPLOAD KIT
+Current build: 1.0.0-rc.2
+
+1. Upload only addon/PocketBuffs-1.0.0-rc.2.zip as the addon file.
+   Choose Beta while the live-client checks remain open.
+2. Use images/01-icon-400.png as the project avatar.
+3. Paste text/SUMMARY.txt and text/DESCRIPTION.md into the project fields.
+4. Add images/02-banner.png and images/03-features.png to the gallery.
+   Captions and illustration disclosures are in text/IMAGE-CAPTIONS.txt.
+5. Follow text/PROJECT-SETUP.txt for compatibility, categories and license.
+
+review/RELEASE-READINESS.md explains what remains before 1.0 stable.
+review/LIVE-CHECKS.md contains the in-game checks for the final pass.
+review/VALIDATION.txt records the offline verification result.
+MANIFEST-SHA256.csv lists the package files and verification hashes.
+
+The package includes original static artwork and no GIFs.
+No game launch, gameplay capture, project publication or upload was performed.
+Existing character settings are retained by the installed release candidate.

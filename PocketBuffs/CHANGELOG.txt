@@ -1,0 +1,32 @@
+1.0.0-rc.2
+- Fixed stuck floating item drags when the client omits the source drag-stop callback.
+- Drops finish on mouse-up, global release or physical-button polling.
+- Drop targeting uses cursor coordinates and handles UI scaling.
+- Unlocked grids show faint empty-slot targets; drop into an empty slot or swap occupied slots.
+- Saved slot positions now survive locking, bag changes, reloads and item reacquisition.
+- Newly discovered supported items append after the existing saved layout.
+- Locking disables direct grid dragging even when the settings window is open.
+- Existing manual order and item bindings migrate without resetting the profile.
+
+1.0.0-rc.1
+- Added direct drag sorting on the live grid while settings are open or position is unlocked.
+- Added Shift-right-click on the pouch icon to lock/unlock without opening settings.
+- Added dragging the unlocked pouch icon to move the whole grid.
+- Added a separate editing hit layer; original item actions remain intact during dragging.
+- The game's combat visibility driver hides the editing layer during combat.
+- Added canceled-drop handling and dragging between editor rows and the live grid.
+- Fixed move-handle overlap on narrow vertical layouts.
+- Prepared static CurseForge artwork, listing text and an upload kit.
+- Release candidate: actual native drag/input and combat transitions still need live verification.
+
+0.2.0
+- Added Items & Keys editor tab with drag sorting, move arrows and saved manual order.
+- Added automatic type/name sorting and a return to saved manual order.
+- Added quick per-item keyboard/mouse bindings, conflict confirmation and grid key labels.
+- Item bindings remain attached to item IDs across sorting, pages and bag changes.
+- Added explicit numerical item cooldowns and actual Recently Bandaged lockout tracking.
+- Bandage timers honor readable live expiry rather than an assumed duration.
+- Retained the movable settings window, existing preferences and legacy slot bindings.
+
+0.1.0
+- Initial compact grid, carried-bag discovery, filters, favorites, cooldown swipes and branding.

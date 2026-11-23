@@ -1,0 +1,8 @@
+Copyright (c) 2026 Derek. All rights reserved.
+
+PocketBuffs original source code and original project artwork are provided for
+use with this addon. No broader redistribution or modification license is
+granted by this notice.
+
+Game-client textures and other game resources are referenced through the game
+client and are not included as redistributed game assets in this package.
