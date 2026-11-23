@@ -48,11 +48,15 @@ function P:CreateUI()
     self.launcher:SetScript("OnDragStart",function() self:StartGridMove() end)
     self.launcher:SetScript("OnDragStop",function() self:StopGridMove() end)
     self.launcher:SetAlpha(.7); self.launcher:SetScript("OnClick",function(_,button)
-        if button=="RightButton" and IsShiftKeyDown() then self:ToggleMoveLock() else self:ToggleSettings() end
+        if button=="RightButton" and IsShiftKeyDown() then self:ToggleMoveLock()
+        elseif button=="LeftButton" and IsControlKeyDown() then self:SortNow("type")
+        elseif button=="RightButton" then self:TogglePouchMenu()
+        else self:ToggleSettings() end
     end)
     self.launcher:SetScript("OnEnter",function(b)
         b:SetAlpha(1); GameTooltip:SetOwner(b,"ANCHOR_TOP"); GameTooltip:SetText("SatchelSense",unpack(gold))
-        GameTooltip:AddLine("Click: settings\nShift-right-click: lock / unlock\nUnlocked: drag the pouch to move the grid; drag items to reorder.\nMouse wheel: item pages",.8,.8,.8,true)
+        GameTooltip:AddLine("Left-click: settings\nRight-click: quick menu\nCtrl-left-click: sort by type and close gaps\nShift-right-click: lock / unlock\nUnlocked: drag pouch to move; drag items for Manual order.\nMouse wheel: item pages",.8,.8,.8,true)
+        GameTooltip:AddLine(self.db.autoSort and "Auto sort: on" or "Manual order",.94,.78,.47)
         GameTooltip:AddLine(self.db.locked and "Position locked" or "Position unlocked",.94,.78,.47); GameTooltip:Show()
     end)
     self.launcher:SetScript("OnLeave",function(b) b:SetAlpha(.7); GameTooltip:Hide() end)
@@ -74,6 +78,8 @@ function P:CreateUI()
         b.cooldown=CreateFrame("Cooldown",nil,b,"CooldownFrameTemplate"); b.cooldown:SetAllPoints(b.icon)
         b.cooldown:SetDrawEdge(false); b.cooldown:SetHideCountdownNumbers(true)
         b.textLayer=CreateFrame("Frame",nil,b); b.textLayer:SetAllPoints(); b.textLayer:SetFrameLevel(b.cooldown:GetFrameLevel()+2)
+        b.newGlow=b.textLayer:CreateTexture(nil,"ARTWORK"); b.newGlow:SetAllPoints(); b.newGlow:SetTexture(self.media.."IconRim")
+        b.newGlow:SetVertexColor(1,.78,.22); b.newGlow:SetAlpha(0)
         b.cooldownText=self:Label(b.textLayer,"",14,.99,.91,.72); b.cooldownText:SetPoint("CENTER")
         b.cooldownText:SetShadowColor(0,0,0,1); b.cooldownText:SetShadowOffset(1,-1)
         b.count=self:Label(b.textLayer,"",10); b.count:SetPoint("BOTTOMRIGHT",-1,1)
@@ -136,7 +142,7 @@ function P:Layout(items)
             if b.item.category=="weapon" then b:SetAttribute("unit",nil) else b:SetAttribute("unit","player") end
             b.icon:SetTexture(b.item.icon); b.star:SetText(d.favorites[b.item.id] and "+" or "")
             b:Show()
-        else b:SetAttribute("item1",nil); b:Hide() end
+        else b:SetAttribute("item1",nil); b.newGlow:SetAlpha(0); b:Hide() end
     end
     self:SyncLegacySlotButtons(items); self:SyncGridEditing(); self:UpdateVisuals()
 end
@@ -147,6 +153,7 @@ function P:UpdateVisuals()
     local bandaged,bandageStart,bandageDuration,bandageEnd=self:RecentlyBandaged(now)
     for index,b in ipairs(self.buttons or {}) do
         if b.item then
+            b.newGlow:SetAlpha(self:NewItemAlpha(b.item.id,now))
             local count=counts[b.item.id] or 0
             b.count:SetText(count>1 and count or (count==0 and "0" or ""))
             local level=self:Call(UnitLevel,"player")

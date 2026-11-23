@@ -1,3 +1,16 @@
+1.0.0-rc.4 - Automatic organizing
+- Auto sorting is now enabled by default, including on upgrade.
+- New supplies sort into the grid by type, filling earlier pages before adding another.
+- Used-up, removed and hidden items no longer leave gaps in Auto mode.
+- Optional Manual mode retains exact positions and appends new items after the saved layout.
+- Existing manual layouts are saved and can be restored by choosing Manual.
+- Dragging or using move arrows automatically switches to Manual mode.
+- Ctrl-left-click the pouch to sort by type and close gaps immediately.
+- Right-click the pouch for a quick menu with Auto/Manual, Compact only and other controls.
+- Compact only closes gaps while keeping the current item order.
+- New discoveries briefly glow gold; toggle highlights in Layout or the quick menu.
+- Sorting pauses during combat and active drags. Existing settings and item keys carry over.
+
 1.0.0-rc.3 - SatchelSense rebrand
 - Renamed the addon, settings window, commands, artwork and release packages to SatchelSense.
 - Added automatic per-character import of existing PocketBuffs profiles.

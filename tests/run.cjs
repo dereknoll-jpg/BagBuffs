@@ -44,4 +44,5 @@ run(fs.readFileSync(path.join(__dirname, 'editing-cooldowns.lua'), 'utf8'), 'Edi
 run(fs.readFileSync(path.join(__dirname, 'grid-editing.lua'), 'utf8'), 'Direct grid editing');
 run(fs.readFileSync(path.join(__dirname, 'drag-release-slots.lua'), 'utf8'), 'Drag release recovery and persistent grid slots');
 run(fs.readFileSync(path.join(__dirname, 'rebrand-migration.lua'), 'utf8'), 'Rebrand compatibility');
+run(fs.readFileSync(path.join(__dirname, 'auto-organizing.lua'), 'utf8'), 'Automatic organizing and new-item highlights');
 console.log('PASS: Lua 5.1 syntax, packaging, discovery, layout, combat stability, settings, recovery and bindings.');

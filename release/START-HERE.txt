@@ -1,7 +1,7 @@
 SATCHELSENSE - CURSEFORGE UPLOAD KIT
-Current build: 1.0.0-rc.3
+Current build: 1.0.0-rc.4
 
-1. Upload only addon/SatchelSense-1.0.0-rc.3.zip as the addon file.
+1. Upload only addon/SatchelSense-1.0.0-rc.4.zip as the addon file.
    Choose Beta while the live-client checks remain open.
 2. Use images/01-icon-400.png as the project avatar.
 3. Paste text/SUMMARY.txt and text/DESCRIPTION.md into the project fields.

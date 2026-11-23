@@ -74,7 +74,8 @@ PASS key conflict confirmation and restoration of underlying key actions.
 PASS numerical shared potion cooldowns and readable Recently Bandaged lockouts.
 PASS restricted values and guarded combat mutations.
 PASS grid dragging, canceled drops, native visibility-driver contract and icon lock toggle.
-PASS missed drag-stop recovery, scaled empty-slot drops, exact swaps, persistent slots and append-only item discovery.
+PASS missed drag-stop recovery, scaled empty-slot drops, exact swaps, persistent manual slots and append-only manual discovery.
+PASS automatic gap removal, manual layout recovery, compaction, pouch shortcuts, new-item highlights and combat/drag deferral.
 PASS legacy per-character import, preserved item keys, native slot aliases and idempotent profile migration.
 PASS $verified addon archive files verified by SHA-256 against the source.
 PASS original 400x400 PNG project avatar and static gallery files below 2 MB each.

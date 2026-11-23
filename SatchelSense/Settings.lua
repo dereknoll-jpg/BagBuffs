@@ -54,6 +54,10 @@ function P:ToggleSettings()
     self.logoButton=self:QuietButton(layout,"",130,function()
         if self:CanChange() then self.db.logo=not self.db.logo; self:Refresh() end
     end); self.logoButton:SetPoint("TOPLEFT",160,-158)
+    self.highlightCheck=CreateFrame("CheckButton",nil,layout,"UICheckButtonTemplate")
+    self.highlightCheck:SetSize(22,22); self.highlightCheck:SetPoint("TOPLEFT",310,-159)
+    self:Label(self.highlightCheck,"Highlight new items",11):SetPoint("LEFT",self.highlightCheck,"RIGHT",2,0)
+    self.highlightCheck:SetScript("OnClick",function() self:ToggleNewHighlights() end)
     self:Label(layout,"Show what matters.",18):SetPoint("TOPLEFT",22,-210)
     self.categoryChecks={}
     for i,key in ipairs(self.categories) do
@@ -64,17 +68,23 @@ function P:ToggleSettings()
             if self:CanChange() then self.db.enabled[key]=not self.db.enabled[key]; self:Refresh() else c:SetChecked(self.db.enabled[key]) end
         end)
     end
-    self:Label(layout,"Unlock the grid to drag items into slots. Lock it to keep them in place.",12,.6,.65,.68):SetPoint("TOPLEFT",22,-374)
+    self:Label(layout,"Auto closes gaps. Dragging items switches to Manual and saves your layout.",12,.6,.65,.68):SetPoint("TOPLEFT",22,-374)
     self:Label(layout,"Cooldown numbers appear automatically. Bandages follow Recently Bandaged.",11,.6,.65,.68):SetPoint("TOPLEFT",22,-400)
 
     self:Label(items,"A place for everything.",18):SetPoint("TOPLEFT",22,0)
     self:Label(items,"Drag item icons or use arrows to reorder. Click Bind key, then press a key.",11,.6,.65,.68):SetPoint("TOPLEFT",22,-28)
-    self.sortButtons={}
-    for i,spec in ipairs({{"type","By type"},{"name","A - Z"},{"manual","My order"}}) do
-        local b=self:QuietButton(items,spec[2],90,function() self:SetSortMode(spec[1]) end)
-        b:SetPoint("TOPLEFT",22+(i-1)*98,-52); self.sortButtons[spec[1]]=b
+    self.modeButtons={}
+    for i,spec in ipairs({{"auto","Auto",true},{"manual","Manual",false}}) do
+        local b=self:QuietButton(items,spec[2],100,function() self:SetAutoSort(spec[3]) end)
+        b:SetPoint("TOPLEFT",22+(i-1)*108,-52); self.modeButtons[spec[1]]=b
     end
-    self:Label(items,"Keys stay with the item, through sorting and page changes.",10,.6,.65,.68):SetPoint("TOPLEFT",22,-86)
+    self.sortButtons={}
+    for i,spec in ipairs({{"type","By type"},{"name","A - Z"}}) do
+        local b=self:QuietButton(items,spec[2],90,function() self:SortNow(spec[1]) end)
+        b:SetPoint("TOPLEFT",254+(i-1)*98,-52); self.sortButtons[spec[1]]=b
+    end
+    self:QuietButton(items,"Compact only",120,function() self:CompactLayout() end):SetPoint("TOPLEFT",450,-52)
+    self.organizingStatus=self:Label(items,"",10,.6,.65,.68); self.organizingStatus:SetPoint("TOPLEFT",22,-86)
     self.itemRows={}; self.listPage=1; self.rowsPerPage=9
     for i=1,self.rowsPerPage do
         local row={}; self.itemRows[i]=row
@@ -107,7 +117,7 @@ function P:ToggleSettings()
         self.listPage=math.min(math.max(1,math.ceil(#self:EditorItems()/self.rowsPerPage)),self.listPage+1); self:SyncSettings()
     end):SetPoint("TOPLEFT",57,-399)
     self.listStatus=self:Label(items,"",11,.6,.65,.68); self.listStatus:SetPoint("TOPLEFT",99,-406)
-    self:Label(items,"Manual order wins over favorites. Hidden / filtered items are listed last.",10,.6,.65,.68):SetPoint("TOPLEFT",22,-438)
+    self:Label(items,"Keys follow their items. Compact only closes gaps without changing item order.",10,.6,.65,.68):SetPoint("TOPLEFT",22,-438)
     self:Label(panel,"Missing something? /satchel include ITEMID   |   /satchel help",11,.6,.65,.68):SetPoint("BOTTOMLEFT",22,14)
     self:SelectSettingsTab("layout")
 end
@@ -119,7 +129,10 @@ function P:SyncSettings()
     self.lockButton.label:SetText(d.locked and "Unlock position" or "Lock position")
     self.logoButton.label:SetText(d.logo and "Hide pouch icon" or "Show pouch icon")
     for key,c in pairs(self.categoryChecks) do c:SetChecked(d.enabled[key]) end
-    for key,b in pairs(self.sortButtons) do b.label:SetText((d.sortMode==key and "+ " or "")..({type="By type",name="A - Z",manual="My order"})[key]) end
+    self.highlightCheck:SetChecked(d.highlightNew)
+    for key,b in pairs(self.modeButtons) do b.label:SetText(((key=="auto")==d.autoSort and "+ " or "")..(key=="auto" and "Auto" or "Manual")) end
+    for key,b in pairs(self.sortButtons) do b.label:SetText((d.autoSort and d.autoSortBy==key and "+ " or "")..({type="By type",name="A - Z"})[key]) end
+    self.organizingStatus:SetText(d.autoSort and "Auto: sorts items and closes gaps as your bags change." or "Manual: keeps saved slots. Use a sort button or Compact only whenever you want.")
     local items=self:EditorItems()
     local pages=math.max(1,math.ceil(#items/self.rowsPerPage))
     self.listPage=math.min(self.listPage or 1,pages)

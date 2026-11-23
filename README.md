@@ -12,6 +12,8 @@ Previously released as PocketBuffs. Existing character settings and item keys im
 
 - A 3×3 grid by default; 1×8, 8×1, 4×2 and custom layouts up to 8×8.
 - Automatic discovery from carried bags, with counts merged across identical item IDs.
+- Auto sorting is on by default: supplies group by type and fill gaps before another page is needed. Optional Manual mode preserves exact slots.
+- New discoveries briefly glow gold. Ctrl-left-click the pouch to sort; right-click for quick controls and Compact only.
 - Health and mana items first, then scrolls, buff food, enhancements, elixirs, flasks, bandages and other recognized self buffs. Favorites sort before these categories.
 - Real item cooldowns from the client, including shared cooldowns reported by the game.
 - Explicit numerical countdowns, independent of the game's optional cooldown-number setting. Bandages use the player's actual Recently Bandaged expiry, including duration reductions.
@@ -26,7 +28,7 @@ Previously released as PocketBuffs. Existing character settings and item keys im
 
 ## Install
 
-Extract **both folders** from `dist/SatchelSense-1.0.0-rc.3.zip` into `World of Warcraft/_forever_/Interface/AddOns`: `SatchelSense` is the addon and `PocketBuffs` is the bundled **SatchelSense - Settings Import** component. Replace the older files when prompted. Keep both enabled and restart WoW after the rename so it discovers the new folder. The manifest targets interface **16001**, matching the existing TankKit Forever project.
+Extract **both folders** from `dist/SatchelSense-1.0.0-rc.4.zip` into `World of Warcraft/_forever_/Interface/AddOns`: `SatchelSense` is the addon and `PocketBuffs` is the bundled **SatchelSense - Settings Import** component. Replace the older files when prompted. Keep both enabled and restart WoW after the rename so it discovers the new folder. The manifest targets interface **16001**, matching the existing TankKit Forever project.
 
 The import component keeps its old folder identity solely so WoW loads existing per-character saves. It has no HUD or item actions. SatchelSense copies an old profile only if a new profile does not already exist, then uses its own save. Original saved data and the game's normal keybinding profiles are not rewritten or deleted. `/satchel`, `/satchelsense` and `/ss` open settings; old `/pbuff` and `/pocketbuffs` shortcuts still work. See [the upgrade guide](release/UPGRADING.md).
 
@@ -57,11 +59,13 @@ Mouse wheel over an item or the page indicator changes pages. Clicking the page 
 
 ## Arrange items and bind keys
 
-Open `/satchel` → **Items & Keys**. Rows follow the grid's reading order, across all grid pages; hidden/filtered items follow at the bottom. Drag an item icon onto another row, or use `<` / `>` beside an item to move it earlier/later. The arrows also move items across editor-page boundaries. Editor drags cannot consume an item. Use **By type**, **A - Z**, or **My order** to choose a sort mode. Favorites sort first in the automatic modes; explicit manual order takes precedence over favorites. Identical item IDs remain a single entry.
+Open `/satchel` → **Items & Keys**. Rows follow the grid's reading order, across all grid pages; hidden/filtered items follow at the bottom. Drag an item icon onto another row, or use `<` / `>` beside an item to move it earlier/later. The arrows also move items across editor-page boundaries. Editor drags cannot consume an item. Choose **Auto** (default) or **Manual**. **By type** and **A - Z** sort now and choose the ongoing sort style in Auto; in Manual they perform a one-time sort. **Compact only** closes gaps while keeping the current item order. Favorites sort first in the automatic modes; explicit manual order takes precedence over favorites. Identical item IDs remain a single entry.
 
 Unlock the grid to drag directly between slots, with or without settings open. An empty slot accepts the dragged item; dropping onto an occupied slot swaps the two items. Faint empty-slot outlines appear only while unlocked and disappear when locked. Dropping outside the grid cancels. Mouse-up events, a global release event and physical-button polling all finalize the drag so a missed drag-stop callback cannot leave its image stuck to the cursor. Drop targeting accounts for the grid's scale.
 
-Exact slot positions are saved per character. Bag sorting, pickup events, locking and reloads do not reorder existing slots. Newly discovered eligible items append after the saved layout. Running out leaves an empty transparent slot; reacquiring that item restores its location. Type/name sorting is an explicit editor action rather than an automatic reshuffle on every bag update. Dragging between an editor row and a grid slot works too.
+**Auto is on by default**, including on upgrade: new supplies are sorted into the existing grid, and used-up or hidden items leave no wasted spaces or unnecessary pages. Sorting pauses during combat and active drags. Dragging or using move arrows switches to **Manual**, which saves exact positions, reserves exhausted items’ slots, and appends new discoveries after the saved layout. Switching to Auto retains a copy of that manual layout; select Manual to restore it. Dragging between an editor row and a grid slot works too.
+
+**Ctrl-left-click the pouch** for a one-time type sort and gap cleanup. **Right-click the pouch** for settings, Auto/Manual, Compact only, highlight and lock controls. Newly discovered items have an eight-second gold rim, with a short fade; off-page items highlight when first viewed. Existing inventory does not flash at login, and extra stacks do not retrigger the effect. Disable it under Layout or in the quick menu.
 
 During editing, separate hit areas intercept grid mouse input so starting a drag cannot consume an item. **Lock the grid for normal click-to-use, even if settings remain open.** Blizzard's visibility driver hides the hit areas in combat; the underlying item buttons retain their normal actions throughout. Item keybindings continue to use their assigned items.
 

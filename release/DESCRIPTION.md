@@ -38,13 +38,19 @@ Start with a **3×3 square**, use a **1×8 vertical strip** or **8×1 horizontal
 
 The charcoal-and-gold style matches Paladin TankKit, with soft icon corners, small counts and original pouch artwork. The settings window is movable too, so it can stay out of your way while you edit.
 
-## Drag, arrange and lock
+## Automatically organized, or arranged your way
 
-Unlock the grid and drag items directly into the slots you want, with or without the edit window open. Drop into an empty slot to move an item, or onto another item to swap their positions. You can also drag editor icons, use move arrows, sort by type/name, or return to your saved manual order.
+Unlock the grid and drag items directly into the slots you want, with or without the edit window open. Drop into an empty slot to move an item, or onto another item to swap their positions. You can also drag editor icons, use move arrows, or sort by type/name. Dragging or using the arrows switches to Manual mode.
 
 **Shift-right-click the pouch icon** to lock or unlock without opening settings. When unlocked, drag the pouch to move the whole grid. Lock the grid to keep everything in place and return to normal click-to-use.
 
-**Your existing items stay where you put them.** Their slots are remembered through bag changes and reloads, and newly discovered supported supplies are added after the saved layout instead of reshuffling it. Empty slots are transparent when locked.
+**Auto sorting is on by default.** New supported supplies sort into the grid by type, and empty spaces close as items are used up or hidden. Another page is only needed when the current items fill the earlier pages. Choose A - Z if you prefer alphabetical sorting.
+
+Prefer fixed positions? Choose **Manual** to remember exact slots through bag changes and reloads, with new discoveries added after the saved layout. Switching to Auto retains your manual layout so you can restore it later. Empty slots remain transparent when locked.
+
+**Ctrl-left-click the pouch** to sort by type and close gaps immediately. **Right-click the pouch** for a quick menu, including Auto/Manual and **Compact only**, which closes gaps without changing your item order.
+
+**New discoveries briefly glow gold**, so that scroll you just picked up is easier to notice. Existing supplies do not flash at login; extra stacks do not retrigger it. Turn the highlight off in Layout or the pouch menu.
 
 ## Bind an item, keep the key
 
@@ -64,7 +70,7 @@ Centered numbers show the item's reported cooldown, including shared potion cool
 
 SatchelSense is the new name for PocketBuffs. Install both folders included in the download, replace the older files, and keep **SatchelSense - Settings Import** enabled alongside SatchelSense. It has no separate grid; it loads your previous character profile for the automatic import.
 
-Your layout, saved item positions, filters, favorites and item keys carry over. Older grid-slot keys and `/pbuff` or `/pocketbuffs` commands still work. Restart WoW after installing the rename so it discovers SatchelSense. There is no need to edit or delete saved-variable files.
+Your layout, saved manual positions, filters, favorites and item keys carry over. This update enables Auto sorting by default; choose Manual to restore your saved arrangement. Older grid-slot keys and `/pbuff` or `/pocketbuffs` commands still work. Restart WoW after installing the rename so it discovers SatchelSense. There is no need to edit or delete saved-variable files.
 
 ### Compatibility and behavior
 

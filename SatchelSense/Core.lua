@@ -1,11 +1,12 @@
 local _, P = ...
-P.name, P.version = "SatchelSense", "1.0.0-rc.3"
+P.name, P.version = "SatchelSense", "1.0.0-rc.4"
 P.media = "Interface\\AddOns\\SatchelSense\\Media\\"
 P.categories = {"health", "mana", "potion", "scroll", "food", "weapon", "elixir", "flask", "bandage", "utility", "refreshment"}
 P.categoryNames = {health="Health", mana="Mana", potion="Utility potions", scroll="Scrolls", food="Buff food",
     weapon="Item enhancements", elixir="Elixirs", flask="Flasks", bandage="Bandages", utility="Other self buffs", refreshment="Plain food / drink"}
 P.defaults = {columns=3, rows=3, size=32, gap=4, scale=1, locked=true, logo=true,
-    enabled={}, ignored={}, favorites={}, included={}, sortMode="type", order={}, slots={}, bindings={}}
+    enabled={}, ignored={}, favorites={}, included={}, sortMode="type", autoSort=true, autoSortBy="type", highlightNew=true,
+    order={}, slots={}, bindings={}}
 for _, key in ipairs(P.categories) do P.defaults.enabled[key] = key ~= "refreshment" end
 
 function P:Readable(value)
@@ -32,6 +33,10 @@ function P:InitializeDB()
     local imported=type(SatchelSenseDB)~="table" and type(PocketBuffsDB)=="table"
     local db=type(SatchelSenseDB)=="table" and SatchelSenseDB or (imported and copy(PocketBuffsDB) or {})
     if imported then db.migratedFrom="PocketBuffs" end
+    -- The new default applies once to older profiles. Retain their exact manual
+    -- layout so choosing Manual can restore it instead of destroying it.
+    if type(db.autoSort)~="boolean" and db.sortMode=="manual" and type(db.slots)=="table" and #db.slots>0 then db.order=copy(db.slots) end
+    if db.autoSortBy~="type" and db.autoSortBy~="name" then db.autoSortBy=db.sortMode=="name" and "name" or "type" end
     for k,v in pairs(self.defaults) do
         if type(db[k])~=type(v) then db[k]=type(v)=="table" and copy(v) or v end
     end
@@ -44,7 +49,9 @@ function P:InitializeDB()
         if key~="scale" then db[key]=math.floor(db[key]) end
     end
     if db.sortMode~="type" and db.sortMode~="name" and db.sortMode~="manual" then db.sortMode="type" end
+    db.sortMode=db.autoSort and db.autoSortBy or "manual"
     self.db=db; SatchelSenseDB=db; self.page=1; self.bindingsDirty=true
+    self.inventorySnapshot=nil; self.pendingNew={}; self.newUntil={}
 end
 
 function P:Message(message)
@@ -100,8 +107,10 @@ end
 
 function P:Refresh()
     if InCombatLockdown() then self.pending=true; self:UpdateVisuals(); return end
+    if self.gridDragItemID or self.dragItemID or self.gridMoving then self.pending=true; self:UpdateVisuals(); return end
     self.pending=false
     self.items=self:ScanBags()
+    self:TrackNewItems(self.items)
     self:EnsureSlots(self.items)
     self.selected=self:SelectItems(self.items)
     local visible,pages=self:PageItems(self.selected)

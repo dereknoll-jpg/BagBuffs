@@ -60,11 +60,11 @@ P.frame.GetEffectiveScale=originalScale
 P:ToggleMoveLock()
 -- Existing rc.1 manual orders migrate without losing their order or key settings.
 SatchelSenseDB={sortMode="manual",order={203,201,202},bindings={[201]={key="F",weapon=false}}}
-P:InitializeDB(); P:Refresh()
+P:InitializeDB(); P:SetAutoSort(false)
 assert(P.db.slots[1]==203 and P.db.slots[2]==201 and P.db.slots[3]==202)
 assert(P.db.slots[4]==204 and P.db.slots[5]==205 and P.db.bindings[201].key=="F")
--- Even the default type view is stable until the player explicitly clicks Sort.
-SatchelSenseDB={}; P:InitializeDB(); BAGS[0]={{202,1},{203,1}}; P:Refresh()
+-- Explicit Manual mode stays stable until the player clicks Sort.
+SatchelSenseDB={}; P:InitializeDB(); BAGS[0]={{202,1},{203,1}}; P:SetAutoSort(false)
 assert(P.db.slots[1]==202 and P.db.slots[2]==203)
 BAGS[0][3]={201,1}; P:Refresh(); assert(P.db.slots[1]==202 and P.db.slots[2]==203 and P.db.slots[3]==201)
 P:InitializeDB(); P:Refresh(); assert(P.db.slots[1]==202 and P.db.slots[3]==201)

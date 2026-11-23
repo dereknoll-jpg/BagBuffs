@@ -12,6 +12,12 @@ function P:CopySlots(slots)
 end
 
 function P:EnsureSlots(items)
+    if self.db.autoSort then
+        local slots={}
+        for _,item in ipairs(self:SortedItems(items,self.db.autoSortBy)) do slots[#slots+1]=item.id end
+        self.db.slots=slots; self.db.sortMode=self.db.autoSortBy
+        return
+    end
     -- Migrate the last manual order, or initialize using the previous type/name
     -- view. After that, a bag update only appends IDs; it never sorts old slots.
     if #self.db.slots==0 and self.db.sortMode=="manual" then self.db.slots=self:CopySlots(self.db.order) end
@@ -23,7 +29,39 @@ function P:EnsureSlots(items)
 end
 
 function P:RememberManualSlots()
-    self.db.order=self:CopySlots(self.db.slots); self.db.sortMode="manual"
+    self.db.order=self:CopySlots(self.db.slots); self.db.sortMode="manual"; self.db.autoSort=false
+end
+
+function P:SetAutoSort(enabled)
+    if not self:CanChange() then return end
+    if enabled then
+        if not self.db.autoSort then self.db.order=self:CopySlots(self.db.slots) end
+        self.db.autoSort=true; self.db.sortMode=self.db.autoSortBy
+    else
+        if self.db.autoSort and #self.db.order>0 then self.db.slots=self:CopySlots(self.db.order) end
+        self.db.autoSort=false; self.db.sortMode="manual"
+    end
+    self.page=1; self:Refresh()
+end
+
+function P:SortNow(style)
+    if not self:CanChange() then return end
+    style=style=="name" and "name" or "type"
+    self.db.autoSortBy=style
+    local slots={}
+    for _,item in ipairs(self:SortedItems(self.items or {},style)) do slots[#slots+1]=item.id end
+    self.db.slots=slots
+    if self.db.autoSort then self.db.sortMode=style else self:RememberManualSlots() end
+    self.page=1; self:Refresh()
+end
+
+function P:CompactLayout()
+    if not self:CanChange() then return end
+    local slots={}
+    for _,item in ipairs(self.selected or {}) do slots[#slots+1]=item.id end
+    self.db.slots=slots
+    if not self.db.autoSort then self:RememberManualSlots() end
+    self.page=1; self:Refresh()
 end
 
 function P:SlotForItem(id)
@@ -43,5 +81,5 @@ end
 function P:ToggleFavorite(id)
     if not self:CanChange() then return end
     self.db.favorites[id]=not self.db.favorites[id]
-    if self.db.sortMode~="manual" then self:SetSortMode(self.db.sortMode) else self:Refresh() end
+    self:Refresh()
 end

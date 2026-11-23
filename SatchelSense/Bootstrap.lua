@@ -28,7 +28,7 @@ events:SetScript("OnEvent",function(_,event,arg)
                 P:EndGridItemDrag()
                 if P.dragItemID then P:EndItemDrag() end
             end
-        elseif event=="PLAYER_REGEN_DISABLED" then P:CancelBinding(); P.dragItemID=nil; P:CancelGridDrag()
+        elseif event=="PLAYER_REGEN_DISABLED" then P:CancelBinding(); P.dragItemID=nil; P:CancelGridDrag(); if P.pouchMenu then P.pouchMenu:Hide() end
         elseif event=="UNIT_AURA" then if arg=="player" then P:UpdateVisuals() end
         elseif event=="UPDATE_BINDINGS" then P.bindingsDirty=true; P.dirty=true
         elseif event=="BAG_UPDATE_COOLDOWN" then P:UpdateVisuals()

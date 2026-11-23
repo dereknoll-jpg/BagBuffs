@@ -2,7 +2,7 @@
 ## Title: SatchelSense - Settings Import
 ## Notes: Loads saved settings from releases before the SatchelSense rename. Required compatibility component; no interface or item actions.
 ## Author: Derek
-## Version: 1.0.0-rc.3
+## Version: 1.0.0-rc.4
 ## DefaultState: enabled
 ## SavedVariablesPerCharacter: PocketBuffsDB
 ## IconTexture: Interface\AddOns\SatchelSense\Media\AddonIcon

@@ -1,11 +1,12 @@
 # SatchelSense 1.0 release review
 
-Updated November 23, 2026. Current build: **1.0.0-rc.3**. No game was opened for this review or the media package.
+Updated November 23, 2026. Current build: **1.0.0-rc.4**. No game was opened for this review or the media package.
 
 ## What is ready
 
 - SatchelSense branding, a renamed GitHub repository, and an automatic legacy-profile import that preserves old data, per-item keys and native grid-slot binding targets.
 
+- Auto sorting by default removes gaps and unnecessary pages, with restorable Manual mode, Compact only, a pouch quick menu and a toggleable brief new-item highlight.
 - Compact grid, automatic carried-bag discovery, duplicate stack counts, category filters, manual includes/exclusions and favorites.
 - Layout presets/custom dimensions, movable settings window, direct grid reordering and per-character manual order.
 - Pouch Shift-right-click lock toggle, pouch dragging for whole-grid movement, and a narrow-layout move-handle overlap fix.

@@ -40,6 +40,7 @@ SlashCmdList.SATCHELSENSE("layout 8x1"); assert(P.frame.height==32 and P.db.colu
 SlashCmdList.SATCHELSENSE("layout 0x900"); assert(P.db.columns==8)
 SlashCmdList.SATCHELSENSE("layout 3x3")
 SlashCmdList.SATCHELSENSE("favorite 4"); assert(P.buttons[1].item.id==4 and P.buttons[1].attributes.unit==nil)
+P:SetAutoSort(false)
 SlashCmdList.SATCHELSENSE("hide 4"); assert(not P.buttons[1].item)
 SlashCmdList.SATCHELSENSE("restore 4"); assert(P.buttons[1].item.id==4)
 SlashCmdList.SATCHELSENSE("include 14"); assert(P.db.included[14])

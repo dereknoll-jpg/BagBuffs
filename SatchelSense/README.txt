@@ -1,4 +1,4 @@
-SatchelSense 1.0.0-rc.3 - WoW Forever, interface 16001
+SatchelSense 1.0.0-rc.4 - WoW Forever, interface 16001
 
 Good things. Already in your bags.
 
@@ -14,7 +14,12 @@ When unlocked, drag the pouch icon (or wide-layout DRAG tab) to move the grid.
 Unlock to drag grid items directly into saved slots, with or without settings open.
 Empty slots show faint drop targets only while unlocked. Occupied slots swap.
 Lock the position to restore normal click-to-use and prevent direct rearrangement.
-New eligible items append after the saved layout; existing slots do not reshuffle.
+Auto sorting is ON by default: new items sort by type and empty gaps close.
+Drag or choose Manual to keep exact slots and append new items after the layout.
+Switching to Auto retains the saved manual layout for later restoration.
+Ctrl-left-click pouch: sort by type now. Right-click pouch: quick menu.
+Compact only closes gaps without changing item order.
+New discoveries glow gold briefly; toggle this in Layout or the quick menu.
 Editing hit areas hide automatically in combat; item actions stay intact.
 Mouse wheel over an item to change pages outside combat.
 
@@ -22,7 +27,8 @@ Layouts: /satchel layout 3x3, /satchel layout 1x8, /satchel layout 8x1
 Other commands: /satchel help
 
 Items & Keys tab: drag item icons or use < / > to set grid order.
-By type / A - Z / My order switches between automatic and saved manual sorting.
+Auto / Manual selects ongoing sorting or saved positions.
+By type / A - Z sorts now; in Auto it also chooses the ongoing sort style.
 Click Bind key beside an item, then press a key or mouse button/wheel.
 Escape cancels capture. Backspace/Delete clears the binding.
 Occupied keys ask for confirmation; normal game bindings are preserved.

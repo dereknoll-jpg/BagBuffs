@@ -36,17 +36,8 @@ function P:MoveItem(id,delta)
 end
 
 function P:SetSortMode(mode)
-    if not self:CanChange() then return end
-    if mode~="type" and mode~="name" and mode~="manual" then return end
-    if mode=="manual" then
-        if #self.db.order>0 then self.db.slots=self:CopySlots(self.db.order) else self:RememberManualSlots() end
-    else
-        local slots,seen={},{}
-        for _,item in ipairs(self:SortedItems(self.items or {},mode)) do slots[#slots+1]=item.id; seen[item.id]=true end
-        for _,id in ipairs(self.db.slots) do if id>0 and not seen[id] then slots[#slots+1]=id; seen[id]=true end end
-        self.db.slots=slots
-    end
-    self.db.sortMode=mode; self:Refresh()
+    if mode=="manual" then self:SetAutoSort(false)
+    elseif mode=="type" or mode=="name" then self:SortNow(mode) end
 end
 
 function P:EditorItems()

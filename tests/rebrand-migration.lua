@@ -13,7 +13,7 @@ assert(P.db.favorites[201] and P.db.ignored[204] and P.db.included[999] and P.db
 assert(P.db.bindings[201].key=="CTRL-F" and P.db.bindings[41].weapon)
 P.db.position.x=175; P.db.bindings[201].key="SHIFT-F"
 assert(legacy.position.x==150 and legacy.bindings[201].key=="CTRL-F")
-BAGS[0]={{201,2},{202,2},{203,1}}; BAGS[1]={}; P:Refresh()
+BAGS[0]={{201,2},{202,2},{203,1}}; BAGS[1]={}; assert(P.db.autoSort and P.db.order[2]==0); P:SetAutoSort(false)
 assert(GetBindingAction("SHIFT-F",true)=="CLICK SatchelSenseUseItem201:LeftButton")
 assert(GetBindingAction("ALT-O",true)=="CLICK SatchelSenseUseItem41:LeftButton")
 assert(P.itemBindingButtons[201].attributes.item=="item:201" and P.itemBindingButtons[41].attributes.unit==nil)

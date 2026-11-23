@@ -16,3 +16,7 @@ Per-item keys continue to target the same item IDs. Older game-native slot bindi
 Use **`/satchel`**, **`/satchelsense`** or **`/ss`** for settings. **`/pbuff`** and **`/pocketbuffs`** remain aliases for existing habits and macros.
 
 The import's data, idempotence and binding compatibility are covered by offline upgrade checks. The real client's saved-variable loading and key dispatch should be included in the final live verification.
+
+## Automatic organizing in 1.0.0-rc.4
+
+Auto sorting is enabled by default on upgrade, closing gaps and unnecessary pages as your bags change. Existing manual slots are retained: select Manual under Items & Keys or in the pouch quick menu to restore them. Future Auto/Manual choices save per character. Item keybindings, filters and screen position remain intact. Dragging an item automatically selects Manual.
