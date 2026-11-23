@@ -1,7 +1,7 @@
-POCKETBUFFS - CURSEFORGE UPLOAD KIT
-Current build: 1.0.0-rc.2
+SATCHELSENSE - CURSEFORGE UPLOAD KIT
+Current build: 1.0.0-rc.3
 
-1. Upload only addon/PocketBuffs-1.0.0-rc.2.zip as the addon file.
+1. Upload only addon/SatchelSense-1.0.0-rc.3.zip as the addon file.
    Choose Beta while the live-client checks remain open.
 2. Use images/01-icon-400.png as the project avatar.
 3. Paste text/SUMMARY.txt and text/DESCRIPTION.md into the project fields.
@@ -17,3 +17,5 @@ MANIFEST-SHA256.csv lists the package files and verification hashes.
 The package includes original static artwork and no GIFs.
 No game launch, gameplay capture, project publication or upload was performed.
 Existing character settings are retained by the installed release candidate.
+Install BOTH folders inside the addon ZIP and keep Settings Import enabled.
+text/UPGRADING.md explains the rename, automatic import and legacy key support.

@@ -1,5 +1,5 @@
 PROJECT NAME
-PocketBuffs
+SatchelSense
 
 SUMMARY
 Paste SUMMARY.txt. The summary describes behavior; keep the project name short.
@@ -14,7 +14,7 @@ Main: Bags & Inventory
 Additional: Buffs & Debuffs; Action Bars
 
 FILE TO UPLOAD
-addon/PocketBuffs-1.0.0-rc.2.zip
+addon/SatchelSense-1.0.0-rc.3.zip
 This is a release candidate: choose Beta until the short live-client checks pass.
 Do not upload the entire CurseForge kit as the addon.
 
@@ -25,7 +25,7 @@ GALLERY
 images/02-banner.png
 images/03-features.png
 Both are promotional illustrations, not gameplay screenshots, and are labeled.
-images/04-icon-1024.png is a larger optional branding image.
+images/04-icon-1024.jpg is a larger optional branding image.
 
 DESCRIPTION
 Use text/DESCRIPTION.md in Markdown mode, or DESCRIPTION.txt for plain text.
@@ -37,8 +37,13 @@ Change that choice and file before upload if you prefer another license.
 
 SUPPORT
 Enable project comments for bug reports.
-Leave Source/Issues URLs empty until you have a real public project URL.
-No GitHub repository, support address or published project URL is invented here.
+Source: https://github.com/dereknoll-jpg/SatchelSense
+Issues: https://github.com/dereknoll-jpg/SatchelSense/issues
+
+UPGRADE COMPATIBILITY
+The addon ZIP contains SatchelSense plus its bundled Settings Import component
+under the legacy PocketBuffs folder name. Keep both enabled; no external addon
+download is needed. UPGRADING.md explains the automatic per-character migration.
 
 CHECKED GUIDANCE (November 22, 2026)
 https://support.curseforge.com/support/solutions/articles/9000199552-project-submission-guide-and-tips

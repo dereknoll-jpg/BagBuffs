@@ -1,13 +1,20 @@
 # In-client checks before stable release
 
+## SatchelSense rename upgrade
+
+- Install both bundled folders over the old addon and keep Settings Import enabled. Restart WoW to discover the new addon.
+- On an existing character, verify layout, screen position, empty slots, filters, favorites, exclusions/includes and item keys. Test an older native grid-slot key too.
+- Change a SatchelSense preference, reload, and verify it remains changed. The old profile must not overwrite it on every login.
+- Confirm only one grid is present. The import component must have no independent HUD, timers or item actions.
+
 This release has passed offline Lua checks. No live WoW session was available during creation.
 
-1. Install the ZIP with only PocketBuffs enabled. Confirm no load error and verify the custom pouch icon appears in the addon list and `/pbuff` header.
+1. Install the ZIP with only SatchelSense enabled. Confirm no load error and verify the custom pouch icon appears in the addon list and `/satchel` header.
 2. Carry duplicate healing and mana potions, a stat scroll, buff food, plain food, an oil or stone, and a bandage. Check that identical stacks combine, buff food appears, and plain food appears only when enabled.
 3. Loot or buy a new eligible item; move/split/sort stacks, consume the last of one item, then reload. Check counts, discovery, removals and saved preferences.
 4. Left-click a potion or scroll with an enemy targeted: it must apply to the player. Verify keybindings do the same and a click consumes exactly one item. Test the game's key-down setting both ways.
 5. Use an oil or stone: verify that native item targeting opens and you can choose the correct equipped weapon. Check that canceling and replacement confirmations behave normally. Try armor kits and fishing lures separately.
-6. Test 3×3, 1×8, 8×1 and custom dimensions; change size, gap, scale and position. Confirm empty slots do not block camera or world interaction. Hide the launcher and use `/pbuff` to restore it.
+6. Test 3×3, 1×8, 8×1 and custom dimensions; change size, gap, scale and position. Confirm empty slots do not block camera or world interaction. Hide the launcher and use `/satchel` to restore it.
 7. Carry more than nine eligible item types. Check next/previous/wheel paging and favorites; verify no item disappears from the page set.
 8. Enter combat, consume a potion, move a stack and acquire an eligible item. Check existing counts/cooldowns update but actions and positions stay fixed. Try paging and layout changes: they must be refused. Confirm the full grid refreshes after combat.
 9. Test native item cooldowns, including shared potion cooldowns, and a minimum-level item. Check too-high items dim and real game errors remain informative.

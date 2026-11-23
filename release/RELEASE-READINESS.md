@@ -1,8 +1,10 @@
-# PocketBuffs 1.0 release review
+# SatchelSense 1.0 release review
 
-Prepared November 22, 2026. Current build: **1.0.0-rc.2**. No game was opened for this review or the media package.
+Updated November 23, 2026. Current build: **1.0.0-rc.3**. No game was opened for this review or the media package.
 
 ## What is ready
+
+- SatchelSense branding, a renamed GitHub repository, and an automatic legacy-profile import that preserves old data, per-item keys and native grid-slot binding targets.
 
 - Compact grid, automatic carried-bag discovery, duplicate stack counts, category filters, manual includes/exclusions and favorites.
 - Layout presets/custom dimensions, movable settings window, direct grid reordering and per-character manual order.
@@ -21,6 +23,7 @@ Prepared November 22, 2026. Current build: **1.0.0-rc.2**. No game was opened fo
 3. **Upgrade and inventory coverage.** Load an existing character profile, reload, sort bags, loot a new supported consumable, exhaust/reacquire an item and inspect a dual-purpose item such as a rune. Test at least the player's normal consumable mix. Unknown and localized cases need clear manual recovery.
 4. **Small-screen check.** Confirm the settings panel, binding prompt, narrow layout, icon lock shortcut and item text remain usable at the player's normal UI scale.
 5. **Publication choices.** Verify the final Forever version tag in the uploader, confirm the desired license (All Rights Reserved supplied by default), and enable comments for feedback. The actual listing is not created by this package.
+6. **Rename upgrade in the real client.** Extract both addon folders over an existing install, restart, and check the imported profile on an existing character. Verify custom item keys and old native slot keys. Reload and confirm that later changes to the new profile are not overwritten by another import. The offline suite covers the migration data and aliases; the client controls saved-variable file loading.
 
 These are validation gates, not requests for more features. The upload kit is complete for a **Beta** release candidate; the stable label should follow the live pass. Use LIVE-CHECKS.md for the expanded checks.
 

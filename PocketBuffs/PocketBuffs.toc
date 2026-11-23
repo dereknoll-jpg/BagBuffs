@@ -1,18 +1,10 @@
 ## Interface: 16001
-## Title: PocketBuffs
-## Notes: Your bag buffs, potions, food and weapon enhancements in one quiet grid.
+## Title: SatchelSense - Settings Import
+## Notes: Loads saved settings from releases before the SatchelSense rename. Required compatibility component; no interface or item actions.
 ## Author: Derek
-## Version: 1.0.0-rc.2
+## Version: 1.0.0-rc.3
+## DefaultState: enabled
 ## SavedVariablesPerCharacter: PocketBuffsDB
-## IconTexture: Interface\AddOns\PocketBuffs\Media\AddonIcon
+## IconTexture: Interface\AddOns\SatchelSense\Media\AddonIcon
 
-Core.lua
-Discovery.lua
-Placement.lua
-Editing.lua
-GridEditing.lua
-Cooldowns.lua
-UI.lua
-Settings.lua
-Bootstrap.lua
-Bindings.xml
+Bridge.lua

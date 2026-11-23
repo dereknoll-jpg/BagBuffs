@@ -1,5 +1,5 @@
 local P=TEST_NS
-COMBAT=false; RunStateDrivers(); PocketBuffsDB={}; P:InitializeDB()
+COMBAT=false; RunStateDrivers(); SatchelSenseDB={}; P:InitializeDB()
 BAGS[0]={{101,2},{102,2},{103,5},{104,1}}; BAGS[1]={}; P:Refresh()
 if P.settings:IsShown() then P:ToggleSettings() end
 assert(P.db.locked and not P.gridEditor:IsShown())
@@ -37,9 +37,9 @@ assert(P.gridEditor:IsShown())
 SHIFT=true; P.launcher.scripts.OnClick(nil,"RightButton"); SHIFT=false
 assert(P.db.locked and not P.gridEditor:IsShown())
 -- A narrow vertical layout keeps the pouch accessible when unlocked.
-SlashCmdList.POCKETBUFFS("layout 1x8"); P:ToggleMoveLock()
+SlashCmdList.SATCHELSENSE("layout 1x8"); P:ToggleMoveLock()
 assert(P.launcher:IsShown() and not P.anchor:IsShown())
-P:ToggleMoveLock(); SlashCmdList.POCKETBUFFS("layout 3x3")
+P:ToggleMoveLock(); SlashCmdList.SATCHELSENSE("layout 3x3")
 -- Cross-surface dragging: editor row onto live grid and back.
 P:ToggleSettings(); P:ToggleMoveLock(); P:SelectSettingsTab("items"); P.listPage=1; P:SyncSettings()
 local row=P.itemRows[1]; first=row.item.id

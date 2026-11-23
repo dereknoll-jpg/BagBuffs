@@ -68,7 +68,7 @@ function P:EndItemDrag()
     if self.settings then self:SyncSettings() end
 end
 
-function P:BindingButtonName(id) return "PocketBuffsUseItem"..id end
+function P:BindingButtonName(id) return "SatchelSenseUseItem"..id end
 
 function P:BindingLabel(id)
     local binding=self.db.bindings[id]
@@ -127,12 +127,12 @@ function P:CaptureBinding(key)
     local conflict=self:Readable(action) and type(action)=="string" and action~="" and action~=own and action or nil
     -- Inspect our own saved map too (including when native binding inspection is unavailable).
     for id,binding in pairs(self.db.bindings) do
-        if id~=self.bindingItem.id and type(binding)=="table" and binding.key==chord then conflict="another PocketBuffs item" end
+        if id~=self.bindingItem.id and type(binding)=="table" and binding.key==chord then conflict="another SatchelSense item" end
     end
     if conflict then
         self.bindingConflict=chord
         local label=_G["BINDING_NAME_"..conflict] or conflict
-        self.bindingPrompt.message:SetText(chord.." is already used by "..label..".\nUse it for "..self.bindingItem.name.." while PocketBuffs is active?")
+        self.bindingPrompt.message:SetText(chord.." is already used by "..label..".\nUse it for "..self.bindingItem.name.." while SatchelSense is active?")
         self.bindingPrompt.replace:Show()
     else self:ApplyItemBinding(self.bindingItem,chord); self:CancelBinding() end
 end

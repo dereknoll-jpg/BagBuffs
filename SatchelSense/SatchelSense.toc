@@ -1,0 +1,20 @@
+## Interface: 16001
+## Title: SatchelSense
+## Notes: Your bag buffs, potions, food and weapon enhancements in one quiet grid.
+## Author: Derek
+## Version: 1.0.0-rc.3
+## SavedVariablesPerCharacter: SatchelSenseDB
+## Dependencies: PocketBuffs
+## IconTexture: Interface\AddOns\SatchelSense\Media\AddonIcon
+
+Core.lua
+Compatibility.lua
+Discovery.lua
+Placement.lua
+Editing.lua
+GridEditing.lua
+Cooldowns.lua
+UI.lua
+Settings.lua
+Bootstrap.lua
+Bindings.xml

@@ -12,7 +12,7 @@ The index includes all six traditional scroll stat families and multiple stone/o
 
 [Baked Salmon's client comparison](https://theforeverera.com/en/items/13935/) explicitly shows a new well-fed effect relative to its Classic entry. A food that an older database treats as restoration can therefore belong in this addon's buff-food category.
 
-[ForeverDB's Nightfin Soup record](https://foreverdb.net/item/13931) also reports a changed well-fed effect, whereas [Forever Helper's earlier pre-launch record](https://wowforeverhelper.com/item/13931/nightfin-soup) describes unchanged compared fields and omits that detailed use effect. These records reflect different builds and comparison scopes. PocketBuffs reads the current bag tooltip and does not prescribe either site's stat value or duration.
+[ForeverDB's Nightfin Soup record](https://foreverdb.net/item/13931) also reports a changed well-fed effect, whereas [Forever Helper's earlier pre-launch record](https://wowforeverhelper.com/item/13931/nightfin-soup) describes unchanged compared fields and omits that detailed use effect. These records reflect different builds and comparison scopes. SatchelSense reads the current bag tooltip and does not prescribe either site's stat value or duration.
 
 [QuestCore's Demonic Rune entry](https://questcorehq.com/wowdb/forever/item/12662/demonic-rune) places it among trade goods while showing its mana-restoration use and health cost. This is a concrete counterexample to filtering solely on item class “Consumable.” Item 12662 receives an explicit mana exception. Narrow English family matches cover additional dual-purpose self-use items without admitting every crafting reagent or quest item.
 

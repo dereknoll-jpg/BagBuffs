@@ -1,6 +1,6 @@
 local _, P = ...
-P.name, P.version = "PocketBuffs", "1.0.0-rc.2"
-P.media = "Interface\\AddOns\\PocketBuffs\\Media\\"
+P.name, P.version = "SatchelSense", "1.0.0-rc.3"
+P.media = "Interface\\AddOns\\SatchelSense\\Media\\"
 P.categories = {"health", "mana", "potion", "scroll", "food", "weapon", "elixir", "flask", "bandage", "utility", "refreshment"}
 P.categoryNames = {health="Health", mana="Mana", potion="Utility potions", scroll="Scrolls", food="Buff food",
     weapon="Item enhancements", elixir="Elixirs", flask="Flasks", bandage="Bandages", utility="Other self buffs", refreshment="Plain food / drink"}
@@ -29,7 +29,9 @@ local function copy(t)
 end
 
 function P:InitializeDB()
-    local db=type(PocketBuffsDB)=="table" and PocketBuffsDB or {}
+    local imported=type(SatchelSenseDB)~="table" and type(PocketBuffsDB)=="table"
+    local db=type(SatchelSenseDB)=="table" and SatchelSenseDB or (imported and copy(PocketBuffsDB) or {})
+    if imported then db.migratedFrom="PocketBuffs" end
     for k,v in pairs(self.defaults) do
         if type(db[k])~=type(v) then db[k]=type(v)=="table" and copy(v) or v end
     end
@@ -42,11 +44,11 @@ function P:InitializeDB()
         if key~="scale" then db[key]=math.floor(db[key]) end
     end
     if db.sortMode~="type" and db.sortMode~="name" and db.sortMode~="manual" then db.sortMode="type" end
-    self.db=db; PocketBuffsDB=db; self.page=1; self.bindingsDirty=true
+    self.db=db; SatchelSenseDB=db; self.page=1; self.bindingsDirty=true
 end
 
 function P:Message(message)
-    if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cffefc778PocketBuffs|r  "..message) end
+    if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cffefc778SatchelSense|r  "..message) end
 end
 
 function P:CanChange()

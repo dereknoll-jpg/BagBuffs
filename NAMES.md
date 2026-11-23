@@ -1,21 +1,45 @@
-# Name shortlist
+# SatchelSense naming check
 
-**Recommendation: PocketBuffs.** It describes where the useful items are, includes the natural “buffs” search word, and leaves room for potions and utility items. It is the reversible working name used by this build.
+**Selected by Derek on November 23, 2026: SatchelSense.** Rechecked CurseForge's actual WoW directory before the rebrand: SatchelSense, Satchel Sense and SatchelSenses showed no projects. The hyphenated search normalized to the spaced query. The game interface, current packages and repository now use SatchelSense; the legacy PocketBuffs identity remains only where required to import existing saves and support old keys.
 
-| Name | Why it works | Tradeoff |
+Checked **November 23, 2026**, using the actual CurseForge World of Warcraft addon search UI, with no game-flavor restriction. Supplementary web searches checked joined/spaced candidate spellings.
+
+## Confirmed conflict
+
+**PocketBuffs is no longer recommended.** [Pocket Buffs - Forever](https://www.curseforge.com/wow/addons/pocket-buffs-forever) by ShindleDindleSoft is an existing project with a name too close to this one, regardless of its different buffing functionality.
+
+The earlier preliminary November 22 naming pass is superseded by this direct-directory check.
+
+## Shortlist
+
+| Candidate | Search evidence | Fit |
 | --- | --- | --- |
-| **PocketBuffs** | Memorable, friendly, clear bag-to-buff connection | Summary should mention potions explicitly |
-| **BuffKit** | Strong companion to TankKit; short and easy to say | More generic; “kit” is used broadly by software projects |
-| **BagBuffs** | Very direct; immediately explains the main purpose | More functional than playful |
-| **BuffStash** | Catchy, evokes forgotten useful items | Slightly less explicit about quick-use buttons |
-| **PocketPrep** | Covers potions, food, scrolls and coatings naturally | Needs “consumables” in its listing summary |
-| **Sip & Scroll** | Fun and immediately suggestive | Does not communicate weapon enhancements as well |
-| **ReadyPouch** | Fits the new artwork and preparation theme | Least direct connection to buff searches |
+| **SatchelSense** | SatchelSense and Satchel Sense each returned zero projects | Recommended for distinctiveness and the idea of noticing useful supplies |
+| **BuffSatchel** | BuffSatchel and Buff Satchel returned fuzzy matches, but no matching or closely named project among their result names | Clearest description of bag buffs; includes the natural search word “buff” |
+| **PouchPilot** | PouchPilot and Pouch Pilot each returned zero projects | Short, playful and compatible with the existing pouch icon |
+| **StashReady** | StashReady returned SlashRead, CooldownReadyFlashDisabler and Great Goblin Stash; Stash Ready returned FastTaskFlash | Broad preparation theme without reusing the Pocket Buffs wording |
 
-Suggested project name: **PocketBuffs**
+BuffSatchel's fuzzy results included Notatank Buffs and Debuffs Watch, Dispatch - Spells and Buffs, DispelWatch, Boomkin Buff Watcher, Minbaris variants, BuffWatcher and BuffWatcher-Forever. The spaced search also included other unrelated watcher projects. None used BuffSatchel or Buff Satchel as its title.
 
-Suggested one-line summary: **Find and use bag buffs, potions, scrolls, buff food and weapon enhancements from a compact, customizable grid.**
+Searches are dated observations, not a reservation or guarantee of final project/slug availability. Recheck the selected name immediately before changing the branding and publishing it.
 
-Useful description terms, included naturally: WoW Forever, consumables, health potion, mana potion, healthstone, mana gem, buff food, scrolls, weapon oils, sharpening stones, weightstones, poisons, bandages, automatic bag scanning, customizable grid.
+## Search URLs
 
-The exact WoW-specific searches for the leading names returned no obvious addon-name conflict on November 22, 2026. This is preliminary discovery, not guaranteed project or slug availability. CurseForge recommends short, distinct project names; put the keywords and compatibility in the summary, categories and description.
+- https://www.curseforge.com/wow/search?class=addons&search=SatchelSense
+- https://www.curseforge.com/wow/search?class=addons&search=Satchel%20Sense
+- https://www.curseforge.com/wow/search?class=addons&search=BuffSatchel
+- https://www.curseforge.com/wow/search?class=addons&search=Buff%20Satchel
+- https://www.curseforge.com/wow/search?class=addons&search=PouchPilot
+- https://www.curseforge.com/wow/search?class=addons&search=Pouch%20Pilot
+- https://www.curseforge.com/wow/search?class=addons&search=StashReady
+- https://www.curseforge.com/wow/search?class=addons&search=Stash%20Ready
+
+## Positioning
+
+Keep the name distinctive and put discovery keywords in the summary/description:
+
+**Automatically adds supported scrolls, potions, buff food and weapon enhancements you pick up to a compact, clickable grid.**
+
+The pouch icon has no name text and can remain. The title on the banner and feature sheet, in-game identity, package names and listing copy should be updated after Derek selects the new name. Preserve existing saved settings and keybindings during the eventual rename.
+
+Future addon naming checks are now required by the parent addon-workspace AGENTS.md.

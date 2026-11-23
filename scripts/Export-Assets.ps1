@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
 $projectRoot = Split-Path -Parent $PSScriptRoot
-$sourcePath = Join-Path $projectRoot 'Branding\PocketBuffs-master.png'
+$sourcePath = Join-Path $projectRoot 'Branding\SatchelSense-master.png'
 $sourceImage = [System.Drawing.Image]::FromFile($sourcePath)
 
 function Resize-Art([int]$size) {
@@ -36,13 +36,13 @@ try {
         $image = Resize-Art $size
         try {
             $name = if ($size -eq 64) {'AddonIcon'} else {'PouchArt'}
-            Save-Tga $image (Join-Path $projectRoot "PocketBuffs\Media\$name.tga")
-            $image.Save((Join-Path $projectRoot "Branding\PocketBuffs-$size.png"),[System.Drawing.Imaging.ImageFormat]::Png)
+            Save-Tga $image (Join-Path $projectRoot "SatchelSense\Media\$name.tga")
+            $image.Save((Join-Path $projectRoot "Branding\SatchelSense-$size.png"),[System.Drawing.Imaging.ImageFormat]::Png)
         } finally { $image.Dispose() }
     }
     foreach ($size in @(400,1024)) {
         $image = Resize-Art $size
-        try { $image.Save((Join-Path $projectRoot "Branding\PocketBuffs-$size.png"),[System.Drawing.Imaging.ImageFormat]::Png) } finally { $image.Dispose() }
+        try { $image.Save((Join-Path $projectRoot "Branding\SatchelSense-$size.png"),[System.Drawing.Imaging.ImageFormat]::Png) } finally { $image.Dispose() }
     }
 } finally { $sourceImage.Dispose() }
 Write-Output 'Exported in-game TGA art and 64, 256, 400 and 1024 px PNG artwork.'

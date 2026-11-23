@@ -1,3 +1,12 @@
+1.0.0-rc.3 - SatchelSense rebrand
+- Renamed the addon, settings window, commands, artwork and release packages to SatchelSense.
+- Added automatic per-character import of existing PocketBuffs profiles.
+- Preserved saved positions, layouts, slots, filters, favorites and item keybindings.
+- Kept older native grid-slot keys and /pbuff or /pocketbuffs commands working.
+- Included a small SatchelSense - Settings Import component under the legacy folder name.
+- Updated the CurseForge description, banner and feature sheet with automatic pickup discovery.
+- Exported every gallery image below 2 MB.
+
 1.0.0-rc.2
 - Fixed stuck floating item drags when the client omits the source drag-stop callback.
 - Drops finish on mouse-up, global release or physical-button polling.

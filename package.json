@@ -1,5 +1,5 @@
 {
-  "name": "pocketbuffs-dev",
+  "name": "satchelsense-dev",
   "private": true,
   "scripts": {"test": "node tests/run.cjs"},
   "devDependencies": {"fengari": "^0.1.5", "luaparse": "^0.3.1"}

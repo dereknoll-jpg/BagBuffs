@@ -31,7 +31,7 @@ function P:Position()
 end
 
 function P:CreateUI()
-    local f=CreateFrame("Frame","PocketBuffsFrame",UIParent)
+    local f=CreateFrame("Frame","SatchelSenseFrame",UIParent)
     self.frame=f; self.buttons={}
     f:SetClampedToScreen(true); f:SetMovable(true); f:SetFrameStrata("MEDIUM"); f:EnableMouse(false)
     self.anchor=CreateFrame("Button",nil,f,"BackdropTemplate")
@@ -51,7 +51,7 @@ function P:CreateUI()
         if button=="RightButton" and IsShiftKeyDown() then self:ToggleMoveLock() else self:ToggleSettings() end
     end)
     self.launcher:SetScript("OnEnter",function(b)
-        b:SetAlpha(1); GameTooltip:SetOwner(b,"ANCHOR_TOP"); GameTooltip:SetText("PocketBuffs",unpack(gold))
+        b:SetAlpha(1); GameTooltip:SetOwner(b,"ANCHOR_TOP"); GameTooltip:SetText("SatchelSense",unpack(gold))
         GameTooltip:AddLine("Click: settings\nShift-right-click: lock / unlock\nUnlocked: drag the pouch to move the grid; drag items to reorder.\nMouse wheel: item pages",.8,.8,.8,true)
         GameTooltip:AddLine(self.db.locked and "Position locked" or "Position unlocked",.94,.78,.47); GameTooltip:Show()
     end)
@@ -60,7 +60,7 @@ function P:CreateUI()
     self.pager:SetPoint("TOPLEFT",f,"BOTTOMLEFT",0,-4)
     self.pager:EnableMouseWheel(true); self.pager:SetScript("OnMouseWheel",function(_,delta) self:ChangePage(delta>0 and -1 or 1) end)
     for i=1,64 do
-        local b=CreateFrame("Button","PocketBuffsButton"..i,f,"SecureActionButtonTemplate")
+        local b=CreateFrame("Button","SatchelSenseButton"..i,f,"SecureActionButtonTemplate")
         self.buttons[i]=b; b:RegisterForClicks("AnyUp","AnyDown")
         b:SetAttribute("type1","item"); b:SetAttribute("unit","player")
         b.icon=b:CreateTexture(nil,"ARTWORK"); b.icon:SetPoint("TOPLEFT",1,-1); b.icon:SetPoint("BOTTOMRIGHT",-1,1)
@@ -89,6 +89,7 @@ function P:CreateUI()
         b:Hide()
     end
     self:Position()
+    self:CreateLegacySlotButtons()
     self:CreateGridEditor()
 end
 
@@ -137,7 +138,7 @@ function P:Layout(items)
             b:Show()
         else b:SetAttribute("item1",nil); b:Hide() end
     end
-    self:SyncGridEditing(); self:UpdateVisuals()
+    self:SyncLegacySlotButtons(items); self:SyncGridEditing(); self:UpdateVisuals()
 end
 
 function P:UpdateVisuals()
@@ -158,7 +159,8 @@ function P:UpdateVisuals()
             else b.cooldown:Clear() end
             b.cooldownText:SetText(remaining and self:CooldownText(remaining) or (blocked and "?" or ""))
             local key=self:BindingLabel(b.item.id)
-            if key=="Bind key" then key=self:Call(GetBindingKey,"CLICK PocketBuffsButton"..index..":LeftButton") or "" end
+            if key=="Bind key" then key=self:Call(GetBindingKey,"CLICK SatchelSenseButton"..index..":LeftButton") or "" end
+            if key=="" then key=self:Call(GetBindingKey,"CLICK PocketBuffsButton"..index..":LeftButton") or "" end
             if type(key)~="string" then key="" end
             key=key:gsub("ALT%-","A-"):gsub("CTRL%-","C-"):gsub("SHIFT%-","S-"):gsub("NUMPAD","N"):gsub("MOUSEWHEELUP","WU"):gsub("MOUSEWHEELDOWN","WD"):gsub("BUTTON","M")
             b.keyText:SetWidth(math.max(16,self.db.size-4)); b.keyText:SetText(key)
