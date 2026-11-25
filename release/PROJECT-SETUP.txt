@@ -14,8 +14,8 @@ Main: Bags & Inventory
 Additional: Buffs & Debuffs; Action Bars
 
 FILE TO UPLOAD
-addon/SatchelSense-1.0.0-rc.5.zip
-This is a release candidate: choose Beta until the short live-client checks pass.
+addon/SatchelSense-1.0.4.zip
+Version 1.0.4 is the requested numbered release. Live checks are documented separately.
 Do not upload the entire CurseForge kit as the addon.
 
 PROJECT AVATAR

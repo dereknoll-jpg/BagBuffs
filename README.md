@@ -28,7 +28,7 @@ Previously released as PocketBuffs. Existing character settings and item keys im
 
 ## Install
 
-Extract **both folders** from `dist/SatchelSense-1.0.0-rc.5.zip` into `World of Warcraft/_forever_/Interface/AddOns`: `SatchelSense` is the addon and `PocketBuffs` is the bundled **SatchelSense - Settings Import** component. Replace the older files when prompted. Keep both enabled and restart WoW after the rename so it discovers the new folder. The manifest targets interface **16001**, matching the existing TankKit Forever project.
+Extract **both folders** from `dist/SatchelSense-1.0.4.zip` into `World of Warcraft/_forever_/Interface/AddOns`: `SatchelSense` is the addon and `PocketBuffs` is the bundled **SatchelSense - Settings Import** component. Replace the older files when prompted. Keep both enabled and restart WoW after the rename so it discovers the new folder. The manifest targets interface **16001**, matching the existing TankKit Forever project.
 
 The import component keeps its old folder identity solely so WoW loads existing per-character saves. It has no HUD or item actions. SatchelSense copies an old profile only if a new profile does not already exist, then uses its own save. Original saved data and the game's normal keybinding profiles are not rewritten or deleted. `/satchel`, `/satchelsense` and `/ss` open settings; old `/pbuff` and `/pocketbuffs` shortcuts still work. See [the upgrade guide](release/UPGRADING.md).
 
@@ -104,3 +104,7 @@ Run `npm install` once, then `npm test`. `scripts/Build.ps1` runs validation, ex
 `scripts/Package-Release.ps1` builds the addon and assembles the self-contained CurseForge kit under `release/curseforge`, plus a single downloadable kit ZIP in `dist`. Upload only the inner addon ZIP as a CurseForge file; the larger kit also includes images and copy-ready text for the project page. See `release/RELEASE-READINESS.md` before labeling 1.0 stable.
 
 The offline suite executes all addon Lua against a small game API model and checks filtering, duplicate stacks, all configured layout bounds, pagination, favorites, exclusions, includes, delayed item/tooltip data, protected combat mutations, and restricted values. Actual input handling, artwork rendering and native item-targeting behavior still need the in-client pass.
+
+## Publishing
+
+Versioned releases use annotated Git tags and matching TOC versions. The active CurseForge webhook packages tag pushes with `.pkgmeta`; current release notes come from `SatchelSense/RELEASE-NOTES.md`. See [publishing steps](release/PUBLISHING.md).

@@ -1,0 +1,21 @@
+# Stage the repository, then put both required addons at the ZIP root.
+package-as: SatchelSense-Release
+enable-nolib-creation: no
+move-folders:
+    SatchelSense-Release/SatchelSense: SatchelSense
+    SatchelSense-Release/PocketBuffs: PocketBuffs
+manual-changelog: SatchelSense/RELEASE-NOTES.md
+ignore:
+    - Branding
+    - backups
+    - dist
+    - node_modules
+    - release
+    - scripts
+    - tests
+    - LICENSE.txt
+    - NAMES.md
+    - README.md
+    - RESEARCH.md
+    - package.json
+    - package-lock.json

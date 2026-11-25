@@ -2,7 +2,8 @@
 ## Title: SatchelSense
 ## Notes: Your bag buffs, potions, food and weapon enhancements in one quiet grid.
 ## Author: Derek
-## Version: 1.0.0-rc.5
+## X-Curse-Project-ID: 1825109
+## Version: 1.0.4
 ## SavedVariablesPerCharacter: SatchelSenseDB
 ## Dependencies: PocketBuffs
 ## IconTexture: Interface\AddOns\SatchelSense\Media\AddonIcon

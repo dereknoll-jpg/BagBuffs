@@ -1,6 +1,6 @@
 # SatchelSense 1.0 release review
 
-Updated November 23, 2026. Current build: **1.0.0-rc.5**. No game was opened for this review or the media package.
+Updated November 25, 2026. Current build: **1.0.4**. No game was opened for this review or the media package.
 
 ## What is ready
 
@@ -17,7 +17,7 @@ Updated November 23, 2026. Current build: **1.0.0-rc.5**. No game was opened for
 - Automated Lua 5.1 parsing and runtime scenarios for discovery, ordering, bindings, timers, restricted data, combat mutation guards, canceled drops and cross-surface dragging.
 - Installable addon ZIP, original 400px/1024px icons, static banner and feature sheet, listing copy, changelog and upload guide.
 
-## Before marking 1.0 stable
+## Remaining live verification
 
 1. **Native drag and combat smoke test.** Confirm direct dragging never consumes an item; locked mouse clicks and item keybindings work; combat hides the editing layer and leaves items usable. Test key-down settings both ways and watch for blocked-action errors. The mock validates the intended state-driver contract but cannot prove the client dispatches events identically.
 2. **Real cooldown sample.** Use a potion and bandage, including an interrupted channel. Compare countdowns with the game. Try Field Medicine if available. Hidden debuff timing must not produce an invented numeric timer.
@@ -26,7 +26,7 @@ Updated November 23, 2026. Current build: **1.0.0-rc.5**. No game was opened for
 5. **Publication choices.** Verify the final Forever version tag in the uploader, confirm the desired license (All Rights Reserved supplied by default), and enable comments for feedback. The actual listing is not created by this package.
 6. **Rename upgrade in the real client.** Extract both addon folders over an existing install, restart, and check the imported profile on an existing character. Verify custom item keys and old native slot keys. Reload and confirm that later changes to the new profile are not overwritten by another import. The offline suite covers the migration data and aliases; the client controls saved-variable file loading.
 
-These are validation gates, not requests for more features. The upload kit is complete for a **Beta** release candidate; the stable label should follow the live pass. Use LIVE-CHECKS.md for the expanded checks.
+These are validation gates, not requests for more features. The 1.0.4 release was requested with the existing feature set. Offline checks pass; the native-client checks below have not been observed in this release session. Use LIVE-CHECKS.md for the expanded checks.
 
 ## Changes I would defer to 1.1
 

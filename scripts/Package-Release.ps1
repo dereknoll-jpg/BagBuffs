@@ -24,13 +24,13 @@ foreach ($mapping in @(
 # Remove a superseded upload export, keeping the original master under Branding.
 $oldLargeIcon=Join-Path $kitRoot 'images\04-icon-1024.png'
 if (Test-Path -LiteralPath $oldLargeIcon) { Remove-Item -LiteralPath $oldLargeIcon }
-foreach ($name in @('SUMMARY.txt','DESCRIPTION.md','PROJECT-SETUP.txt','IMAGE-CAPTIONS.txt','UPGRADING.md')) {
+foreach ($name in @('SUMMARY.txt','DESCRIPTION.md','PROJECT-SETUP.txt','IMAGE-CAPTIONS.txt','UPGRADING.md','PUBLISHING.md')) {
     Copy-Item -LiteralPath (Join-Path $projectRoot ('release\'+$name)) -Destination (Join-Path $kitRoot 'text') -Force
 }
 $description=Get-Content -LiteralPath (Join-Path $projectRoot 'release\DESCRIPTION.md') -Raw
 $plain=[regex]::Replace($description,'(?m)^#{1,6} ','').Replace('**','').Replace('*','').Replace('`','')
 [IO.File]::WriteAllText((Join-Path $kitRoot 'text\DESCRIPTION.txt'),$plain,[Text.UTF8Encoding]::new($false))
-Copy-Item -LiteralPath (Join-Path $projectRoot 'SatchelSense\CHANGELOG.txt'),(Join-Path $projectRoot 'SatchelSense\LICENSE.txt') -Destination (Join-Path $kitRoot 'text') -Force
+Copy-Item -LiteralPath (Join-Path $projectRoot 'SatchelSense\RELEASE-NOTES.md'),(Join-Path $projectRoot 'SatchelSense\CHANGELOG.txt'),(Join-Path $projectRoot 'SatchelSense\LICENSE.txt') -Destination (Join-Path $kitRoot 'text') -Force
 foreach ($name in @('RELEASE-READINESS.md','LIVE-CHECKS.md')) {
     Copy-Item -LiteralPath (Join-Path $projectRoot ('release\'+$name)) -Destination (Join-Path $kitRoot 'review') -Force
 }
@@ -83,7 +83,7 @@ PASS summary length and no GIFs in the release kit.
 
 The native combat driver is modeled offline, not observed in a running client.
 Live WoW pointer input, click dispatch, actual item use and combat transitions remain unverified.
-The release candidate should be tagged Beta until the live pass is complete.
+The release number does not certify that live-client checks have been completed.
 No game was launched and no project was uploaded or published.
 "@
 [IO.File]::WriteAllText((Join-Path $kitRoot 'review\VALIDATION.txt'),$validation,[Text.UTF8Encoding]::new($false))
