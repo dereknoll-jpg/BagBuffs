@@ -1,5 +1,5 @@
 local _, P = ...
-P.name, P.version = "SatchelSense", "1.0.0-rc.4"
+P.name, P.version = "SatchelSense", "1.0.0-rc.5"
 P.media = "Interface\\AddOns\\SatchelSense\\Media\\"
 P.categories = {"health", "mana", "potion", "scroll", "food", "weapon", "elixir", "flask", "bandage", "utility", "refreshment"}
 P.categoryNames = {health="Health", mana="Mana", potion="Utility potions", scroll="Scrolls", food="Buff food",

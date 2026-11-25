@@ -83,3 +83,10 @@ function P:ToggleFavorite(id)
     self.db.favorites[id]=not self.db.favorites[id]
     self:Refresh()
 end
+
+function P:HideGridItem(item)
+    if not item or not self:CanChange() then return end
+    self.db.ignored[item.id]=true
+    GameTooltip:Hide()
+    self:Refresh()
+end

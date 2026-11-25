@@ -1,6 +1,6 @@
 # SatchelSense 1.0 release review
 
-Updated November 23, 2026. Current build: **1.0.0-rc.4**. No game was opened for this review or the media package.
+Updated November 23, 2026. Current build: **1.0.0-rc.5**. No game was opened for this review or the media package.
 
 ## What is ready
 

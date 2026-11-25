@@ -1,3 +1,9 @@
+1.0.0-rc.5 - Quick hide
+- Middle-click a grid item to add it to the hidden list without opening settings.
+- Works with the grid locked or unlocked, outside combat.
+- Restore hidden items under Items & Keys. Existing item keybindings stay assigned.
+- Added shortcut hints to item tooltips.
+
 1.0.0-rc.4 - Automatic organizing
 - Auto sorting is now enabled by default, including on upgrade.
 - New supplies sort into the grid by type, filling earlier pages before adding another.

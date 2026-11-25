@@ -52,6 +52,8 @@ Prefer fixed positions? Choose **Manual** to remember exact slots through bag ch
 
 **New discoveries briefly glow gold**, so that scroll you just picked up is easier to notice. Existing supplies do not flash at login; extra stacks do not retrigger it. Turn the highlight off in Layout or the pouch menu.
 
+**Middle-click any grid item to hide it immediately**, with the grid locked or unlocked, outside combat. Restore it under **Items & Keys** whenever you want. Hiding the icon keeps its item keybinding assigned.
+
 ## Bind an item, keep the key
 
 Open **Items & Keys**, click **Bind key** beside an item, and press a key or modifier combination. Middle/side mouse buttons and mouse-wheel directions are supported too.

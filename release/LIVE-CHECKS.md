@@ -1,5 +1,10 @@
 # In-client checks before stable release
 
+## Quick hide in 1.0.0-rc.5
+
+- Middle-click a locked grid item and an unlocked grid item. Confirm each enters the hidden list without consuming an item or opening settings. Restore each in Items & Keys.
+- Verify Auto closes the gap, Manual preserves the slot, and hidden status survives reload. In combat, middle-click should leave the item visible and report that changes wait.
+
 ## Automatic organizing in 1.0.0-rc.4
 
 - Upgrade a profile with gaps and items on page two. Verify Auto is selected and items fill page one before spilling over. Choose Manual and verify the previous exact layout returns.

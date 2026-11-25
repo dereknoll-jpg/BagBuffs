@@ -46,3 +46,24 @@ P.gridDragItemID=nil; P:Refresh(); assert(#P.db.slots==6)
 P:MoveItemToSlot(205,8); assert(not P.db.autoSort and P.db.slots[8]==205)
 P:InitializeDB(); P:Refresh(); assert(not P.db.autoSort and P.db.slots[8]==205)
 print("PASS automatic gap removal, default upgrade with manual recovery, compaction, pouch shortcuts, discovery highlights, combat/drag deferral and item key stability")
+
+-- Direct hiding uses the displayed item and commits only on mouse release.
+P:SetAutoSort(true); P.db.columns=3; P.db.rows=3; P:Refresh()
+local item=P.buttons[1].item; local open=P.settings:IsShown()
+P.buttons[1].scripts.PostClick(P.buttons[1],"MiddleButton",true)
+assert(not P.db.ignored[item.id])
+P.buttons[1].scripts.PostClick(P.buttons[1],"MiddleButton",false)
+assert(P.db.ignored[item.id] and P.settings:IsShown()==open)
+assert(P.buttons[1].item.id~=item.id and #P.db.slots==5)
+P:InitializeDB(); P:Refresh(); assert(P.db.ignored[item.id])
+P.db.ignored[item.id]=nil; P:Refresh()
+P:MoveItemToSlot(item.id,8); if P.db.locked then P:ToggleMoveLock() end
+P.gridEditButtons[8].scripts.OnClick(nil,"MiddleButton")
+assert(P.db.ignored[item.id] and P.db.slots[8]==item.id and not P.buttons[8]:IsShown())
+P.gridEditButtons[9].scripts.OnClick(nil,"MiddleButton") -- Empty cells do nothing.
+P.db.ignored[item.id]=nil; P:Refresh(); assert(P.buttons[8].item.id==item.id)
+COMBAT=true; P.buttons[8].scripts.PostClick(P.buttons[8],"MiddleButton",false)
+assert(not P.db.ignored[item.id] and P.buttons[8].item.id==item.id)
+COMBAT=false
+assert(P.db.bindings[201].key=="ALT-H")
+print("PASS middle-click hide, release-only dispatch, unlocked overlay, empty cells, Auto compaction, Manual slots, persistence and combat guard")

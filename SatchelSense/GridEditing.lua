@@ -33,21 +33,23 @@ function P:CreateGridEditor()
     for i,button in ipairs(self.buttons) do
         local overlay=CreateFrame("Button",nil,root)
         self.gridEditButtons[i]=overlay; overlay:SetAllPoints(button); overlay:RegisterForDrag("LeftButton")
-        overlay:RegisterForClicks("LeftButtonUp","RightButtonUp")
+        overlay:RegisterForClicks("LeftButtonUp","RightButtonUp","MiddleButtonUp")
         overlay.rim=overlay:CreateTexture(nil,"OVERLAY"); overlay.rim:SetAllPoints(); overlay.rim:SetTexture(self.media.."IconRim")
         overlay.rim:SetVertexColor(.94,.78,.47,.65)
         overlay:SetScript("OnDragStart",function() if button.item then self:StartGridItemDrag(button.item) end end)
         overlay:SetScript("OnDragStop",function() self:EndGridItemDrag() end)
         overlay:SetScript("OnMouseUp",function(_,button) if button=="LeftButton" then self:EndGridItemDrag() end end)
         overlay:SetScript("OnReceiveDrag",function() self:EndGridItemDrag() end)
-        overlay:SetScript("OnClick",function(_,button)
-            if button=="RightButton" then
+        overlay:SetScript("OnClick",function(_,mouseButton)
+            if mouseButton=="MiddleButton" then self:HideGridItem(button.item)
+            elseif mouseButton=="RightButton" then
                 if IsShiftKeyDown() then self:ToggleMoveLock() else self:ToggleSettings() end
             end
         end)
         overlay:SetScript("OnEnter",function(b)
             GameTooltip:SetOwner(b,"ANCHOR_TOP"); GameTooltip:SetText(button.item and button.item.name or "Empty grid slot",.94,.78,.47)
             GameTooltip:AddLine("Drag to a grid slot. Occupied slots swap; empty slots stay where you leave them.\nShift-right-click the pouch to lock or unlock.\nLock the grid to click-use items.",.8,.8,.8,true)
+            if button.item then GameTooltip:AddLine("Middle-click: hide item. Restore it in Items & Keys.",.8,.8,.8,true) end
             GameTooltip:Show()
         end)
         overlay:SetScript("OnLeave",function() GameTooltip:Hide() end)

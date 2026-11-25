@@ -1,4 +1,4 @@
-SatchelSense 1.0.0-rc.4 - WoW Forever, interface 16001
+SatchelSense 1.0.0-rc.5 - WoW Forever, interface 16001
 
 Good things. Already in your bags.
 
@@ -8,6 +8,8 @@ Keep it enabled to load legacy profiles. Restart WoW after the rename.
 Existing settings, saved slots and item keys import once without changing the old save.
 Older native grid-slot keys and /pbuff or /pocketbuffs shortcuts continue to work.
 Open settings with /satchel, right-click an item, or click the small pouch icon.
+Middle-click a grid item to hide it outside combat, locked or unlocked.
+Restore hidden items under Items & Keys; their item keys remain assigned.
 Left-click items to use on yourself. Enhancements use the normal item cursor.
 Shift-right-click the pouch icon to lock or unlock without opening settings.
 When unlocked, drag the pouch icon (or wide-layout DRAG tab) to move the grid.

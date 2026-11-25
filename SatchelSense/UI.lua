@@ -88,8 +88,9 @@ function P:CreateUI()
         b.keyText=self:Label(b.textLayer,"",8); b.keyText:SetPoint("TOPRIGHT",-1,-1)
         b:SetScript("OnEnter",function(button) self:ShowItemTooltip(button) end)
         b:SetScript("OnLeave",function() GameTooltip:Hide() end)
-        b:SetScript("PostClick",function(_,button,down)
-            if button=="RightButton" and not down then self:ToggleSettings() end
+        b:SetScript("PostClick",function(frame,button,down)
+            if button=="MiddleButton" and not down then self:HideGridItem(frame.item)
+            elseif button=="RightButton" and not down then self:ToggleSettings() end
         end)
         b:EnableMouseWheel(true); b:SetScript("OnMouseWheel",function(_,delta) self:ChangePage(delta>0 and -1 or 1) end)
         b:Hide()
@@ -109,7 +110,7 @@ function P:ShowItemTooltip(button)
     if item.category=="weapon" then
         GameTooltip:AddLine("Click, then choose the item to enhance.",.94,.78,.47,true)
     else GameTooltip:AddLine("Left-click: use on yourself.",.94,.78,.47,true) end
-    GameTooltip:AddLine("Right-click: settings  /  Wheel: pages",.6,.65,.68,true)
+    GameTooltip:AddLine("Middle-click: hide item (outside combat)\nRight-click: settings  /  Wheel: pages",.6,.65,.68,true)
     local binding=self.db.bindings[item.id]
     if type(binding)=="table" and type(binding.key)=="string" then GameTooltip:AddLine("Key: "..binding.key,.94,.78,.47) end
     if item.category=="bandage" then
