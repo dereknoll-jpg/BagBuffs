@@ -1,8 +1,8 @@
 SATCHELSENSE - CURSEFORGE UPLOAD KIT
-Current build: 1.0.4
+Current build: 1.0.0-rc.5
 
-1. Upload only addon/SatchelSense-1.0.4.zip as the addon file.
-   The 1.0.4 tag triggers the existing CurseForge packaging webhook.
+1. Upload only addon/SatchelSense-1.0.0-rc.5.zip as the addon file.
+   The 1.0.0-rc.5 tag triggers the existing CurseForge packaging webhook.
 2. Use images/01-icon-400.png as the project avatar.
 3. Paste text/SUMMARY.txt and text/DESCRIPTION.md into the project fields.
 4. Add images/02-banner.png and images/03-features.png to the gallery.

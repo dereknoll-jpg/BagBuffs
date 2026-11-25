@@ -1,4 +1,4 @@
-SatchelSense 1.0.4 - WoW Forever, interface 16001
+SatchelSense 1.0.0-rc.5 - WoW Forever, interface 16001
 
 Good things. Already in your bags.
 

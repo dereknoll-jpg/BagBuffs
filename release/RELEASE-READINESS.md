@@ -1,6 +1,6 @@
 # SatchelSense 1.0 release review
 
-Updated November 25, 2026. Current build: **1.0.4**. No game was opened for this review or the media package.
+Updated November 25, 2026. Current build: **1.0.0-rc.5**. No game was opened for this review or the media package.
 
 ## What is ready
 
@@ -26,7 +26,7 @@ Updated November 25, 2026. Current build: **1.0.4**. No game was opened for this
 5. **Publication choices.** Verify the final Forever version tag in the uploader, confirm the desired license (All Rights Reserved supplied by default), and enable comments for feedback. The actual listing is not created by this package.
 6. **Rename upgrade in the real client.** Extract both addon folders over an existing install, restart, and check the imported profile on an existing character. Verify custom item keys and old native slot keys. Reload and confirm that later changes to the new profile are not overwritten by another import. The offline suite covers the migration data and aliases; the client controls saved-variable file loading.
 
-These are validation gates, not requests for more features. The 1.0.4 release was requested with the existing feature set. Offline checks pass; the native-client checks below have not been observed in this release session. Use LIVE-CHECKS.md for the expanded checks.
+These are validation gates, not requests for more features. The 1.0.0-rc.5 release candidate retains the existing feature set. Offline checks pass; the native-client checks below have not been observed in this release session. Use LIVE-CHECKS.md for the expanded checks.
 
 ## Changes I would defer to 1.1
 
