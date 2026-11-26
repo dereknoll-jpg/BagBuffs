@@ -1,1 +1,1 @@
-Automatically adds supported scrolls, potions, buff food and weapon enhancements you pick up to a compact, clickable grid.
+Automatically discovers scrolls, potions, buff food and weapon enhancements in your bags and adds them to a compact consumable bar with item keys, auto sorting and cooldowns.

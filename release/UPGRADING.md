@@ -1,22 +1,21 @@
-# Upgrading to SatchelSense
+# Upgrading to BagBuffs
 
-SatchelSense is the new name for PocketBuffs. Install the complete download over the earlier addon, allowing its files to be replaced, then restart WoW.
+BagBuffs is the new name for SatchelSense (originally PocketBuffs). Install the complete download over the previous addon, replace its files, and restart WoW so it discovers the new BagBuffs folder.
 
-The ZIP contains two folders:
+Install all three folders from the addon ZIP:
 
-- **SatchelSense**: the renamed addon, with the new artwork and commands.
-- **PocketBuffs**: a tiny bundled component displayed as **SatchelSense - Settings Import**. Its old folder name lets WoW find each character's existing save. It contains no separate grid or item actions and is required by the main addon.
+- **BagBuffs** is the addon and its single grid.
+- **SatchelSense** is displayed as **BagBuffs - SatchelSense Settings Import**. It loads your previous SatchelSense character profile.
+- **PocketBuffs** is displayed as **BagBuffs - Settings Import**. It supports profiles from the original name.
 
-Keep both enabled. No extra download is needed. Do not retain a second copy of the old full addon under another folder, and do not edit, move or delete files under WTF.
+Keep all three enabled. The two import components have no grids or item actions. They replace the previous full addon folders, so only one interface runs. No files under WTF need to be edited, moved or deleted.
 
-On first use for each character, SatchelSense copies the earlier profile into its own save. It retains layout and scale, screen position, manual order and exact slots, category filters, favorites, ignored/included items and item keybindings. The old profile remains intact. If the character already has a SatchelSense profile, that profile takes precedence and is not overwritten by another import.
+On first use per character, BagBuffs copies the SatchelSense profile if present, otherwise the original PocketBuffs profile. An existing BagBuffs profile always takes precedence. Old profiles remain intact and are never rewritten by the import.
 
-Per-item keys continue to target the same item IDs. Older game-native slot bindings remain supported through secure aliases, without rewriting your account/character binding profile. New keys can be assigned under Items & Keys.
+Your layout, scale, screen position, exact manual slots, sorting choice, category filters, favorites, hidden/included items, highlight preferences and item keybindings carry over. A current Manual profile stays Manual; the rename does not force Auto sorting on again.
 
-Use **`/satchel`**, **`/satchelsense`** or **`/ss`** for settings. **`/pbuff`** and **`/pocketbuffs`** remain aliases for existing habits and macros.
+Native grid-slot keys from both previous names retain their original targets through secure aliases. Item keys continue targeting the same item IDs. Normal account and character keybinding profiles are not rewritten.
 
-The import's data, idempotence and binding compatibility are covered by offline upgrade checks. The real client's saved-variable loading and key dispatch should be included in the final live verification.
+Use **/bagbuffs**, **/bb** or **/bagbuff** for settings. **/satchel**, **/satchelsense**, **/ss**, **/pbuff** and **/pocketbuffs** remain supported.
 
-## Automatic organizing in 1.0.0-rc.4
-
-Auto sorting is enabled by default on upgrade, closing gaps and unnecessary pages as your bags change. Existing manual slots are retained: select Manual under Items & Keys or in the pouch quick menu to restore them. Future Auto/Manual choices save per character. Item keybindings, filters and screen position remain intact. Dragging an item automatically selects Manual.
+Offline checks cover both upgrade paths, priority, deep-copy safety, exact slots, key targets and repeated reloads. Saved-variable loading and native input should still be checked in the real client after restarting.

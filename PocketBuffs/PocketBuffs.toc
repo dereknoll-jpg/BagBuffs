@@ -1,10 +1,10 @@
 ## Interface: 16001
-## Title: SatchelSense - Settings Import
-## Notes: Loads saved settings from releases before the SatchelSense rename. Required compatibility component; no interface or item actions.
+## Title: BagBuffs - Settings Import
+## Notes: Loads saved settings from releases before the BagBuffs rename. Required compatibility component; no interface or item actions.
 ## Author: Derek
-## Version: 1.0.0-rc.5
+## Version: 1.0.0-rc.6
 ## DefaultState: enabled
 ## SavedVariablesPerCharacter: PocketBuffsDB
-## IconTexture: Interface\AddOns\SatchelSense\Media\AddonIcon
+## IconTexture: Interface\AddOns\BagBuffs\Media\AddonIcon
 
 Bridge.lua

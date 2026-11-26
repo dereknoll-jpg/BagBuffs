@@ -1,6 +1,6 @@
 local _, P = ...
-P.name, P.version = "SatchelSense", "1.0.0-rc.5"
-P.media = "Interface\\AddOns\\SatchelSense\\Media\\"
+P.name, P.version = "BagBuffs", "1.0.0-rc.6"
+P.media = "Interface\\AddOns\\BagBuffs\\Media\\"
 P.categories = {"health", "mana", "potion", "scroll", "food", "weapon", "elixir", "flask", "bandage", "utility", "refreshment"}
 P.categoryNames = {health="Health", mana="Mana", potion="Utility potions", scroll="Scrolls", food="Buff food",
     weapon="Item enhancements", elixir="Elixirs", flask="Flasks", bandage="Bandages", utility="Other self buffs", refreshment="Plain food / drink"}
@@ -30,9 +30,10 @@ local function copy(t)
 end
 
 function P:InitializeDB()
-    local imported=type(SatchelSenseDB)~="table" and type(PocketBuffsDB)=="table"
-    local db=type(SatchelSenseDB)=="table" and SatchelSenseDB or (imported and copy(PocketBuffsDB) or {})
-    if imported then db.migratedFrom="PocketBuffs" end
+    local source=type(SatchelSenseDB)=="table" and SatchelSenseDB or PocketBuffsDB
+    local imported=type(BagBuffsDB)~="table" and type(source)=="table"
+    local db=type(BagBuffsDB)=="table" and BagBuffsDB or (imported and copy(source) or {})
+    if imported then db.migratedFrom=source==SatchelSenseDB and "SatchelSense" or "PocketBuffs" end
     -- The new default applies once to older profiles. Retain their exact manual
     -- layout so choosing Manual can restore it instead of destroying it.
     if type(db.autoSort)~="boolean" and db.sortMode=="manual" and type(db.slots)=="table" and #db.slots>0 then db.order=copy(db.slots) end
@@ -50,12 +51,12 @@ function P:InitializeDB()
     end
     if db.sortMode~="type" and db.sortMode~="name" and db.sortMode~="manual" then db.sortMode="type" end
     db.sortMode=db.autoSort and db.autoSortBy or "manual"
-    self.db=db; SatchelSenseDB=db; self.page=1; self.bindingsDirty=true
+    self.db=db; BagBuffsDB=db; self.page=1; self.bindingsDirty=true
     self.inventorySnapshot=nil; self.pendingNew={}; self.newUntil={}
 end
 
 function P:Message(message)
-    if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cffefc778SatchelSense|r  "..message) end
+    if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cffefc778BagBuffs|r  "..message) end
 end
 
 function P:CanChange()

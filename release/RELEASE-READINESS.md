@@ -1,10 +1,10 @@
-# SatchelSense 1.0 release review
+# BagBuffs 1.0 release review
 
-Updated November 25, 2026. Current build: **1.0.0-rc.5**. No game was opened for this review or the media package.
+Updated November 25, 2026. Current build: **1.0.0-rc.6**. No game was opened for this review or the media package.
 
 ## What is ready
 
-- SatchelSense branding, a renamed GitHub repository, and an automatic legacy-profile import that preserves old data, per-item keys and native grid-slot binding targets.
+- BagBuffs branding, a renamed GitHub repository, and an automatic legacy-profile import that preserves old data, per-item keys and native grid-slot binding targets.
 
 - Auto sorting by default removes gaps and unnecessary pages, with restorable Manual mode, Compact only, a pouch quick menu and a toggleable brief new-item highlight.
 - Compact grid, automatic carried-bag discovery, duplicate stack counts, category filters, manual includes/exclusions and favorites.
@@ -24,9 +24,9 @@ Updated November 25, 2026. Current build: **1.0.0-rc.5**. No game was opened for
 3. **Upgrade and inventory coverage.** Load an existing character profile, reload, sort bags, loot a new supported consumable, exhaust/reacquire an item and inspect a dual-purpose item such as a rune. Test at least the player's normal consumable mix. Unknown and localized cases need clear manual recovery.
 4. **Small-screen check.** Confirm the settings panel, binding prompt, narrow layout, icon lock shortcut and item text remain usable at the player's normal UI scale.
 5. **Publication choices.** Verify the final Forever version tag in the uploader, confirm the desired license (All Rights Reserved supplied by default), and enable comments for feedback. The actual listing is not created by this package.
-6. **Rename upgrade in the real client.** Extract both addon folders over an existing install, restart, and check the imported profile on an existing character. Verify custom item keys and old native slot keys. Reload and confirm that later changes to the new profile are not overwritten by another import. The offline suite covers the migration data and aliases; the client controls saved-variable file loading.
+6. **Rename upgrade in the real client.** Extract all three addon folders over an existing install, restart, and check the imported profile on an existing character. Verify custom item keys and old native slot keys. Reload and confirm that later changes to the new profile are not overwritten by another import. The offline suite covers the migration data and aliases; the client controls saved-variable file loading.
 
-These are validation gates, not requests for more features. The 1.0.0-rc.5 release candidate retains the existing feature set. Offline checks pass; the native-client checks below have not been observed in this release session. Use LIVE-CHECKS.md for the expanded checks.
+These are validation gates, not requests for more features. The 1.0.0-rc.6 release candidate retains the existing feature set. Offline checks pass; the native-client checks below have not been observed in this release session. Use LIVE-CHECKS.md for the expanded checks.
 
 ## Changes I would defer to 1.1
 

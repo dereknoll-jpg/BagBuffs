@@ -1,0 +1,31 @@
+<Bindings>
+    <Binding name="CLICK BagBuffsButton1:LeftButton" header="BAGBUFFS" />
+    <Binding name="CLICK BagBuffsButton2:LeftButton" />
+    <Binding name="CLICK BagBuffsButton3:LeftButton" />
+    <Binding name="CLICK BagBuffsButton4:LeftButton" />
+    <Binding name="CLICK BagBuffsButton5:LeftButton" />
+    <Binding name="CLICK BagBuffsButton6:LeftButton" />
+    <Binding name="CLICK BagBuffsButton7:LeftButton" />
+    <Binding name="CLICK BagBuffsButton8:LeftButton" />
+    <Binding name="CLICK BagBuffsButton9:LeftButton" />
+    <!-- Existing native keys continue to work without rewriting player bindings. -->
+    <Binding name="CLICK PocketBuffsButton1:LeftButton" header="BAGBUFFS_EXISTING" />
+    <Binding name="CLICK PocketBuffsButton2:LeftButton" />
+    <Binding name="CLICK PocketBuffsButton3:LeftButton" />
+    <Binding name="CLICK PocketBuffsButton4:LeftButton" />
+    <Binding name="CLICK PocketBuffsButton5:LeftButton" />
+    <Binding name="CLICK PocketBuffsButton6:LeftButton" />
+    <Binding name="CLICK PocketBuffsButton7:LeftButton" />
+    <Binding name="CLICK PocketBuffsButton8:LeftButton" />
+    <Binding name="CLICK PocketBuffsButton9:LeftButton" />
+    <!-- Native slot keys from SatchelSense retain their original targets. -->
+    <Binding name="CLICK SatchelSenseButton1:LeftButton" header="BAGBUFFS_EXISTING" />
+    <Binding name="CLICK SatchelSenseButton2:LeftButton" />
+    <Binding name="CLICK SatchelSenseButton3:LeftButton" />
+    <Binding name="CLICK SatchelSenseButton4:LeftButton" />
+    <Binding name="CLICK SatchelSenseButton5:LeftButton" />
+    <Binding name="CLICK SatchelSenseButton6:LeftButton" />
+    <Binding name="CLICK SatchelSenseButton7:LeftButton" />
+    <Binding name="CLICK SatchelSenseButton8:LeftButton" />
+    <Binding name="CLICK SatchelSenseButton9:LeftButton" />
+</Bindings>

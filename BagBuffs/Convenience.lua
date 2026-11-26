@@ -32,10 +32,10 @@ end
 
 function P:TogglePouchMenu()
     if not self.pouchMenu then
-        local menu=CreateFrame("Frame","SatchelSensePouchMenu",UIParent,"BackdropTemplate"); self.pouchMenu=menu
+        local menu=CreateFrame("Frame","BagBuffsPouchMenu",UIParent,"BackdropTemplate"); self.pouchMenu=menu
         menu:SetSize(248,244); menu:SetFrameStrata("DIALOG"); menu:SetClampedToScreen(true); menu:EnableMouse(true); self:Backdrop(menu)
-        table.insert(UISpecialFrames,"SatchelSensePouchMenu")
-        self:Label(menu,"SATCHELSENSE",13,.94,.78,.47):SetPoint("TOPLEFT",12,-12)
+        table.insert(UISpecialFrames,"BagBuffsPouchMenu")
+        self:Label(menu,"BAGBUFFS",13,.94,.78,.47):SetPoint("TOPLEFT",12,-12)
         local function command(title,row,callback)
             local b=self:QuietButton(menu,title,224,function() menu:Hide(); callback() end)
             b:SetPoint("TOPLEFT",12,-36-(row-1)*28); return b

@@ -1,7 +1,7 @@
 local P=TEST_NS
 local function event(e,arg) P.events.scripts.OnEvent(P.events,e,arg) end
 local function def(id,name,subclass) DEFS[id]={name=name,subclass=subclass} end
-SatchelSenseDB={}; P:InitializeDB(); COOLDOWNS={}; HARMFUL={}; COMBAT=false
+BagBuffsDB={}; P:InitializeDB(); COOLDOWNS={}; HARMFUL={}; COMBAT=false
 def(101,"Zebra Healing Potion",1); def(102,"Amber Mana Potion",1); def(103,"Linen Bandage",7); def(104,"Scroll of Agility",4)
 BAGS[0]={{101,2},{102,2},{103,5},{104,1}}; BAGS[1]={}
 P:Refresh(); P:SelectSettingsTab("items")
@@ -28,15 +28,15 @@ P:StartBinding(potion); CTRL=true; P.bindingPrompt.scripts.OnKeyDown(nil,"F"); C
 assert(P.db.bindings[101].key=="CTRL-F" and not P.bindingItem)
 local button=P.itemBindingButtons[101]
 assert(button.attributes.item=="item:101" and button.attributes.unit=="player")
-assert(GetBindingAction("CTRL-F",true)=="CLICK SatchelSenseUseItem101:LeftButton")
-P:SetSortMode("name"); SlashCmdList.SATCHELSENSE("layout 1x1"); P:ChangePage(1)
-assert(GetBindingAction("CTRL-F",true)=="CLICK SatchelSenseUseItem101:LeftButton")
+assert(GetBindingAction("CTRL-F",true)=="CLICK BagBuffsUseItem101:LeftButton")
+P:SetSortMode("name"); SlashCmdList.BAGBUFFS("layout 1x1"); P:ChangePage(1)
+assert(GetBindingAction("CTRL-F",true)=="CLICK BagBuffsUseItem101:LeftButton")
 -- Conflicting keys need a deliberate confirmation; underlying game bindings survive.
 BASE_BINDINGS.G="TOGGLEBACKPACK"
 P:StartBinding(bandage); P:CaptureBinding("G")
 assert(P.bindingConflict=="G" and not P.db.bindings[103] and BASE_BINDINGS.G=="TOGGLEBACKPACK")
 P.bindingPrompt.replace.scripts.OnClick()
-assert(P.db.bindings[103].key=="G" and GetBindingAction("G",true)=="CLICK SatchelSenseUseItem103:LeftButton")
+assert(P.db.bindings[103].key=="G" and GetBindingAction("G",true)=="CLICK BagBuffsUseItem103:LeftButton")
 P:StartBinding(bandage); P:CaptureBinding("DELETE")
 assert(not P.db.bindings[103] and GetBindingAction("G",true)=="TOGGLEBACKPACK")
 P:StartBinding(potion); P:CaptureBinding("ESCAPE"); assert(P.db.bindings[101].key=="CTRL-F")
@@ -44,8 +44,8 @@ P:StartBinding(bandage); P:CaptureBinding("CTRL-F"); assert(P.bindingConflict)
 P.bindingPrompt.replace.scripts.OnClick(); assert(not P.db.bindings[101] and P.db.bindings[103].key=="CTRL-F")
 -- Item-specific keybindings persist while the item is temporarily absent.
 BAGS[0]={{101,2}}; P:Refresh()
-assert(GetBindingAction("CTRL-F",true)=="CLICK SatchelSenseUseItem103:LeftButton")
-BAGS[0]={{101,2},{102,2},{103,5},{104,1}}; SlashCmdList.SATCHELSENSE("layout 3x3"); P:Refresh()
+assert(GetBindingAction("CTRL-F",true)=="CLICK BagBuffsUseItem103:LeftButton")
+BAGS[0]={{101,2},{102,2},{103,5},{104,1}}; SlashCmdList.BAGBUFFS("layout 3x3"); P:Refresh()
 local function tile(id) for _,b in ipairs(P.buttons) do if b.item and b.item.id==id then return b end end end
 -- Explicit countdowns work independently of the game's optional countdown text.
 NOW=100; COOLDOWNS[101]={100,120,true}; COOLDOWNS[102]={100,120,true}; P:UpdateVisuals()
@@ -76,5 +76,5 @@ local first=P.selected[1].id; assert(not P:MoveItem(first,1)); assert(P.selected
 assert(not P:ApplyItemBinding(potion,"J")); P:StartBinding(potion); assert(not P.bindingItem)
 P:UpdateVisuals(); P:Refresh(); assert(P.pending)
 COMBAT=false; event("PLAYER_REGEN_ENABLED"); P.events.scripts.OnUpdate(nil,.3)
-assert(not P.pending and GetBindingAction("CTRL-F",true)=="CLICK SatchelSenseUseItem103:LeftButton")
+assert(not P.pending and GetBindingAction("CTRL-F",true)=="CLICK BagBuffsUseItem103:LeftButton")
 print("PASS manual drag/arrow ordering, reload persistence, item-bound keys, conflict confirmation, native binding restoration, shared potion countdowns, real bandage debuffs and combat guards")

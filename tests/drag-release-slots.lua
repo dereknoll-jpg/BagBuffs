@@ -1,5 +1,5 @@
 local P=TEST_NS
-COMBAT=false; LEFT_DOWN=true; RunStateDrivers(); SatchelSenseDB={}; P:InitializeDB()
+COMBAT=false; LEFT_DOWN=true; RunStateDrivers(); BagBuffsDB={}; P:InitializeDB()
 DEFS[201]={name="Healing Potion",subclass=1}; DEFS[202]={name="Mana Potion",subclass=1}
 DEFS[203]={name="Scroll of Strength",subclass=4}; DEFS[204]={name="A New Healing Potion",subclass=1}
 DEFS[205]={name="Another New Scroll",subclass=4}
@@ -59,12 +59,12 @@ aim(4,1.5); assert(P:GridDropSlot()==4)
 P.frame.GetEffectiveScale=originalScale
 P:ToggleMoveLock()
 -- Existing rc.1 manual orders migrate without losing their order or key settings.
-SatchelSenseDB={sortMode="manual",order={203,201,202},bindings={[201]={key="F",weapon=false}}}
+BagBuffsDB={sortMode="manual",order={203,201,202},bindings={[201]={key="F",weapon=false}}}
 P:InitializeDB(); P:SetAutoSort(false)
 assert(P.db.slots[1]==203 and P.db.slots[2]==201 and P.db.slots[3]==202)
 assert(P.db.slots[4]==204 and P.db.slots[5]==205 and P.db.bindings[201].key=="F")
 -- Explicit Manual mode stays stable until the player clicks Sort.
-SatchelSenseDB={}; P:InitializeDB(); BAGS[0]={{202,1},{203,1}}; P:SetAutoSort(false)
+BagBuffsDB={}; P:InitializeDB(); BAGS[0]={{202,1},{203,1}}; P:SetAutoSort(false)
 assert(P.db.slots[1]==202 and P.db.slots[2]==203)
 BAGS[0][3]={201,1}; P:Refresh(); assert(P.db.slots[1]==202 and P.db.slots[2]==203 and P.db.slots[3]==201)
 P:InitializeDB(); P:Refresh(); assert(P.db.slots[1]==202 and P.db.slots[3]==201)

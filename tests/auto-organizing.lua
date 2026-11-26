@@ -1,12 +1,12 @@
 local P=TEST_NS
 COMBAT=false; CTRL=false; SHIFT=false; P:CancelGridDrag(); P.dragItemID=nil; P.gridMoving=nil
-SatchelSenseDB={sortMode="manual",slots={202,0,0,0,0,0,0,0,0,201},bindings={[201]={key="ALT-H"}}}
+BagBuffsDB={sortMode="manual",slots={202,0,0,0,0,0,0,0,0,201},bindings={[201]={key="ALT-H"}}}
 P:InitializeDB(); BAGS[0]={{201,2},{202,2},{203,1}}; BAGS[1]={}; NOW=1000; P:Refresh()
 assert(P.db.autoSort and P.pages==1 and #P.db.slots==3)
 assert(P.db.slots[1]==201 and P.db.slots[2]==202 and P.db.slots[3]==203)
 assert(P.db.order[10]==201 and P.db.order[2]==0)
 assert(P.buttons[1].newGlow.alpha==0) -- Login establishes a baseline.
-assert(GetBindingAction("ALT-H",true)=="CLICK SatchelSenseUseItem201:LeftButton")
+assert(GetBindingAction("ALT-H",true)=="CLICK BagBuffsUseItem201:LeftButton")
 P:SetAutoSort(false); assert(P.db.slots[10]==201 and P.pages==2)
 P:CompactLayout(); assert(not P.db.autoSort and P.pages==1)
 assert(P.db.slots[1]==202 and P.db.slots[2]==201 and P.db.slots[3]==203)
@@ -31,7 +31,7 @@ COMBAT=true; BAGS[0][4]={201,1}; P:Refresh()
 assert(P.pending and P.buttons[1].attributes.item1==fixed)
 COMBAT=false; P:Refresh(); assert(P.db.slots[1]==204 and #P.db.slots==4)
 local i=P:SlotForItem(201); assert(P.buttons[i].newGlow.alpha>0)
-assert(GetBindingAction("ALT-H",true)=="CLICK SatchelSenseUseItem201:LeftButton")
+assert(GetBindingAction("ALT-H",true)=="CLICK BagBuffsUseItem201:LeftButton")
 P:ToggleNewHighlights(); assert(not P.db.highlightNew and P.buttons[i].newGlow.alpha==0)
 P:ToggleNewHighlights(); assert(P.buttons[i].newGlow.alpha==0)
 -- Off-page discoveries get their full highlight when first brought into view.

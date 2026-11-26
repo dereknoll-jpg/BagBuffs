@@ -1,13 +1,30 @@
-SatchelSense release artwork
-Updated November 23, 2026 using the built-in image generation tool.
-The text-free original pouch icon was retained and renamed for the new brand.
-The banner and feature sheet were edited from the earlier project artwork.
-Original pre-rebrand artwork is retained in local backups and Git history.
-Gallery exports are resized/converted only, and all are below 2 MB.
-Both illustrations are labeled as illustrations, not in-game screenshots.
+BagBuffs graphics - November 26, 2026
+Method: built-in image generation, two edits of existing project-owned raster art.
+The name-free original potion/scroll/weightstone bag icon is retained and exported under BagBuffs names for the addon list, settings and CurseForge avatar.
 
-Final banner edit prompt:
-Edit this existing promotional banner to rebrand the addon. Preserve the exact dark leather pouch illustration with ruby potion, scroll and stone, charcoal/gold palette, layout, polished materials and overall quality. Replace the large title 'POCKETBUFFS' with the exact new title 'SATCHELSENSE', with slightly smaller lettering if needed to fit comfortably. Keep the tagline 'Good things.' and 'Already in your bags.' Replace the feature line with the exact sentence 'Automatically finds the supplies you pick up.' Keep 'Built for WoW Forever'. Keep the visible footer 'Promotional illustration • not an in-game screenshot'. No other old name should remain. Keep all text crisp, correctly spelled, unclipped and inside safe margins. Maintain a landscape banner.
+BANNER EDIT
+Reference: prior SatchelSense banner (preserved in Git history).
+Keep the premium charcoal and warm gold styling, original bag art, landscape composition, lighting and illustration disclosure.
+Main heading: BAGBUFFS
+Subtitle: AUTO CONSUMABLE BAR
+Slogan: Pick it up. See it. Use it.
+Description: New scrolls, potions, food and coatings appear automatically.
+Retain: Built for WoW Forever
+Footer: Promotional illustration • not an in-game screenshot
+No SatchelSense or PocketBuffs words in the image. Large readable typography and generous margins.
 
-Final feature-sheet edit prompt:
-Edit this existing feature-sheet graphic to rebrand it as SATCHELSENSE. Preserve the charcoal/gold styling, pouch emblem, 2-by-2 card composition, supporting illustrations, refined legible typography and high production quality. Replace the top title POCKETBUFFS with the exact title SATCHELSENSE. Keep subtitle 'Your supplies. Within reach.' In the top-left card replace heading with 'Never miss a pickup' and replace its body copy with 'New scrolls, potions, food and coatings appear automatically.' Top-right keep heading 'Make room' and body 'Square, vertical, horizontal or custom.' Bottom-left keep 'Move it your way' but replace body with 'Unlock. Drag items into place. Lock to keep your layout.' Bottom-right retain 'Bind it once' and 'Item keys follow your supplies through sorting and paging.' Preserve bottom line 'Item cooldowns + Recently Bandaged tracking' and disclaimer 'Feature illustration • not an in-game screenshot'. No old addon name anywhere. Fit longer text cleanly without shrinking it too far, keeping safe margins. This is a promotional illustration, not a screenshot.
+FEATURE SHEET EDIT
+Reference: prior SatchelSense feature sheet (preserved in Git history).
+Keep its charcoal-and-gold style, bag icon and four-panel layout.
+Main heading: BAGBUFFS
+Subtitle: Your bag buffs. Within reach.
+Top left: Never miss a pickup / New scrolls, potions, food and coatings appear automatically.
+Top right: Make room / Auto sort closes gaps. Square, vertical or custom grids.
+Bottom left: Arrange or hide / Drag for manual order. Middle-click an item to hide it.
+Bottom right: Bind it once / Item keys follow your supplies through sorting and paging.
+Footer headline: Item cooldowns + Recently Bandaged tracking
+Disclosure: Feature illustration • not an in-game screenshot
+No SatchelSense or PocketBuffs words in the image.
+
+Final files are Branding/BagBuffs-banner.png and Branding/BagBuffs-features.png.
+Export-Release-Images.ps1 creates gallery PNGs under 2 MB. Export-Assets.ps1 exports the name-free icon to game-ready TGA and 400px project avatar.

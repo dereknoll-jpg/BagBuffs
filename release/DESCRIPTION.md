@@ -1,20 +1,20 @@
-# SatchelSense
+# BagBuffs
 
-**Good things. Already in your bags.**
+**Auto Consumable Bar for WoW Forever**
 
 **Pick it up. See it. Use it.**
 
-**SatchelSense automatically finds supported scrolls, potions, buff food and item enhancements in your bags and adds them to a compact, clickable grid.** When you loot, buy or receive another eligible item, SatchelSense brings it into view automatically—without you opening your bags, remembering its name or adding another button yourself.
+**BagBuffs automatically finds supported scrolls, potions, buff food and item enhancements in your bags and adds them to a compact, clickable grid.** When you loot, buy or receive another eligible item, BagBuffs brings it into view automatically—without you opening your bags, remembering its name or adding another button yourself.
 
-That stat scroll you just looted? It appears alongside your other supplies. The buff food you forgot you were carrying? SatchelSense brings it into view. The health potion buried three bags deep? It is within reach.
+That stat scroll you just looted? It appears alongside your other supplies. The buff food you forgot you were carrying? BagBuffs brings it into view. The health potion buried three bags deep? It is within reach.
 
-Built for **World of Warcraft: Forever**, SatchelSense helps useful items get noticed and used instead of forgotten at the bottom of a bag.
+Built for **World of Warcraft: Forever**, BagBuffs helps useful items get noticed and used instead of forgotten at the bottom of a bag.
 
 ## New supplies appear automatically
 
-SatchelSense scans what you already have when you log in and watches your carried bags as their contents change. Newly acquired supported items are added to your enabled categories automatically. Identical stacks combine into one icon with a total count, and the grid updates as supplies are used or removed.
+BagBuffs scans what you already have when you log in and watches your carried bags as their contents change. Newly acquired supported items are added to your enabled categories automatically. Identical stacks combine into one icon with a total count, and the grid updates as supplies are used or removed.
 
-**You do not have to build or maintain the item bar yourself.** Choose the categories you want, arrange them how you like, and let SatchelSense keep up with what you pick up.
+**You do not have to build or maintain the item bar yourself.** Choose the categories you want, arrange them how you like, and let BagBuffs keep up with what you pick up.
 
 Items acquired during combat join the grid after combat ends, keeping your existing buttons stable throughout the fight.
 
@@ -66,13 +66,15 @@ Centered numbers show the item's reported cooldown, including shared potion cool
 
 ## Getting started
 
-**Type `/satchel` to open settings.** Right-click an item or click the small pouch icon to open them too. Use the mouse wheel over the grid to change item pages outside combat. The pouch icon can be hidden for an even quieter display.
+**Type `/bagbuffs` to open settings.** Right-click an item or click the small pouch icon to open them too. Use the mouse wheel over the grid to change item pages outside combat. The pouch icon can be hidden for an even quieter display.
 
-### Upgrading from PocketBuffs
+### Upgrading from SatchelSense or PocketBuffs
 
-SatchelSense is the new name for PocketBuffs. Install both folders included in the download, replace the older files, and keep **SatchelSense - Settings Import** enabled alongside SatchelSense. It has no separate grid; it loads your previous character profile for the automatic import.
+BagBuffs is the new name for SatchelSense. **Your existing settings and keybindings carry over automatically.** Layouts, screen position, exact manual slots, sorting choice, filters, favorites, hidden items and highlight preferences are preserved. Older PocketBuffs profiles are supported too.
 
-Your layout, saved manual positions, filters, favorites and item keys carry over. This update enables Auto sorting by default; choose Manual to restore your saved arrangement. Older grid-slot keys and `/pbuff` or `/pocketbuffs` commands still work. Restart WoW after installing the rename so it discovers SatchelSense. There is no need to edit or delete saved-variable files.
+Install **all three folders** from the download: BagBuffs, SatchelSense and PocketBuffs. Keep both bundled **Settings Import** components enabled; they load old profiles without creating additional grids. Replace the older addon files, then **restart WoW** so the game discovers BagBuffs. No saved-variable files need to be edited or deleted.
+
+Use **/bagbuffs**, **/bb** or **/bagbuff**. Previous /satchel, /satchelsense, /ss, /pbuff and /pocketbuffs commands and older grid-slot keys still work. A current Manual layout remains Manual after this rename.
 
 ### Compatibility and behavior
 
@@ -80,8 +82,8 @@ Built for **WoW Forever, interface 16001**. This download is a release candidate
 
 Item slots and actions stay fixed during combat. New items, sorting, paging and key changes wait until combat ends; editing hit areas hide during combat. Set up emergency supplies and item keys before a pull.
 
-English name/tooltip detection is supported. Numeric categories and selected item IDs also help on other clients, but full localization and detection of every unusual utility item are not included. Use `/satchel include ITEMID` for a missed item. The game decides whether an item can be used with your level, class, skill, equipment or location.
+English name/tooltip detection is supported. Numeric categories and selected item IDs also help on other clients, but full localization and detection of every unusual utility item are not included. Use `/bagbuffs include ITEMID` for a missed item. The game decides whether an item can be used with your level, class, skill, equipment or location.
 
-Every use requires your click or key press. SatchelSense does not automatically consume supplies or promise that different buffs stack.
+Every use requires your click or key press. BagBuffs does not automatically consume supplies or promise that different buffs stack.
 
 *The gallery uses original AI-assisted promotional illustrations, labeled as illustrations rather than in-game screenshots. The game interface uses its native item artwork.*

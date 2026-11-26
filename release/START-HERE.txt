@@ -1,8 +1,8 @@
-SATCHELSENSE - CURSEFORGE UPLOAD KIT
-Current build: 1.0.0-rc.5
+BAGBUFFS - CURSEFORGE UPLOAD KIT
+Current build: 1.0.0-rc.6
 
-1. Upload only addon/SatchelSense-1.0.0-rc.5.zip as the addon file.
-   The 1.0.0-rc.5 tag triggers the existing CurseForge packaging webhook.
+1. Upload only addon/BagBuffs-1.0.0-rc.6.zip as the addon file.
+   The 1.0.0-rc.6 tag triggers the existing CurseForge packaging webhook.
 2. Use images/01-icon-400.png as the project avatar.
 3. Paste text/SUMMARY.txt and text/DESCRIPTION.md into the project fields.
 4. Add images/02-banner.png and images/03-features.png to the gallery.
@@ -17,5 +17,5 @@ MANIFEST-SHA256.csv lists the package files and verification hashes.
 The package includes original static artwork and no GIFs.
 No game launch, gameplay capture, project publication or upload was performed.
 Existing character settings are retained.
-Install BOTH folders inside the addon ZIP and keep Settings Import enabled.
+Install ALL THREE folders inside the addon ZIP and keep Settings Import enabled.
 text/UPGRADING.md explains the rename, automatic import and legacy key support.

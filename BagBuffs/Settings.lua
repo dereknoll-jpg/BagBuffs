@@ -12,16 +12,16 @@ function P:ToggleSettings()
         if self.settings:IsShown() then self:SyncSettings() else self:CancelBinding() end
         return
     end
-    local panel=CreateFrame("Frame","SatchelSenseSettings",UIParent,"BackdropTemplate")
+    local panel=CreateFrame("Frame","BagBuffsSettings",UIParent,"BackdropTemplate")
     self.settings=panel; panel:SetSize(690,650); panel:SetPoint("CENTER"); panel:SetFrameStrata("DIALOG")
     panel:SetClampedToScreen(true); self:Backdrop(panel); panel:EnableMouse(true)
     panel:SetMovable(true); panel:RegisterForDrag("LeftButton")
     panel:SetScript("OnDragStart",function(f) f:StartMoving() end)
     panel:SetScript("OnDragStop",function(f) f:StopMovingOrSizing() end)
     panel:SetScript("OnHide",function(f) f:StopMovingOrSizing(); self:CancelBinding(); self.dragItemID=nil; self:CancelGridDrag(); self:SyncGridEditing() end)
-    table.insert(UISpecialFrames,"SatchelSenseSettings")
+    table.insert(UISpecialFrames,"BagBuffsSettings")
     local art=panel:CreateTexture(nil,"ARTWORK"); art:SetSize(70,70); art:SetPoint("TOPLEFT",18,-18); art:SetTexture(self.media.."PouchArt")
-    self:Label(panel,"SATCHELSENSE",24,.96,.83,.60):SetPoint("TOPLEFT",103,-26)
+    self:Label(panel,"BAGBUFFS",24,.96,.83,.60):SetPoint("TOPLEFT",103,-26)
     self:Label(panel,"GOOD THINGS. ALREADY IN YOUR BAGS.",10,.55,.60,.63):SetPoint("TOPLEFT",104,-56)
     self:Label(panel,"Drag the header or background to move this window.",10,.55,.60,.63):SetPoint("TOPLEFT",104,-78)
     self:QuietButton(panel,"x",24,function() panel:Hide() end):SetPoint("TOPRIGHT",-15,-15)
@@ -118,7 +118,7 @@ function P:ToggleSettings()
     end):SetPoint("TOPLEFT",57,-399)
     self.listStatus=self:Label(items,"",11,.6,.65,.68); self.listStatus:SetPoint("TOPLEFT",99,-406)
     self:Label(items,"Keys follow their items. Compact only closes gaps without changing item order.",10,.6,.65,.68):SetPoint("TOPLEFT",22,-438)
-    self:Label(panel,"Missing something? /satchel include ITEMID   |   /satchel help",11,.6,.65,.68):SetPoint("BOTTOMLEFT",22,14)
+    self:Label(panel,"Missing something? /bagbuffs include ITEMID   |   /bagbuffs help",11,.6,.65,.68):SetPoint("BOTTOMLEFT",22,14)
     self:SelectSettingsTab("layout")
 end
 

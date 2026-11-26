@@ -2,8 +2,8 @@ $ErrorActionPreference='Stop'
 $projectRoot=Split-Path -Parent $PSScriptRoot
 $gameRoot=[IO.Path]::GetFullPath('E:\World of Warcraft\_forever_\Interface\AddOns')
 $backupParent=[IO.Path]::GetFullPath((Join-Path $projectRoot 'backups'))
-$backupRoot=[IO.Path]::GetFullPath((Join-Path $backupParent ('before-satchelsense-'+(Get-Date -Format 'yyyyMMdd-HHmmss'))))
-$names=@('SatchelSense','PocketBuffs')
+$backupRoot=[IO.Path]::GetFullPath((Join-Path $backupParent ('before-bagbuffs-'+(Get-Date -Format 'yyyyMMdd-HHmmss'))))
+$names=@('BagBuffs','SatchelSense','PocketBuffs')
 if (-not (Test-Path -LiteralPath $gameRoot -PathType Container)) { throw 'WoW Forever AddOns folder was not found.' }
 if (-not $backupRoot.StartsWith($backupParent+[IO.Path]::DirectorySeparatorChar)) { throw 'Unexpected backup path.' }
 foreach ($name in $names) {
@@ -15,7 +15,7 @@ foreach ($name in $names) {
         $item=Get-Item -LiteralPath $target
         if ($item.Attributes -band [IO.FileAttributes]::ReparsePoint) { throw 'Refusing to replace a linked addon folder.' }
         $installed=Get-Content -LiteralPath (Join-Path $target ($name+'.toc')) -Raw
-        if ($installed -notmatch '(?m)^## Author: Derek\s*$' -or $installed -notmatch '(?m)^## Title: (PocketBuffs|SatchelSense|SatchelSense - Settings Import)\s*$') {
+        if ($installed -notmatch '(?m)^## Author: Derek\s*$' -or $installed -notmatch '(?m)^## Title: (PocketBuffs|SatchelSense|BagBuffs)( - (SatchelSense )?Settings Import)?\s*$') {
             throw ('Another addon occupies the required folder: '+$name)
         }
     }
@@ -51,6 +51,6 @@ try {
     }
     throw $failure
 }
-Write-Output 'Installed and hash-verified SatchelSense plus its legacy settings loader.'
+Write-Output 'Installed and hash-verified BagBuffs plus both legacy settings loaders.'
 Write-Output ('Previous addon files: '+$backupRoot)
-Write-Output 'No files under WTF were changed. Restart WoW and keep SatchelSense - Settings Import enabled.'
+Write-Output 'No files under WTF were changed. Restart WoW and keep both BagBuffs Settings Import components enabled.'

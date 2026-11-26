@@ -1,0 +1,22 @@
+## Interface: 16001
+## Title: BagBuffs
+## Notes: Your bag buffs, potions, food and weapon enhancements in one quiet grid.
+## Author: Derek
+## X-Curse-Project-ID: 1825109
+## Version: 1.0.0-rc.6
+## SavedVariablesPerCharacter: BagBuffsDB
+## Dependencies: PocketBuffs, SatchelSense
+## IconTexture: Interface\AddOns\BagBuffs\Media\AddonIcon
+
+Core.lua
+Compatibility.lua
+Discovery.lua
+Placement.lua
+Editing.lua
+GridEditing.lua
+Cooldowns.lua
+Convenience.lua
+UI.lua
+Settings.lua
+Bootstrap.lua
+Bindings.xml

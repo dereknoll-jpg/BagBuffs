@@ -1,17 +1,17 @@
 01-icon-400.png
-SatchelSense - original pouch project icon.
+BagBuffs - original pouch project icon.
 
 02-banner.png
-SatchelSense: Good things. Already in your bags.
+BagBuffs - Auto Consumable Bar. Pick it up. See it. Use it.
 AI-assisted promotional illustration; not an in-game screenshot.
 
 03-features.png
-Find supplies, customize the grid, reorder items and bind keys.
+Automatically find new supplies, close gaps, drag or hide items, and bind item keys.
 AI-assisted feature illustration; diagrams are illustrative, not in-game screenshots.
 Supported behavior is described in the listing and included README.
 
 04-icon-1024.jpg
-SatchelSense - large original pouch branding artwork.
+BagBuffs - large original pouch branding artwork.
 
 The in-game interface uses the game's item art and quiet charcoal/gold controls.
 The gallery images are branding/feature artwork and do not claim to be captured UI.

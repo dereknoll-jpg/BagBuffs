@@ -27,7 +27,7 @@ end
 function P:CreateGridEditor()
     -- A separate hit layer intercepts editing drags without modifying item actions.
     -- Blizzard's visibility driver hides it during combat, before a combat click.
-    local root=CreateFrame("Frame","SatchelSenseGridEditor",UIParent,"SecureHandlerStateTemplate")
+    local root=CreateFrame("Frame","BagBuffsGridEditor",UIParent,"SecureHandlerStateTemplate")
     self.gridEditor=root; self.gridEditButtons={}
     root:SetAllPoints(self.frame); root:SetFrameStrata("MEDIUM"); root:SetFrameLevel(self.frame:GetFrameLevel()+10)
     for i,button in ipairs(self.buttons) do

@@ -1,12 +1,12 @@
 $ErrorActionPreference='Stop'
 $projectRoot=Split-Path -Parent $PSScriptRoot
 & (Join-Path $PSScriptRoot 'Build.ps1')
-$manifest=Get-Content -LiteralPath (Join-Path $projectRoot 'SatchelSense\SatchelSense.toc') -Raw
+$manifest=Get-Content -LiteralPath (Join-Path $projectRoot 'BagBuffs\BagBuffs.toc') -Raw
 $version=[regex]::Match($manifest,'(?m)^## Version: ([\w.\-]+)').Groups[1].Value
 if (-not $version) { throw 'Addon version is missing.' }
 $kitRoot=Join-Path $projectRoot 'release\curseforge'
 foreach ($folder in @('addon','images','text','review')) { New-Item -ItemType Directory -Path (Join-Path $kitRoot $folder) -Force | Out-Null }
-$addonArchive=Join-Path $projectRoot ("dist\SatchelSense-"+$version+'.zip')
+$addonArchive=Join-Path $projectRoot ("dist\BagBuffs-"+$version+'.zip')
 Copy-Item -LiteralPath $addonArchive -Destination (Join-Path $kitRoot 'addon') -Force
 foreach ($oldArchive in Get-ChildItem -LiteralPath (Join-Path $kitRoot 'addon') -File -Filter '*.zip') {
     if ($oldArchive.Name -ne [IO.Path]::GetFileName($addonArchive)) { Remove-Item -LiteralPath $oldArchive.FullName }
@@ -14,10 +14,10 @@ foreach ($oldArchive in Get-ChildItem -LiteralPath (Join-Path $kitRoot 'addon') 
 Copy-Item -LiteralPath (Join-Path $projectRoot 'release\START-HERE.txt') -Destination (Join-Path $kitRoot 'START-HERE.txt') -Force
 & (Join-Path $PSScriptRoot 'Export-Release-Images.ps1')
 foreach ($mapping in @(
-    @('SatchelSense-400.png','01-icon-400.png'),
-    @('SatchelSense-banner-web.png','02-banner.png'),
-    @('SatchelSense-features-web.png','03-features.png'),
-    @('SatchelSense-1024.jpg','04-icon-1024.jpg')
+    @('BagBuffs-400.png','01-icon-400.png'),
+    @('BagBuffs-banner-web.png','02-banner.png'),
+    @('BagBuffs-features-web.png','03-features.png'),
+    @('BagBuffs-1024.jpg','04-icon-1024.jpg')
 )) {
     Copy-Item -LiteralPath (Join-Path $projectRoot ('Branding\'+$mapping[0])) -Destination (Join-Path $kitRoot ('images\'+$mapping[1])) -Force
 }
@@ -30,7 +30,7 @@ foreach ($name in @('SUMMARY.txt','DESCRIPTION.md','PROJECT-SETUP.txt','IMAGE-CA
 $description=Get-Content -LiteralPath (Join-Path $projectRoot 'release\DESCRIPTION.md') -Raw
 $plain=[regex]::Replace($description,'(?m)^#{1,6} ','').Replace('**','').Replace('*','').Replace('`','')
 [IO.File]::WriteAllText((Join-Path $kitRoot 'text\DESCRIPTION.txt'),$plain,[Text.UTF8Encoding]::new($false))
-Copy-Item -LiteralPath (Join-Path $projectRoot 'SatchelSense\RELEASE-NOTES.md'),(Join-Path $projectRoot 'SatchelSense\CHANGELOG.txt'),(Join-Path $projectRoot 'SatchelSense\LICENSE.txt') -Destination (Join-Path $kitRoot 'text') -Force
+Copy-Item -LiteralPath (Join-Path $projectRoot 'BagBuffs\RELEASE-NOTES.md'),(Join-Path $projectRoot 'BagBuffs\CHANGELOG.txt'),(Join-Path $projectRoot 'BagBuffs\LICENSE.txt') -Destination (Join-Path $kitRoot 'text') -Force
 foreach ($name in @('RELEASE-READINESS.md','LIVE-CHECKS.md')) {
     Copy-Item -LiteralPath (Join-Path $projectRoot ('release\'+$name)) -Destination (Join-Path $kitRoot 'review') -Force
 }
@@ -44,7 +44,7 @@ try {
     foreach ($entry in $archive.Entries) {
         if (-not $entry.Name) { continue }
         $relative=$entry.FullName.Replace('\','/')
-        if (-not ($relative.StartsWith('SatchelSense/') -or $relative.StartsWith('PocketBuffs/'))) { throw ('Unexpected archive path: '+$relative) }
+        if (-not ($relative.StartsWith('BagBuffs/') -or $relative.StartsWith('PocketBuffs/') -or $relative.StartsWith('SatchelSense/'))) { throw ('Unexpected archive path: '+$relative) }
         $source=Join-Path $projectRoot $relative
         if (-not (Test-Path -LiteralPath $source -PathType Leaf)) { throw ('Unexpected archive file: '+$relative) }
         $stream=$entry.Open(); $sha=[Security.Cryptography.SHA256]::Create()
@@ -53,7 +53,7 @@ try {
         $verified++
     }
 } finally { $archive.Dispose() }
-$expectedCount=@(Get-ChildItem -LiteralPath (Join-Path $projectRoot 'SatchelSense'),(Join-Path $projectRoot 'PocketBuffs') -Recurse -File).Count
+$expectedCount=@(Get-ChildItem -LiteralPath (Join-Path $projectRoot 'BagBuffs'),(Join-Path $projectRoot 'PocketBuffs'),(Join-Path $projectRoot 'SatchelSense') -Recurse -File).Count
 if ($verified -ne $expectedCount) { throw 'Archive source-file count mismatch.' }
 Add-Type -AssemblyName System.Drawing
 $avatar=[Drawing.Image]::FromFile((Join-Path $kitRoot 'images\01-icon-400.png'))
@@ -65,7 +65,7 @@ foreach ($image in Get-ChildItem -LiteralPath (Join-Path $kitRoot 'images') -Fil
 $summary=Get-Content -LiteralPath (Join-Path $kitRoot 'text\SUMMARY.txt') -Raw
 if ($summary.Trim().Length -gt 255) { throw 'Project summary is too long.' }
 $validation=@"
-SatchelSense $version - offline release validation
+BagBuffs $version - offline release validation
 
 PASS Lua 5.1 syntax and execution of all addon modules.
 PASS discovery, duplicate stacks, filters, saved settings and delayed item data.
@@ -76,7 +76,7 @@ PASS restricted values and guarded combat mutations.
 PASS grid dragging, canceled drops, native visibility-driver contract and icon lock toggle.
 PASS missed drag-stop recovery, scaled empty-slot drops, exact swaps, persistent manual slots and append-only manual discovery.
 PASS automatic gap removal, manual layout recovery, compaction, pouch shortcuts, new-item highlights and combat/drag deferral.
-PASS legacy per-character import, preserved item keys, native slot aliases and idempotent profile migration.
+PASS SatchelSense and PocketBuffs profile import, preserved item keys, both native slot aliases, priority and idempotent profile migration.
 PASS $verified addon archive files verified by SHA-256 against the source.
 PASS original 400x400 PNG project avatar and static gallery files below 2 MB each.
 PASS summary length and no GIFs in the release kit.
@@ -90,7 +90,7 @@ No game was launched and no project was uploaded or published.
 Get-ChildItem -LiteralPath $kitRoot -Recurse -File | Where-Object { $_.Name -ne 'MANIFEST-SHA256.csv' } | ForEach-Object {
     [PSCustomObject]@{File=$_.FullName.Substring($kitRoot.Length+1);Bytes=$_.Length;SHA256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash}
 } | Export-Csv -LiteralPath (Join-Path $kitRoot 'MANIFEST-SHA256.csv') -NoTypeInformation -Encoding utf8
-$kitArchive=Join-Path $projectRoot ("dist\SatchelSense-CurseForge-Kit-"+$version+'.zip')
+$kitArchive=Join-Path $projectRoot ("dist\BagBuffs-CurseForge-Kit-"+$version+'.zip')
 Compress-Archive -LiteralPath $kitRoot -DestinationPath $kitArchive -Force
 Write-Output ('Prepared '+$kitArchive)
 Write-Output ('Verified '+$verified+' addon files. Artwork, listing text, upload guide and readiness notes included.')

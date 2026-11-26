@@ -2,8 +2,8 @@ $ErrorActionPreference='Stop'
 Add-Type -AssemblyName System.Drawing
 $projectRoot=Split-Path -Parent $PSScriptRoot
 foreach ($kind in @('banner','features')) {
-    $source=[Drawing.Image]::FromFile((Join-Path $projectRoot ("Branding\SatchelSense-"+$kind+'.png')))
-    $output=Join-Path $projectRoot ("Branding\SatchelSense-"+$kind+'-web.png')
+    $source=[Drawing.Image]::FromFile((Join-Path $projectRoot ("Branding\BagBuffs-"+$kind+'.png')))
+    $output=Join-Path $projectRoot ("Branding\BagBuffs-"+$kind+'-web.png')
     try {
         $width=[Math]::Min(1280,$source.Width)
         do {
@@ -22,10 +22,10 @@ foreach ($kind in @('banner','features')) {
         if ((Get-Item -LiteralPath $output).Length -ge 2000000) { throw ('Upload image exceeds limit: '+$kind) }
     } finally { $source.Dispose() }
 }
-$large=[Drawing.Image]::FromFile((Join-Path $projectRoot 'Branding\SatchelSense-1024.png'))
+$large=[Drawing.Image]::FromFile((Join-Path $projectRoot 'Branding\BagBuffs-1024.png'))
 $jpegCodec=[Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object MimeType -eq 'image/jpeg'
 $jpegParameters=[Drawing.Imaging.EncoderParameters]::new(1)
 $jpegParameters.Param[0]=[Drawing.Imaging.EncoderParameter]::new([Drawing.Imaging.Encoder]::Quality,[long]90)
-try { $large.Save((Join-Path $projectRoot 'Branding\SatchelSense-1024.jpg'),$jpegCodec,$jpegParameters) }
+try { $large.Save((Join-Path $projectRoot 'Branding\BagBuffs-1024.jpg'),$jpegCodec,$jpegParameters) }
 finally { $large.Dispose(); $jpegParameters.Dispose() }
-Write-Output 'Exported SatchelSense gallery artwork for the 2 MB upload limit.'
+Write-Output 'Exported BagBuffs gallery artwork for the 2 MB upload limit.'

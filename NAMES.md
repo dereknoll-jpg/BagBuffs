@@ -1,3 +1,7 @@
+# Current identity: BagBuffs
+
+Selected and rechecked November 26, 2026. Historical naming checks follow; the current release is BagBuffs 1.0.0-rc.6.
+
 # SatchelSense naming check
 
 **Selected by Derek on November 23, 2026: SatchelSense.** Rechecked CurseForge's actual WoW directory before the rebrand: SatchelSense, Satchel Sense and SatchelSenses showed no projects. The hyphenated search normalized to the spaced query. The game interface, current packages and repository now use SatchelSense; the legacy PocketBuffs identity remains only where required to import existing saves and support old keys.
@@ -43,3 +47,34 @@ Keep the name distinctive and put discovery keywords in the summary/description:
 The pouch icon has no name text and can remain. The title on the banner and feature sheet, in-game identity, package names and listing copy should be updated after Derek selects the new name. Preserve existing saved settings and keybindings during the eventual rename.
 
 Future addon naming checks are now required by the parent addon-workspace AGENTS.md.
+
+## Alternative names checked November 26, 2026
+
+Derek requested five clearer names because SatchelSense does not immediately communicate bag consumables. No rename has been selected or applied.
+
+Checked CurseForge's actual World of Warcraft addon search in the in-app browser with no flavor restriction. Inspected result titles, including all results for Bag Buff (47), Bag Buffs (32), Buff Ready (26), and Loot To Buff (17), using 50 results per page where needed. Fuzzy results alone were not treated as conflicts.
+
+| Candidate | Variants and findings |
+| --- | --- |
+| BagBuffs | BagBuffs: 6 unrelated matches; BagBuff: 7 unrelated matches. Bag Buffs and Bag Buff: 32 and 47 unrelated results, including No Sleeping Bag Buff and Baganator FoodBuffs, but no BagBuff(s) project title. |
+| BuffStash | BuffStash: 9 unrelated results (mostly RaidBuffStatus variants); Buff Stash returned Hammer of Justas. BuffStashes: zero. |
+| LootToBuff | LootToBuff and LootToBuffs: zero. Loot To Buff: 17 unrelated titles, including NoDebuffNoLoot and Tuff Luck. |
+| BuffReady | BuffReady, ReadyBuff and BuffsReady: 3 unrelated titles. Buff Ready: 26 unrelated results; no exact or near-identical title found. |
+| BuffCache | BuffCache, Buff Cache and BuffCaches: zero results. |
+
+Searches containing hyphens were also attempted for Buff-Stash and Bag-Buffs. CurseForge broadened these to hundreds/thousands of fuzzy matches (774 and 1,377); these hyphenated searches were not exhaustively reviewed and are not independent proof of availability. Joined and spaced title checks are the main evidence. Other hyphenated forms must be rechecked if selected.
+
+BuffFinder was excluded from the shortlist because Cooking Buff Finder already exists. Other investigated options were BuffCrate, BuffsOnHand and ConsumableKit; these are not the final five recommendations.
+
+Primary directory links:
+- https://www.curseforge.com/wow/search?class=addons&search=BagBuffs
+- https://www.curseforge.com/wow/search?class=addons&search=BuffStash
+- https://www.curseforge.com/wow/search?class=addons&search=LootToBuff
+- https://www.curseforge.com/wow/search?class=addons&search=BuffReady
+- https://www.curseforge.com/wow/search?class=addons&search=BuffCache
+
+Recommendation: BagBuffs for immediate clarity; suggested listing title BagBuffs - Auto Consumable Bar. LootToBuff best expresses automatic pickup discovery. No download improvement is guaranteed by a rename. Availability is a dated directory observation, not a reservation; recheck the selected name and remaining variants before any branding or publishing changes. Preserve existing settings and keybinds during any eventual rename.
+
+## Selected rebrand: BagBuffs — November 26, 2026
+
+Derek selected BagBuffs and authorized the complete rebrand. Rechecked CurseForge’s actual all-flavor WoW directory immediately before changing artwork: BagBuffs returned six unrelated project names (MissingBuffs, MissingBuffsTracker, MissingBuff, AugBuffTracker, Baganator FoodBuffs and No Sleeping Bag Buff). The earlier same-day spaced/singular checks above remain applicable. No exact or near-identical project title found. The new identity is BagBuffs; SatchelSense and PocketBuffs remain only as documented compatibility identities and historical references.

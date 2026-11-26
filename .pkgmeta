@@ -1,11 +1,12 @@
 # Stage the repository, then put both required addons at the ZIP root.
-package-as: SatchelSense
+package-as: BagBuffs
 enable-nolib-creation: no
 move-folders:
-    SatchelSense/SatchelSense: SatchelSense
-    SatchelSense/PocketBuffs: PocketBuffs
+    BagBuffs/BagBuffs: BagBuffs
+    BagBuffs/PocketBuffs: PocketBuffs
+    BagBuffs/SatchelSense: SatchelSense
 manual-changelog:
-    filename: SatchelSense/RELEASE-NOTES.md
+    filename: BagBuffs/RELEASE-NOTES.md
     markup-type: markdown
 ignore:
     - Branding

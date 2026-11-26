@@ -1,12 +1,12 @@
-# SatchelSense
+# BagBuffs
 
-![SatchelSense — automatically finds the supplies you pick up](Branding/SatchelSense-banner-web.png)
+![BagBuffs — automatically finds the supplies you pick up](Branding/BagBuffs-banner-web.png)
 
 **Good things. Already in your bags.**
 
 A standalone WoW Forever addon that gathers self-use consumables and item enhancements into a compact, clickable grid.
 
-Previously released as PocketBuffs. Existing character settings and item keys import automatically, and older native grid-slot bindings continue to work. [GitHub project](https://github.com/dereknoll-jpg/SatchelSense).
+Previously released as SatchelSense, and originally PocketBuffs. Existing character settings and item keys import automatically, and older native grid-slot bindings continue to work. [GitHub project](https://github.com/dereknoll-jpg/BagBuffs).
 
 ## Features
 
@@ -28,32 +28,32 @@ Previously released as PocketBuffs. Existing character settings and item keys im
 
 ## Install
 
-Extract **both folders** from `dist/SatchelSense-1.0.0-rc.5.zip` into `World of Warcraft/_forever_/Interface/AddOns`: `SatchelSense` is the addon and `PocketBuffs` is the bundled **SatchelSense - Settings Import** component. Replace the older files when prompted. Keep both enabled and restart WoW after the rename so it discovers the new folder. The manifest targets interface **16001**, matching the existing TankKit Forever project.
+Extract **all three folders** from `dist/BagBuffs-1.0.0-rc.6.zip` into `World of Warcraft/_forever_/Interface/AddOns`: `BagBuffs` plus the bundled `SatchelSense` and `PocketBuffs` Settings Import components. Replace the older addon files, keep all three enabled, and restart WoW so it discovers the new folder. The manifest targets interface **16001**.
 
-The import component keeps its old folder identity solely so WoW loads existing per-character saves. It has no HUD or item actions. SatchelSense copies an old profile only if a new profile does not already exist, then uses its own save. Original saved data and the game's normal keybinding profiles are not rewritten or deleted. `/satchel`, `/satchelsense` and `/ss` open settings; old `/pbuff` and `/pocketbuffs` shortcuts still work. See [the upgrade guide](release/UPGRADING.md).
+The two import components retain old folder identities solely so WoW loads existing character saves. They have no HUD or item actions. BagBuffs first copies a SatchelSense profile, otherwise a PocketBuffs profile, only if no BagBuffs save exists. Old saves and game keybinding profiles remain intact. `/bagbuffs`, `/bb` and `/bagbuff` open settings; all old commands remain aliases. See [the upgrade guide](release/UPGRADING.md).
 
-Open settings with **`/satchel`**, right-click any item, or click the small pouch above the grid. Left-click an icon to use that item on yourself. For enhancements, click the icon and then select your weapon or other compatible item through the game's normal targeting cursor. Native restrictions and overwrite confirmations still apply.
+Open settings with **`/bagbuffs`**, right-click any item, or click the small pouch above the grid. Left-click an icon to use that item on yourself. For enhancements, click the icon and then select your weapon or other compatible item through the game's normal targeting cursor. Native restrictions and overwrite confirmations still apply.
 
 Drag the settings window by its header or empty background to move it out of the way while editing the grid. It stays where you leave it when closed and reopened during the same session.
 
-**Shift-right-click the pouch icon** to lock/unlock the grid without opening settings. While unlocked, drag the pouch to move the whole grid; wide layouts also show a `DRAG` tab. The handle is hidden on narrow layouts so it cannot cover the pouch. Turn off the pouch launcher if desired; `/satchel` remains available. When locked with no eligible items, the entire display disappears.
+**Shift-right-click the pouch icon** to lock/unlock the grid without opening settings. While unlocked, drag the pouch to move the whole grid; wide layouts also show a `DRAG` tab. The handle is hidden on narrow layouts so it cannot cover the pouch. Turn off the pouch launcher if desired; `/bagbuffs` remains available. When locked with no eligible items, the entire display disappears.
 
 ## Commands
 
 | Command | Result |
 | --- | --- |
-| `/satchel` | Open settings |
-| `/satchel unlock` / `lock` | Move or lock the grid |
-| `/satchel layout 3x3` | Set columns × rows, each 1–8 |
-| `/satchel layout 1x8` | Vertical strip |
-| `/satchel layout 8x1` | Horizontal strip |
-| `/satchel size 32` | Icon size, 20–56 pixels |
-| `/satchel scale 1` | UI scale, 0.5–2 |
-| `/satchel next` / `prev` | Change item page |
-| `/satchel favorite 13444` | Toggle favorite priority for an item ID |
-| `/satchel hide 13444` / `restore 13444` | Exclude or restore an item |
-| `/satchel include 12345` | Explicitly include an unrecognized bag item as “Other self buffs” |
-| `/satchel forget 12345` | Remove an explicit include |
+| `/bagbuffs` | Open settings |
+| `/bagbuffs unlock` / `lock` | Move or lock the grid |
+| `/bagbuffs layout 3x3` | Set columns × rows, each 1–8 |
+| `/bagbuffs layout 1x8` | Vertical strip |
+| `/bagbuffs layout 8x1` | Horizontal strip |
+| `/bagbuffs size 32` | Icon size, 20–56 pixels |
+| `/bagbuffs scale 1` | UI scale, 0.5–2 |
+| `/bagbuffs next` / `prev` | Change item page |
+| `/bagbuffs favorite 13444` | Toggle favorite priority for an item ID |
+| `/bagbuffs hide 13444` / `restore 13444` | Exclude or restore an item |
+| `/bagbuffs include 12345` | Explicitly include an unrecognized bag item as “Other self buffs” |
+| `/bagbuffs forget 12345` | Remove an explicit include |
 
 Mouse wheel over an item or the page indicator changes pages. Clicking the page indicator advances and wraps back to page one.
 
@@ -61,7 +61,7 @@ Middle-click a grid item to hide it immediately, whether the grid is locked or u
 
 ## Arrange items and bind keys
 
-Open `/satchel` → **Items & Keys**. Rows follow the grid's reading order, across all grid pages; hidden/filtered items follow at the bottom. Drag an item icon onto another row, or use `<` / `>` beside an item to move it earlier/later. The arrows also move items across editor-page boundaries. Editor drags cannot consume an item. Choose **Auto** (default) or **Manual**. **By type** and **A - Z** sort now and choose the ongoing sort style in Auto; in Manual they perform a one-time sort. **Compact only** closes gaps while keeping the current item order. Favorites sort first in the automatic modes; explicit manual order takes precedence over favorites. Identical item IDs remain a single entry.
+Open `/bagbuffs` → **Items & Keys**. Rows follow the grid's reading order, across all grid pages; hidden/filtered items follow at the bottom. Drag an item icon onto another row, or use `<` / `>` beside an item to move it earlier/later. The arrows also move items across editor-page boundaries. Editor drags cannot consume an item. Choose **Auto** (default) or **Manual**. **By type** and **A - Z** sort now and choose the ongoing sort style in Auto; in Manual they perform a one-time sort. **Compact only** closes gaps while keeping the current item order. Favorites sort first in the automatic modes; explicit manual order takes precedence over favorites. Identical item IDs remain a single entry.
 
 Unlock the grid to drag directly between slots, with or without settings open. An empty slot accepts the dragged item; dropping onto an occupied slot swaps the two items. Faint empty-slot outlines appear only while unlocked and disappear when locked. Dropping outside the grid cancels. Mouse-up events, a global release event and physical-button polling all finalize the drag so a missed drag-stop callback cannot leave its image stuck to the cursor. Drop targeting accounts for the grid's scale.
 
@@ -71,7 +71,7 @@ Unlock the grid to drag directly between slots, with or without settings open. A
 
 During editing, separate hit areas intercept grid mouse input so starting a drag cannot consume an item. **Lock the grid for normal click-to-use, even if settings remain open.** Blizzard's visibility driver hides the hit areas in combat; the underlying item buttons retain their normal actions throughout. Item keybindings continue to use their assigned items.
 
-Click **Bind key** beside an item and press the desired key or modifier combination. Middle/side mouse buttons and wheel directions work too. Escape cancels; Backspace or Delete clears that item's binding. The editor asks before reusing an occupied key. These item bindings are saved per character and temporarily override the key's normal action while SatchelSense is active. Removing the binding restores the underlying action; the addon does not rewrite the game's binding profile.
+Click **Bind key** beside an item and press the desired key or modifier combination. Middle/side mouse buttons and wheel directions work too. Escape cancels; Backspace or Delete clears that item's binding. The editor asks before reusing an occupied key. These item bindings are saved per character and temporarily override the key's normal action while BagBuffs is active. Removing the binding restores the underlying action; the addon does not rewrite the game's binding profile.
 
 A key binds the **item**, not the grid position. It still uses that item after reordering, changing pages, hiding its icon, or temporarily running out. A missing item simply cannot be used. Small labels on the grid show the key; item tooltips show its full name. The original first-nine-slot bindings remain supported for users who prefer position-based keys.
 
@@ -89,11 +89,11 @@ A key binds the **item**, not the grid position. It still uses that item after r
 
 ## Artwork and release files
 
-- `Branding/SatchelSense-400.png`: CurseForge project avatar.
-- `Branding/SatchelSense-1024.png`: Large square promotional artwork.
-- `Branding/SatchelSense-master.png`: Original generated master.
-- `SatchelSense/Media/AddonIcon.tga`: 64×64 in-game addon/launcher icon.
-- `SatchelSense/Media/PouchArt.tga`: 256×256 settings artwork.
+- `Branding/BagBuffs-400.png`: CurseForge project avatar.
+- `Branding/BagBuffs-1024.png`: Large square promotional artwork.
+- `Branding/BagBuffs-master.png`: Original generated master.
+- `BagBuffs/Media/AddonIcon.tga`: 64×64 in-game addon/launcher icon.
+- `BagBuffs/Media/PouchArt.tga`: 256×256 settings artwork.
 - `release/DESCRIPTION.md`: Listing draft.
 - `release/LIVE-CHECKS.md`: Short in-client verification pass.
 
@@ -107,4 +107,4 @@ The offline suite executes all addon Lua against a small game API model and chec
 
 ## Publishing
 
-Versioned releases use annotated Git tags and matching TOC versions. The active CurseForge webhook packages tag pushes with `.pkgmeta`; current release notes come from `SatchelSense/RELEASE-NOTES.md`. See [publishing steps](release/PUBLISHING.md).
+Versioned releases use annotated Git tags and matching TOC versions. The active CurseForge webhook packages tag pushes with `.pkgmeta`; current release notes come from `BagBuffs/RELEASE-NOTES.md`. See [publishing steps](release/PUBLISHING.md).

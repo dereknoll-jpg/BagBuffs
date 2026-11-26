@@ -1,3 +1,5 @@
+Current addon identity: **BagBuffs**. This research was originally assembled under the PocketBuffs/SatchelSense names; historical references below are retained as evidence.
+
 # Forever consumable research and implementation decisions
 
 Checked **November 22, 2026**. The target is Blizzard's WoW Forever client and interface 16001, consistent with the existing Paladin TankKit project. This is not a Wrath 3.3.5 addon.

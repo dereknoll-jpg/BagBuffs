@@ -1,6 +1,6 @@
 Copyright (c) 2026 Derek. All rights reserved.
 
-SatchelSense original source code and original project artwork are provided for
+BagBuffs original source code and original project artwork are provided for
 use with this addon. No broader redistribution or modification license is
 granted by this notice.
 

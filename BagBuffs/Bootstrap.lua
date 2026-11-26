@@ -1,9 +1,10 @@
 local _, P = ...
-BINDING_HEADER_SATCHELSENSE="SatchelSense"
-BINDING_HEADER_SATCHELSENSE_EXISTING="SatchelSense - Existing Keys"
+BINDING_HEADER_BAGBUFFS="BagBuffs"
+BINDING_HEADER_BAGBUFFS_EXISTING="BagBuffs - Existing Keys"
 for i=1,9 do
-    _G["BINDING_NAME_CLICK SatchelSenseButton"..i..":LeftButton"]="Use grid slot "..i
+    _G["BINDING_NAME_CLICK BagBuffsButton"..i..":LeftButton"]="Use grid slot "..i
     _G["BINDING_NAME_CLICK PocketBuffsButton"..i..":LeftButton"]="Use grid slot "..i.." (existing key)"
+    _G["BINDING_NAME_CLICK SatchelSenseButton"..i..":LeftButton"]="Use grid slot "..i.." (SatchelSense key)"
 end
 local events=CreateFrame("Frame")
 P.events=events
@@ -11,8 +12,8 @@ events:RegisterEvent("ADDON_LOADED")
 events:SetScript("OnEvent",function(_,event,arg)
     if event=="ADDON_LOADED" then
         if arg~=P.name then return end
-        if not SatchelSenseLegacyReady then
-            P:Message("Upgrade incomplete: install both folders from the SatchelSense ZIP, keep Settings Import enabled, then restart WoW.")
+        if not BagBuffsLegacyReady or not BagBuffsSatchelReady then
+            P:Message("Upgrade incomplete: install all three folders from the BagBuffs ZIP, keep both Settings Import components enabled, then restart WoW.")
             return
         end
         P:InitializeDB()
@@ -45,17 +46,20 @@ events:SetScript("OnUpdate",function(_,elapsed)
     if P.dirty or (P.pending and not InCombatLockdown()) then P.dirty=false; P:Refresh() else P:UpdateVisuals() end
 end)
 
-SLASH_SATCHELSENSE1="/satchel"
-SLASH_SATCHELSENSE2="/satchelsense"
-SLASH_SATCHELSENSE3="/ss"
-SLASH_SATCHELSENSE4="/pbuff"
-SLASH_SATCHELSENSE5="/pocketbuffs"
-SlashCmdList.SATCHELSENSE=function(message)
+SLASH_BAGBUFFS1="/bagbuffs"
+SLASH_BAGBUFFS2="/bb"
+SLASH_BAGBUFFS3="/bagbuff"
+SLASH_BAGBUFFS4="/satchel"
+SLASH_BAGBUFFS5="/satchelsense"
+SLASH_BAGBUFFS6="/ss"
+SLASH_BAGBUFFS7="/pbuff"
+SLASH_BAGBUFFS8="/pocketbuffs"
+SlashCmdList.BAGBUFFS=function(message)
     if not P.db then return end
     local command,rest=message:match("^(%S*)%s*(.-)%s*$"); command=command:lower()
     if command=="" or command=="settings" then P:ToggleSettings(); return end
     if command=="help" then
-        P:Message("/satchel [settings | lock | unlock | next | prev | layout COLSxROWS | size 20-56 | scale 0.5-2 | include ID | exclude ID | forget ID | favorite ID | hide ID | restore ID]")
+        P:Message("/bagbuffs [settings | lock | unlock | next | prev | layout COLSxROWS | size 20-56 | scale 0.5-2 | include ID | exclude ID | forget ID | favorite ID | hide ID | restore ID]")
         return
     end
     if not P:CanChange() then return end
@@ -64,7 +68,7 @@ SlashCmdList.SATCHELSENSE=function(message)
     elseif command=="prev" then P:ChangePage(-1); return
     elseif command=="layout" then
         local columns,rows=rest:match("^(%d+)%s*[xX]%s*(%d+)$"); columns,rows=tonumber(columns),tonumber(rows)
-        if not columns or columns<1 or columns>8 or rows<1 or rows>8 then P:Message("Use /satchel layout 3x3 (each side 1-8)."); return end
+        if not columns or columns<1 or columns>8 or rows<1 or rows>8 then P:Message("Use /bagbuffs layout 3x3 (each side 1-8)."); return end
         P.db.columns,P.db.rows,P.page=columns,rows,1
     elseif command=="size" or command=="scale" then
         local n=tonumber(rest); local min,max=command=="size" and 20 or .5,command=="size" and 56 or 2
@@ -72,14 +76,15 @@ SlashCmdList.SATCHELSENSE=function(message)
         P.db[command]=command=="size" and math.floor(n) or n
     else
         local id=tonumber(rest:match("item:(%d+)") or rest)
-        if not P:Number(id) or id<1 or id~=math.floor(id) then P:Message("Use /satchel help for commands."); return end
+        if not P:Number(id) or id<1 or id~=math.floor(id) then P:Message("Use /bagbuffs help for commands."); return end
         if command=="include" then P.db.included[id]=true; P.db.ignored[id]=nil
         elseif command=="exclude" or command=="hide" then P.db.ignored[id]=true
         elseif command=="restore" then P.db.ignored[id]=nil
         elseif command=="forget" then P.db.included[id]=nil
         elseif command=="favorite" then P:ToggleFavorite(id); return
-        else P:Message("Use /satchel help for commands."); return end
+        else P:Message("Use /bagbuffs help for commands."); return end
     end
     P:Refresh()
 end
-SlashCmdList.POCKETBUFFS=SlashCmdList.SATCHELSENSE
+SlashCmdList.POCKETBUFFS=SlashCmdList.BAGBUFFS
+SlashCmdList.SATCHELSENSE=SlashCmdList.BAGBUFFS
