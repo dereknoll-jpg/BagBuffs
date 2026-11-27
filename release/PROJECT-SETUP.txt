@@ -14,8 +14,8 @@ Main: Bags & Inventory
 Additional: Buffs & Debuffs; Action Bars
 
 FILE TO UPLOAD
-addon/BagBuffs-1.0.0-rc.6.zip
-Release candidate: use Beta while the documented live checks remain open.
+addon/BagBuffs-1.0.0-rc.7.zip
+The existing GitHub tag/webhook handles release packaging. Do not upload a duplicate.
 Do not upload the entire CurseForge kit as the addon.
 
 PROJECT AVATAR

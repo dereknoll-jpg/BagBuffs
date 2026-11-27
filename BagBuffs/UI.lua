@@ -17,9 +17,22 @@ function P:QuietButton(parent,value,width,callback)
     b:SetSize(width,24); self:Backdrop(b)
     b.label=self:Label(b,value,12); b.label:SetPoint("CENTER")
     b:SetScript("OnClick",callback)
-    b:SetScript("OnEnter",function() b:SetBackdropBorderColor(.85,.68,.36,.8) end)
-    b:SetScript("OnLeave",function() b:SetBackdropBorderColor(.52,.43,.27,.45) end)
+    b.selectedBar=b:CreateTexture(nil,"OVERLAY"); b.selectedBar:SetTexture("Interface\\Buttons\\WHITE8X8")
+    b.selectedBar:SetVertexColor(.94,.78,.47); b.selectedBar:SetSize(3,14); b.selectedBar:SetPoint("LEFT",4,0); b.selectedBar:SetAlpha(0)
+    b:SetScript("OnEnter",function()
+        b:SetBackdropBorderColor(.85,.68,.36,.8)
+        if b.hint then GameTooltip:SetOwner(b,"ANCHOR_TOP"); GameTooltip:SetText(b.hint,.85,.85,.8,1,true); GameTooltip:Show() end
+    end)
+    b:SetScript("OnLeave",function() self:SelectButton(b,b.selected); GameTooltip:Hide() end)
     return b
+end
+
+function P:SelectButton(button,selected)
+    button.selected=not not selected
+    button.selectedBar:SetAlpha(selected and 1 or 0)
+    button:SetBackdropColor(selected and .16 or .030,selected and .12 or .039,selected and .065 or .052,.98)
+    button:SetBackdropBorderColor(.85,.68,.36,selected and .9 or .35)
+    button.label:SetTextColor(selected and 1 or .87,selected and .84 or .85,selected and .55 or .80)
 end
 
 function P:Position()
@@ -44,6 +57,11 @@ function P:CreateUI()
     self.launcher=CreateFrame("Button",nil,f)
     self.launcher:SetSize(18,18); self.launcher:SetPoint("BOTTOMRIGHT",f,"TOPRIGHT",0,5)
     local art=self.launcher:CreateTexture(nil,"ARTWORK"); art:SetAllPoints(); art:SetTexture(self.media.."AddonIcon")
+    if self.launcher.CreateMaskTexture and art.AddMaskTexture then
+        local mask=self.launcher:CreateMaskTexture(); self.launcherMask=mask
+        mask:SetTexture(self.media.."IconFace","CLAMPTOBLACKADDITIVE","CLAMPTOBLACKADDITIVE")
+        mask:SetAllPoints(art); art:AddMaskTexture(mask)
+    end
     self.launcher:RegisterForClicks("LeftButtonUp","RightButtonUp"); self.launcher:RegisterForDrag("LeftButton")
     self.launcher:SetScript("OnDragStart",function() self:StartGridMove() end)
     self.launcher:SetScript("OnDragStop",function() self:StopGridMove() end)
@@ -59,7 +77,7 @@ function P:CreateUI()
         GameTooltip:AddLine(self.db.autoSort and "Auto sort: on" or "Manual order",.94,.78,.47)
         GameTooltip:AddLine(self.db.locked and "Position locked" or "Position unlocked",.94,.78,.47); GameTooltip:Show()
     end)
-    self.launcher:SetScript("OnLeave",function(b) b:SetAlpha(.7); GameTooltip:Hide() end)
+    self.launcher:SetScript("OnLeave",function(b) b:SetAlpha(self.db.appearance=="trim" and .95 or .7); GameTooltip:Hide() end)
     self.pager=self:QuietButton(f,"",72,function() self:ChangePage(self.page<self.pages and 1 or 1-self.pages) end)
     self.pager:SetPoint("TOPLEFT",f,"BOTTOMLEFT",0,-4)
     self.pager:EnableMouseWheel(true); self.pager:SetScript("OnMouseWheel",function(_,delta) self:ChangePage(delta>0 and -1 or 1) end)
@@ -90,7 +108,7 @@ function P:CreateUI()
         b:SetScript("OnLeave",function() GameTooltip:Hide() end)
         b:SetScript("PostClick",function(frame,button,down)
             if button=="MiddleButton" and not down then self:HideGridItem(frame.item)
-            elseif button=="RightButton" and not down then self:ToggleSettings() end
+            elseif button=="RightButton" and not down then self:ToggleItemMenu(frame.item,frame) end
         end)
         b:EnableMouseWheel(true); b:SetScript("OnMouseWheel",function(_,delta) self:ChangePage(delta>0 and -1 or 1) end)
         b:Hide()
@@ -98,6 +116,7 @@ function P:CreateUI()
     self:Position()
     self:CreateLegacySlotButtons()
     self:CreateGridEditor()
+    self:CreateBagTrim()
 end
 
 function P:ShowItemTooltip(button)
@@ -110,7 +129,7 @@ function P:ShowItemTooltip(button)
     if item.category=="weapon" then
         GameTooltip:AddLine("Click, then choose the item to enhance.",.94,.78,.47,true)
     else GameTooltip:AddLine("Left-click: use on yourself.",.94,.78,.47,true) end
-    GameTooltip:AddLine("Middle-click: hide item (outside combat)\nRight-click: settings  /  Wheel: pages",.6,.65,.68,true)
+    GameTooltip:AddLine("Middle-click: hide item (outside combat)\nRight-click: item menu (outside combat)  /  Wheel: pages",.6,.65,.68,true)
     local binding=self.db.bindings[item.id]
     if type(binding)=="table" and type(binding.key)=="string" then GameTooltip:AddLine("Key: "..binding.key,.94,.78,.47) end
     if item.category=="bandage" then
@@ -145,6 +164,7 @@ function P:Layout(items)
             b:Show()
         else b:SetAttribute("item1",nil); b.newGlow:SetAlpha(0); b:Hide() end
     end
+    self:LayoutAppearance(items)
     self:SyncLegacySlotButtons(items); self:SyncGridEditing(); self:UpdateVisuals()
 end
 

@@ -31,6 +31,7 @@ function P:ToggleNewHighlights()
 end
 
 function P:TogglePouchMenu()
+    if self.itemMenu then self.itemMenu:Hide() end
     if not self.pouchMenu then
         local menu=CreateFrame("Frame","BagBuffsPouchMenu",UIParent,"BackdropTemplate"); self.pouchMenu=menu
         menu:SetSize(248,244); menu:SetFrameStrata("DIALOG"); menu:SetClampedToScreen(true); menu:EnableMouse(true); self:Backdrop(menu)

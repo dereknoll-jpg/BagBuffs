@@ -1,11 +1,12 @@
-## 1.0.0-rc.6 - BagBuffs rebrand
+## 1.0.0-rc.7 - Bag Trim & UI Polish
 
-- Renamed SatchelSense to BagBuffs, with updated in-game labels, commands, banner, feature sheet and CurseForge package.
-- Automatically imports existing SatchelSense settings; older PocketBuffs profiles are supported too.
-- Preserves layouts, screen position, saved item slots, Auto/Manual sorting, filters, favorites, hidden items and highlight preferences.
-- Existing item keybindings and native grid-slot keys from both previous names continue to work.
-- New commands: /bagbuffs, /bb and /bagbuff. All previous commands remain available.
-- Includes both small Settings Import components; install all three addon folders and keep them enabled.
-- Automatic discovery still adds supported scrolls, potions, buff food and item enhancements as you pick them up.
-- Middle-click hiding, automatic gap removal, new-item highlights and cooldown tracking remain available.
-- Restart WoW after installing the rename so the game discovers BagBuffs.
+- Added optional **Bag Trim** with soft leather artwork, muted stitching and an attached pouch-menu tab.
+- Included fitted skins for all 64 supported grid shapes, including 3×3, 1×8, 8×1 and custom layouts. Each edge is drawn once, avoiding repeated waves.
+- **Minimal remains the default.** Enable Bag Trim under Layout → Appearance.
+- Added an item right-click menu with **Favorite, Bind Key, Hide and Settings**, available with the grid locked or unlocked, outside combat.
+- Bind keys directly from the item menu without opening settings. Middle-click still hides items immediately.
+- Polished the settings window with grouped appearance controls, clearer selected tabs/presets/modes and helpful tooltips.
+- Renamed “Keep” to **Favorite** to make its purpose clearer.
+- Preserved existing settings, saved positions, sorting choices, hidden items and keybindings.
+
+Restart WoW once after updating to load the new artwork. All three bundled addon folders are still required.

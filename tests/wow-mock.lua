@@ -23,7 +23,7 @@ SECRET=setmetatable({},{__tostring=function() error("secret conversion") end,__l
 function issecretvalue(v) return rawequal(v,SECRET) end
 DEFAULT_CHAT_FRAME={AddMessage=function() end}
 local methods={}
-for _,name in ipairs({"SetHeight","SetWidth","SetClampedToScreen","SetMovable","SetFrameStrata","EnableMouse","RegisterForDrag","SetFrameLevel","SetAllPoints","SetVertexColor","SetTexCoord","AddMaskTexture","SetDrawEdge","SetHideCountdownNumbers","SetShadowColor","SetShadowOffset","RegisterForClicks","EnableMouseWheel","EnableKeyboard","SetPropagateKeyboardInput","SetFont","SetTextColor","SetBackdrop","SetBackdropColor","SetBackdropBorderColor","SetJustifyH","StartMoving","StopMovingOrSizing","SetOwner","SetBagItem","AddLine"}) do methods[name]=function() end end
+for _,name in ipairs({"SetHeight","SetWidth","SetClampedToScreen","SetMovable","SetFrameStrata","EnableMouse","RegisterForDrag","SetFrameLevel","SetAllPoints","SetVertexColor","SetTexCoord","SetHorizTile","SetVertTile","AddMaskTexture","SetDrawEdge","SetHideCountdownNumbers","SetShadowColor","SetShadowOffset","RegisterForClicks","EnableMouseWheel","EnableKeyboard","SetPropagateKeyboardInput","SetFont","SetTextColor","SetBackdrop","SetBackdropColor","SetBackdropBorderColor","SetJustifyH","StartMoving","StopMovingOrSizing","SetOwner","SetBagItem","AddLine"}) do methods[name]=function() end end
 local function protected(self)
     if not COMBAT then return end
     local f=self
@@ -43,6 +43,10 @@ function methods:SetScript(k,fn) self.scripts[k]=fn end
 function methods:RegisterEvent(k) self.events[k]=true end
 function methods:SetText(t) assert(not issecretvalue(t)); self.text=t end
 function methods:SetTexture(t) self.texture=t end
+function methods:SetTexCoord(...) self.texCoords={...} end
+function methods:EnableMouse(value) self.mouseEnabled=value end
+function methods:SetHorizTile(value) self.horizTile=value end
+function methods:SetVertTile(value) self.vertTile=value end
 function methods:SetAlpha(a) self.alpha=a end
 function methods:SetDesaturated(d) self.desaturated=d end
 function methods:SetChecked(v) self.checked=v end

@@ -1,4 +1,4 @@
-BagBuffs 1.0.0-rc.6 - WoW Forever, interface 16001
+BagBuffs 1.0.0-rc.7 - WoW Forever, interface 16001
 
 Good things. Already in your bags.
 
@@ -8,7 +8,12 @@ Restart WoW after the rename so the new folder is discovered.
 SatchelSense settings import first, falling back to PocketBuffs, without changing old saves.
 Sorting choices, layouts, hidden items and item keys carry over.
 Older native slot keys and all previous commands remain supported.
-Open settings with /bagbuffs, right-click an item, or click the small pouch icon.
+Open settings with /bagbuffs or the pouch; item right-click menu also has Settings.
+Right-click a grid item for Favorite, Bind Key, Hide and Settings outside combat.
+Bind Key opens directly without requiring the editor.
+Layout > Appearance: Minimal (default) or optional Bag Trim.
+Bag Trim has 64 fitted skins, transparent center and an attached pouch menu tab.
+Restart WoW after updating to load the new artwork.
 Middle-click a grid item to hide it outside combat, locked or unlocked.
 Restore hidden items under Items & Keys; their item keys remain assigned.
 Left-click items to use on yourself. Enhancements use the normal item cursor.

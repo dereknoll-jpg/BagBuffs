@@ -31,6 +31,21 @@ for (const [name, size] of [['AddonIcon', 64], ['PouchArt', 256]]) {
   assert.equal(bytes.length, 18 + size * size * 4);
 }
 const avatar = fs.readFileSync(path.join(root, 'Branding', 'BagBuffs-400.png'));
+const tab = fs.readFileSync(path.join(addon, 'Media', 'BagLeatherTab.tga'));
+assert.equal(tab.readUInt16LE(12),32);
+assert.equal(tab.readUInt16LE(14),32);
+for (let columns=1;columns<=8;columns++) for (let rows=1;rows<=8;rows++) {
+  const bytes=fs.readFileSync(path.join(addon,'Media','BagSkin'+columns+'x'+rows+'.tga'));
+  const sourceWidth=columns*36+36,sourceHeight=rows*36+36;
+  const width=2**Math.ceil(Math.log2(sourceWidth)),height=2**Math.ceil(Math.log2(sourceHeight));
+  assert.equal(bytes[2],2); assert.equal(bytes[16],32); assert.equal(bytes[17],0x28);
+  assert.equal(bytes.readUInt16LE(12),width); assert.equal(bytes.readUInt16LE(14),height);
+  assert.equal(bytes.length,18+width*height*4);
+  const center=18+(Math.floor(sourceHeight/2)*width+Math.floor(sourceWidth/2))*4+3;
+  assert.equal(bytes[center],0,'Fitted skin must keep the item area transparent');
+  assert.equal(bytes.at(-1),0,'Texture padding must be transparent');
+  assert.ok(bytes.some((value,index)=>index>=18 && (index-18)%4===3 && value>0),'Fitted skin needs visible leather');
+}
 assert.equal(avatar.readUInt32BE(16), 400);
 assert.equal(avatar.readUInt32BE(20), 400);
 const L = lauxlib.luaL_newstate();
@@ -58,4 +73,5 @@ run(fs.readFileSync(path.join(__dirname, 'drag-release-slots.lua'), 'utf8'), 'Dr
 run(fs.readFileSync(path.join(__dirname, 'rebrand-migration.lua'), 'utf8'), 'Rebrand compatibility');
 run(fs.readFileSync(path.join(__dirname, 'auto-organizing.lua'), 'utf8'), 'Automatic organizing and new-item highlights');
 run(fs.readFileSync(path.join(__dirname, 'bagbuffs-migration.lua'), 'utf8'), 'BagBuffs upgrade');
+run(fs.readFileSync(path.join(__dirname, 'ui-polish.lua'), 'utf8'), 'UI preview and item menus');
 console.log('PASS: Lua 5.1 syntax, packaging, discovery, layout, combat stability, settings, recovery and bindings.');

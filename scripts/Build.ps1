@@ -5,6 +5,7 @@ try {
     & npm test
     if ($LASTEXITCODE -ne 0) { throw 'Validation failed.' }
     & (Join-Path $PSScriptRoot 'Export-Assets.ps1')
+    & (Join-Path $PSScriptRoot 'Export-Trim.ps1')
     New-Item -ItemType Directory -Force (Join-Path $projectRoot 'dist') | Out-Null
     $pocketManifest = Get-Content -LiteralPath (Join-Path $projectRoot 'BagBuffs\BagBuffs.toc') -Raw
     $pocketVersion = [regex]::Match($pocketManifest,'(?m)^## Version: ([\w.\-]+)').Groups[1].Value

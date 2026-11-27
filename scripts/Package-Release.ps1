@@ -35,6 +35,8 @@ foreach ($name in @('RELEASE-READINESS.md','LIVE-CHECKS.md')) {
     Copy-Item -LiteralPath (Join-Path $projectRoot ('release\'+$name)) -Destination (Join-Path $kitRoot 'review') -Force
 }
 Copy-Item -LiteralPath (Join-Path $projectRoot 'Branding\RELEASE-ART-PROMPTS.txt') -Destination (Join-Path $kitRoot 'review\ARTWORK-NOTES.txt') -Force
+Copy-Item -LiteralPath (Join-Path $projectRoot 'Branding\BagTrim-fitted-layouts.png') -Destination (Join-Path $kitRoot 'review\BAG-TRIM-DESIGN-PREVIEW.png') -Force
+Copy-Item -LiteralPath (Join-Path $projectRoot 'Branding\BagTrim-v2-prompts.txt') -Destination (Join-Path $kitRoot 'review\BAG-TRIM-ARTWORK-NOTES.txt') -Force
 
 # Verify the actual installable ZIP against every source file, without extraction.
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -77,12 +79,13 @@ PASS grid dragging, canceled drops, native visibility-driver contract and icon l
 PASS missed drag-stop recovery, scaled empty-slot drops, exact swaps, persistent manual slots and append-only manual discovery.
 PASS automatic gap removal, manual layout recovery, compaction, pouch shortcuts, new-item highlights and combat/drag deferral.
 PASS SatchelSense and PocketBuffs profile import, preserved item keys, both native slot aliases, priority and idempotent profile migration.
+PASS Minimal default, 64 fitted non-repeating skins, partial-page geometry, item menus and direct binding.
 PASS $verified addon archive files verified by SHA-256 against the source.
 PASS original 400x400 PNG project avatar and static gallery files below 2 MB each.
 PASS summary length and no GIFs in the release kit.
 
 The native combat driver is modeled offline, not observed in a running client.
-Live WoW pointer input, click dispatch, actual item use and combat transitions remain unverified.
+Derek approved the fitted artwork after local tests. The agent did not observe native combat transitions or every possible input scenario.
 The release number does not certify that live-client checks have been completed.
 No game was launched and no project was uploaded or published.
 "@

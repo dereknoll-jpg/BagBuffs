@@ -43,13 +43,15 @@ function P:CreateGridEditor()
         overlay:SetScript("OnClick",function(_,mouseButton)
             if mouseButton=="MiddleButton" then self:HideGridItem(button.item)
             elseif mouseButton=="RightButton" then
-                if IsShiftKeyDown() then self:ToggleMoveLock() else self:ToggleSettings() end
+                if IsShiftKeyDown() then self:ToggleMoveLock()
+                elseif button.item then self:ToggleItemMenu(button.item,overlay)
+                else self:ToggleSettings() end
             end
         end)
         overlay:SetScript("OnEnter",function(b)
             GameTooltip:SetOwner(b,"ANCHOR_TOP"); GameTooltip:SetText(button.item and button.item.name or "Empty grid slot",.94,.78,.47)
             GameTooltip:AddLine("Drag to a grid slot. Occupied slots swap; empty slots stay where you leave them.\nShift-right-click the pouch to lock or unlock.\nLock the grid to click-use items.",.8,.8,.8,true)
-            if button.item then GameTooltip:AddLine("Middle-click: hide item. Restore it in Items & Keys.",.8,.8,.8,true) end
+            if button.item then GameTooltip:AddLine("Right-click: item menu. Middle-click: hide item. Restore in Items & Keys.",.8,.8,.8,true) end
             GameTooltip:Show()
         end)
         overlay:SetScript("OnLeave",function() GameTooltip:Hide() end)

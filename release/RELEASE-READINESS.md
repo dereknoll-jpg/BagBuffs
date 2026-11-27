@@ -1,12 +1,15 @@
 # BagBuffs 1.0 release review
 
-Updated November 25, 2026. Current build: **1.0.0-rc.6**. No game was opened for this review or the media package.
+Updated November 26, 2026. Current build: **1.0.0-rc.7**. No game was opened for this review or the media package.
+
+Derek tested the local UI previews and approved the fitted-skin revision on November 26, 2026. The automated checks below remain distinct from native behaviors not observed by the agent.
 
 ## What is ready
 
 - BagBuffs branding, a renamed GitHub repository, and an automatic legacy-profile import that preserves old data, per-item keys and native grid-slot binding targets.
 
 - Auto sorting by default removes gaps and unnecessary pages, with restorable Manual mode, Compact only, a pouch quick menu and a toggleable brief new-item highlight.
+- Optional fitted Bag Trim for all 64 grid shapes, an attached pouch menu, item context actions and selected-state/settings polish. Minimal remains the default.
 - Compact grid, automatic carried-bag discovery, duplicate stack counts, category filters, manual includes/exclusions and favorites.
 - Layout presets/custom dimensions, movable settings window, direct grid reordering and per-character manual order.
 - Pouch Shift-right-click lock toggle, pouch dragging for whole-grid movement, and a narrow-layout move-handle overlap fix.
@@ -26,7 +29,7 @@ Updated November 25, 2026. Current build: **1.0.0-rc.6**. No game was opened for
 5. **Publication choices.** Verify the final Forever version tag in the uploader, confirm the desired license (All Rights Reserved supplied by default), and enable comments for feedback. The actual listing is not created by this package.
 6. **Rename upgrade in the real client.** Extract all three addon folders over an existing install, restart, and check the imported profile on an existing character. Verify custom item keys and old native slot keys. Reload and confirm that later changes to the new profile are not overwritten by another import. The offline suite covers the migration data and aliases; the client controls saved-variable file loading.
 
-These are validation gates, not requests for more features. The 1.0.0-rc.6 release candidate retains the existing feature set. Offline checks pass; the native-client checks below have not been observed in this release session. Use LIVE-CHECKS.md for the expanded checks.
+These are validation gates, not requests for more features. The 1.0.0-rc.7 release candidate retains the existing feature set. Offline checks pass; the native-client checks below have not been observed in this release session. Use LIVE-CHECKS.md for the expanded checks.
 
 ## Changes I would defer to 1.1
 

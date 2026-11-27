@@ -32,11 +32,13 @@ function P:ToggleSettings()
     local layout=CreateFrame("Frame",nil,panel); self.layoutPage=layout
     local items=CreateFrame("Frame",nil,panel); self.itemsPage=items
     for _,page in ipairs({layout,items}) do page:SetSize(690,475); page:SetPoint("TOPLEFT",0,-153) end
-    self:Label(layout,"Make a little room.",18):SetPoint("TOPLEFT",22,0)
+    self:Label(layout,"Grid layout",18):SetPoint("TOPLEFT",22,0)
+    self.layoutPresets={}
     for i,preset in ipairs({{3,3,"3 x 3"},{1,8,"1 x 8"},{8,1,"8 x 1"},{4,2,"4 x 2"}}) do
-        self:QuietButton(layout,preset[3],74,function()
+        local b=self:QuietButton(layout,preset[3],74,function()
             if self:CanChange() then self.db.columns=preset[1]; self.db.rows=preset[2]; self.page=1; self:Refresh() end
-        end):SetPoint("TOPLEFT",22+(i-1)*82,-30)
+        end); b:SetPoint("TOPLEFT",22+(i-1)*82,-30)
+        self.layoutPresets[i]={button=b,columns=preset[1],rows=preset[2]}
     end
     self.layoutLabel=self:Label(layout,"",11,.6,.65,.68); self.layoutLabel:SetPoint("TOPLEFT",22,-66)
     for i,spec in ipairs({{"columns","Columns",1,8,1},{"rows","Rows",1,8,1},{"size","Icon size",20,56,2},{"gap","Spacing",0,16,1}}) do
@@ -50,28 +52,36 @@ function P:ToggleSettings()
     end
     self.lockButton=self:QuietButton(layout,"",130,function()
         if self:CanChange() then self.db.locked=not self.db.locked; self:Refresh() end
-    end); self.lockButton:SetPoint("TOPLEFT",22,-158)
+    end); self.lockButton:SetPoint("TOPLEFT",510,-30)
     self.logoButton=self:QuietButton(layout,"",130,function()
         if self:CanChange() then self.db.logo=not self.db.logo; self:Refresh() end
-    end); self.logoButton:SetPoint("TOPLEFT",160,-158)
+    end); self.logoButton:SetPoint("TOPLEFT",270,-184)
     self.highlightCheck=CreateFrame("CheckButton",nil,layout,"UICheckButtonTemplate")
-    self.highlightCheck:SetSize(22,22); self.highlightCheck:SetPoint("TOPLEFT",310,-159)
+    self.highlightCheck:SetSize(22,22); self.highlightCheck:SetPoint("TOPLEFT",416,-185)
     self:Label(self.highlightCheck,"Highlight new items",11):SetPoint("LEFT",self.highlightCheck,"RIGHT",2,0)
     self.highlightCheck:SetScript("OnClick",function() self:ToggleNewHighlights() end)
-    self:Label(layout,"Show what matters.",18):SetPoint("TOPLEFT",22,-210)
+    self:Label(layout,"Appearance",15):SetPoint("TOPLEFT",22,-158)
+    self.appearanceButtons={}
+    for i,spec in ipairs({{"minimal","Minimal"},{"trim","Bag Trim"}}) do
+        local b=self:QuietButton(layout,spec[2],110,function() self:SetAppearance(spec[1]) end)
+        b:SetPoint("TOPLEFT",22+(i-1)*118,-184); self.appearanceButtons[spec[1]]=b
+        b.hint=spec[1]=="minimal" and "Default: icons only, with fully transparent empty slots." or "Soft leather edging with quiet stitching and an attached pouch menu tab. Transparent center; adapts to any grid."
+    end
+    self:Label(layout,"Minimal is the default. Bag Trim has a transparent center and follows visible items.",10,.6,.65,.68):SetPoint("TOPLEFT",22,-219)
+    self:Label(layout,"Visible categories",15):SetPoint("TOPLEFT",22,-273)
     self.categoryChecks={}
     for i,key in ipairs(self.categories) do
         local c=CreateFrame("CheckButton",nil,layout,"UICheckButtonTemplate"); self.categoryChecks[key]=c
-        c:SetSize(22,22); c:SetPoint("TOPLEFT",20+((i-1)%3)*218,-240-math.floor((i-1)/3)*28)
+        c:SetSize(22,22); c:SetPoint("TOPLEFT",20+((i-1)%3)*218,-300-math.floor((i-1)/3)*28)
         self:Label(c,self.categoryNames[key],11):SetPoint("LEFT",c,"RIGHT",2,0)
         c:SetScript("OnClick",function()
             if self:CanChange() then self.db.enabled[key]=not self.db.enabled[key]; self:Refresh() else c:SetChecked(self.db.enabled[key]) end
         end)
     end
-    self:Label(layout,"Auto closes gaps. Dragging items switches to Manual and saves your layout.",12,.6,.65,.68):SetPoint("TOPLEFT",22,-374)
-    self:Label(layout,"Cooldown numbers appear automatically. Bandages follow Recently Bandaged.",11,.6,.65,.68):SetPoint("TOPLEFT",22,-400)
+    self:Label(layout,"Auto closes gaps. Dragging items switches to Manual and saves your layout.",12,.6,.65,.68):SetPoint("TOPLEFT",22,-433)
+    self:Label(layout,"Cooldown numbers appear automatically. Bandages follow Recently Bandaged.",11,.6,.65,.68):SetPoint("TOPLEFT",22,-455)
 
-    self:Label(items,"A place for everything.",18):SetPoint("TOPLEFT",22,0)
+    self:Label(items,"Order & item keys",18):SetPoint("TOPLEFT",22,0)
     self:Label(items,"Drag item icons or use arrows to reorder. Click Bind key, then press a key.",11,.6,.65,.68):SetPoint("TOPLEFT",22,-28)
     self.modeButtons={}
     for i,spec in ipairs({{"auto","Auto",true},{"manual","Manual",false}}) do
@@ -83,7 +93,8 @@ function P:ToggleSettings()
         local b=self:QuietButton(items,spec[2],90,function() self:SortNow(spec[1]) end)
         b:SetPoint("TOPLEFT",254+(i-1)*98,-52); self.sortButtons[spec[1]]=b
     end
-    self:QuietButton(items,"Compact only",120,function() self:CompactLayout() end):SetPoint("TOPLEFT",450,-52)
+    local compact=self:QuietButton(items,"Compact only",120,function() self:CompactLayout() end); compact:SetPoint("TOPLEFT",450,-52)
+    compact.hint="Close empty gaps without changing the current item order. This is a one-time cleanup, not a sorting mode."
     self.organizingStatus=self:Label(items,"",10,.6,.65,.68); self.organizingStatus:SetPoint("TOPLEFT",22,-86)
     self.itemRows={}; self.listPage=1; self.rowsPerPage=9
     for i=1,self.rowsPerPage do
@@ -105,9 +116,10 @@ function P:ToggleSettings()
         row.up=self:QuietButton(row.frame,"<",26,function() if row.item then self:MoveItem(row.item.id,-1) end end); row.up:SetPoint("LEFT",244,0)
         row.down=self:QuietButton(row.frame,">",26,function() if row.item then self:MoveItem(row.item.id,1) end end); row.down:SetPoint("LEFT",274,0)
         row.bind=self:QuietButton(row.frame,"Bind key",128,function() self:StartBinding(row.item) end); row.bind:SetPoint("LEFT",310,0)
-        row.favorite=self:QuietButton(row.frame,"Keep",76,function()
+        row.favorite=self:QuietButton(row.frame,"Favorite",76,function()
             if row.item then self:ToggleFavorite(row.item.id) end
         end); row.favorite:SetPoint("LEFT",446,0)
+        row.favorite.hint="Favorites sort first in Auto mode. Manual mode keeps your saved positions."
         row.ignore=self:QuietButton(row.frame,"Hide",76,function()
             if row.item and self:CanChange() then local id=row.item.id; self.db.ignored[id]=not self.db.ignored[id]; self:Refresh() end
         end); row.ignore:SetPoint("LEFT",530,0)
@@ -125,13 +137,16 @@ end
 function P:SyncSettings()
     if not self.settings then return end
     local d=self.db
+    self:SelectButton(self.layoutTab,self.settingsTab=="layout"); self:SelectButton(self.itemsTab,self.settingsTab=="items")
+    for _,preset in ipairs(self.layoutPresets) do self:SelectButton(preset.button,d.columns==preset.columns and d.rows==preset.rows) end
+    for key,b in pairs(self.appearanceButtons) do self:SelectButton(b,d.appearance==key) end
     self.layoutLabel:SetText(d.columns.." columns  /  "..d.rows.." rows  /  "..d.size.." px icons  /  "..d.gap.." px spacing")
-    self.lockButton.label:SetText(d.locked and "Unlock position" or "Lock position")
+    self.lockButton.label:SetText(d.locked and "Unlock grid" or "Lock grid")
     self.logoButton.label:SetText(d.logo and "Hide pouch icon" or "Show pouch icon")
     for key,c in pairs(self.categoryChecks) do c:SetChecked(d.enabled[key]) end
     self.highlightCheck:SetChecked(d.highlightNew)
-    for key,b in pairs(self.modeButtons) do b.label:SetText(((key=="auto")==d.autoSort and "+ " or "")..(key=="auto" and "Auto" or "Manual")) end
-    for key,b in pairs(self.sortButtons) do b.label:SetText((d.autoSort and d.autoSortBy==key and "+ " or "")..({type="By type",name="A - Z"})[key]) end
+    for key,b in pairs(self.modeButtons) do self:SelectButton(b,(key=="auto")==d.autoSort); b.hint=key=="auto" and "Automatically sort as bags change and close gaps. Favorites come first." or "Keep exact saved slots. Dragging items selects Manual automatically." end
+    for key,b in pairs(self.sortButtons) do self:SelectButton(b,d.autoSort and d.autoSortBy==key); b.hint="Sort now. In Auto this also chooses the ongoing sort style; in Manual it is a one-time sort." end
     self.organizingStatus:SetText(d.autoSort and "Auto: sorts items and closes gaps as your bags change." or "Manual: keeps saved slots. Use a sort button or Compact only whenever you want.")
     local items=self:EditorItems()
     local pages=math.max(1,math.ceil(#items/self.rowsPerPage))
@@ -146,7 +161,7 @@ function P:SyncSettings()
             row.art:SetTexture(item.icon); row.art:SetAlpha(self.dragItemID==item.id and .4 or 1)
             row.up:SetShown(visible); row.down:SetShown(visible)
             row.bind.label:SetText(self:BindingLabel(item.id))
-            row.favorite.label:SetText(d.favorites[item.id] and "Kept +" or "Keep")
+            row.favorite.label:SetText(d.favorites[item.id] and "Favorited" or "Favorite")
             row.ignore.label:SetText(d.ignored[item.id] and "Restore" or "Hide")
         end
     end

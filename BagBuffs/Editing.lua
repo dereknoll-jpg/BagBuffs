@@ -131,8 +131,8 @@ end
 function P:StartBinding(item)
     if not item or not self:CanChange() then return end
     if not self.bindingPrompt then
-        local f=CreateFrame("Frame",nil,self.settings,"BackdropTemplate"); self.bindingPrompt=f
-        f:SetSize(590,190); f:SetPoint("CENTER"); f:SetFrameLevel(self.settings:GetFrameLevel()+30)
+        local f=CreateFrame("Frame",nil,UIParent,"BackdropTemplate"); self.bindingPrompt=f
+        f:SetSize(590,190); f:SetPoint("CENTER"); f:SetFrameStrata("DIALOG"); f:SetFrameLevel((self.settings and self.settings:GetFrameLevel() or 1)+30)
         self:Backdrop(f); f:EnableMouse(true); f:EnableKeyboard(true); f:SetPropagateKeyboardInput(false)
         f.message=self:Label(f,"",13); f.message:SetPoint("TOPLEFT",18,-20); f.message:SetSize(554,68)
         self:Label(f,"Esc: cancel   /   Backspace or Delete: clear binding",11,.6,.65,.68):SetPoint("TOPLEFT",18,-102)

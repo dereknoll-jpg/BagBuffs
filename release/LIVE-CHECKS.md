@@ -1,3 +1,13 @@
+# 1.0.0-rc.7 — Bag Trim and item menus
+
+Derek approved the fitted artwork after local testing on November 26, 2026. For additional client coverage, verify:
+
+- Minimal remains the default. Enable Bag Trim under Layout > Appearance; inspect 3x3, 1x8, 8x1, custom dimensions and partially filled pages. No repeated edge waves should appear.
+- Click and drag the attached pouch tab, change size/spacing/scale, and hide the pouch icon. Empty areas remain click-through.
+- Right-click locked and unlocked items: Favorite, Bind Key, Hide and Settings. Confirm key conflicts/cancel/clear still work; middle-click hides directly.
+- Inspect the selected states and tooltips in settings. Reload with a custom layout and item keys, then enter combat while a menu/binding prompt is open.
+- Capture real screenshots of the fitted trim and item menu for the gallery. The included layout sheet is marked as a design preview.
+
 # BagBuffs rename checks
 
 - Upgrade an existing SatchelSense character, restart, and confirm only one grid loads. Both Settings Import components must remain enabled.

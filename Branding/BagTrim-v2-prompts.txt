@@ -1,0 +1,15 @@
+Bag Trim revision 2 — local test only
+Generated using the built-in image generator, then sliced/resized into native UI textures. The original bright outlined procedural frame is superseded; no image edits were made to gameplay screenshots.
+
+Leather frame prompt:
+Use case: game UI texture / logo-brand. Reference image is ONLY a material and palette reference for its beautiful dark brown leather bag, not an edit target. Create ONE square UI perimeter frame asset on a genuinely transparent background with a genuinely transparent open center. It should resemble the soft leather mouth and seams of an open fantasy adventurer's pouch, viewed straight on, suitable to frame a clickable item grid. Broad softly bulging rounded lower corners, folded leather rolled top lip, supple irregular organic leather edges. Quiet tiny muted tan stitching, dark chestnut/charcoal leather grain, soft natural warm highlights. NO bright gold line, NO yellow outline, NO hard square geometry, NO shiny metal rim, NO clasp, NO items, NO potion, NO scroll, NO text. The leather is ONLY the perimeter band around a large transparent central opening. Frame fills square canvas nearly edge to edge with 3% outer transparent safety. Perimeter thickness around 10% of canvas, corner curvature inside outer 25% at each corner. Mostly straight middle half of each side so the asset can be sliced into repeatable edges and fixed corners for a resizable game UI. No leather backing or background behind the central opening. High quality hand-painted fantasy inventory material, tactile but visually quiet. No shadows filling the hole.
+
+Attached menu tab prompt:
+Use case: game UI texture. Material reference: the soft dark chestnut leather frame image. Generate one small standalone sewn leather fastening tab on a genuinely transparent square background. One vertical leather strap patch about 70% canvas width and 92% height, straight top edge, softly rounded lower end and corners, dark chestnut/charcoal pebbled leather, a subtle rolled top attachment lip and a few quiet muted tan stitches along perimeter. Gentle natural warm highlights, dark quiet center for an interactive icon to be overlaid later. Match reference leather. NO button, NO icon, NO gold, NO metal, NO clasp, NO holes, NO letters, NO symbols, NO bright outlines. The patch itself is solid leather with transparent surroundings, centered front view, clean alpha, hand-painted fantasy inventory UI material.
+
+Final masters: Branding/BagTrim-leather-master.png and Branding/BagTrim-tab-master.png.
+Game assets: BagBuffs/Media/BagLeather*.tga (eight fixed-corner/repeating-edge pieces and one tab). The pouch menu is interactive on the attached bottom tab. Minimal mode retains the old standalone menu position.
+
+
+Published fitted-skin revision:
+The original repeating edge exports were replaced before release. Active assets are BagBuffs/Media/BagSkin1x1.tga through BagSkin8x8.tga plus BagLeatherTab.tga. Export-Trim.ps1 prepares one complete fitted skin per grid shape; the game samples each full edge once with no repetition. Original generated master art is unchanged.

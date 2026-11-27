@@ -1,11 +1,11 @@
 local _, P = ...
-P.name, P.version = "BagBuffs", "1.0.0-rc.6"
+P.name, P.version = "BagBuffs", "1.0.0-rc.7"
 P.media = "Interface\\AddOns\\BagBuffs\\Media\\"
 P.categories = {"health", "mana", "potion", "scroll", "food", "weapon", "elixir", "flask", "bandage", "utility", "refreshment"}
 P.categoryNames = {health="Health", mana="Mana", potion="Utility potions", scroll="Scrolls", food="Buff food",
     weapon="Item enhancements", elixir="Elixirs", flask="Flasks", bandage="Bandages", utility="Other self buffs", refreshment="Plain food / drink"}
 P.defaults = {columns=3, rows=3, size=32, gap=4, scale=1, locked=true, logo=true,
-    enabled={}, ignored={}, favorites={}, included={}, sortMode="type", autoSort=true, autoSortBy="type", highlightNew=true,
+    enabled={}, ignored={}, favorites={}, included={}, sortMode="type", autoSort=true, autoSortBy="type", highlightNew=true, appearance="minimal",
     order={}, slots={}, bindings={}}
 for _, key in ipairs(P.categories) do P.defaults.enabled[key] = key ~= "refreshment" end
 
@@ -51,6 +51,7 @@ function P:InitializeDB()
     end
     if db.sortMode~="type" and db.sortMode~="name" and db.sortMode~="manual" then db.sortMode="type" end
     db.sortMode=db.autoSort and db.autoSortBy or "manual"
+    if db.appearance~="trim" then db.appearance="minimal" end
     self.db=db; BagBuffsDB=db; self.page=1; self.bindingsDirty=true
     self.inventorySnapshot=nil; self.pendingNew={}; self.newUntil={}
 end
@@ -110,6 +111,7 @@ function P:Refresh()
     if InCombatLockdown() then self.pending=true; self:UpdateVisuals(); return end
     if self.gridDragItemID or self.dragItemID or self.gridMoving then self.pending=true; self:UpdateVisuals(); return end
     self.pending=false
+    if self.itemMenu then self.itemMenu:Hide() end
     self.items=self:ScanBags()
     self:TrackNewItems(self.items)
     self:EnsureSlots(self.items)

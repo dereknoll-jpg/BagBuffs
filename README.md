@@ -19,6 +19,8 @@ Previously released as SatchelSense, and originally PocketBuffs. Existing charac
 - Explicit numerical countdowns, independent of the game's optional cooldown-number setting. Bandages use the player's actual Recently Bandaged expiry, including duration reductions.
 - Drag-sort item icons in the editor, use move arrows, or sort by type/name. Manual item order is saved per character.
 - Unlock to drag directly between grid slots, with or without settings open. Shift-right-click the pouch to toggle the lock, then drag the unlocked pouch to move the grid.
+- Optional Bag Trim uses 64 fitted leather skins with an attached pouch-menu tab; Minimal remains the default.
+- Right-click an item for Favorite, Bind Key, Hide or Settings. Keys can be bound without opening the editor.
 - Empty buttons disappear completely. The grid has no background and does not intercept clicks in its empty areas.
 - Dark charcoal settings, warm gold details, rounded icon masks and quiet numerals matching Paladin TankKit.
 - Original pouch artwork in the addon list, settings header and optional tiny grid launcher.
@@ -28,11 +30,11 @@ Previously released as SatchelSense, and originally PocketBuffs. Existing charac
 
 ## Install
 
-Extract **all three folders** from `dist/BagBuffs-1.0.0-rc.6.zip` into `World of Warcraft/_forever_/Interface/AddOns`: `BagBuffs` plus the bundled `SatchelSense` and `PocketBuffs` Settings Import components. Replace the older addon files, keep all three enabled, and restart WoW so it discovers the new folder. The manifest targets interface **16001**.
+Extract **all three folders** from `dist/BagBuffs-1.0.0-rc.7.zip` into `World of Warcraft/_forever_/Interface/AddOns`: `BagBuffs` plus the bundled `SatchelSense` and `PocketBuffs` Settings Import components. Replace the older addon files, keep all three enabled, and restart WoW so it discovers the new folder. The manifest targets interface **16001**.
 
 The two import components retain old folder identities solely so WoW loads existing character saves. They have no HUD or item actions. BagBuffs first copies a SatchelSense profile, otherwise a PocketBuffs profile, only if no BagBuffs save exists. Old saves and game keybinding profiles remain intact. `/bagbuffs`, `/bb` and `/bagbuff` open settings; all old commands remain aliases. See [the upgrade guide](release/UPGRADING.md).
 
-Open settings with **`/bagbuffs`**, right-click any item, or click the small pouch above the grid. Left-click an icon to use that item on yourself. For enhancements, click the icon and then select your weapon or other compatible item through the game's normal targeting cursor. Native restrictions and overwrite confirmations still apply.
+Open settings with **`/bagbuffs`**, click the small pouch, or choose Settings from an item’s right-click menu. Left-click an icon to use that item on yourself. For enhancements, click the icon and then select your weapon or other compatible item through the game's normal targeting cursor. Native restrictions and overwrite confirmations still apply.
 
 Drag the settings window by its header or empty background to move it out of the way while editing the grid. It stays where you leave it when closed and reopened during the same session.
 
@@ -58,6 +60,10 @@ Drag the settings window by its header or empty background to move it out of the
 Mouse wheel over an item or the page indicator changes pages. Clicking the page indicator advances and wraps back to page one.
 
 Middle-click a grid item to hide it immediately, whether the grid is locked or unlocked (outside combat). Restore it under **Items & Keys**. Hiding an icon leaves its item keybinding assigned.
+
+## Appearance
+
+Under Layout → Appearance choose Minimal (default) or Bag Trim. The optional leather frame follows the occupied page area and keeps its center transparent. Every supported grid shape has a fitted, non-repeating skin; icon size and spacing remain adjustable. In Bag Trim, the pouch menu sits on an attached bottom tab. Restart WoW once after updating for the new texture files.
 
 ## Arrange items and bind keys
 

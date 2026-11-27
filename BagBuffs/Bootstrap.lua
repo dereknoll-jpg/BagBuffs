@@ -25,11 +25,12 @@ events:SetScript("OnEvent",function(_,event,arg)
         if not P.frame then P.pending=true; return end
         if event=="GLOBAL_MOUSE_UP" then
             if arg=="LeftButton" then
+                if P.itemMenu and P.itemMenu:IsShown() and not MouseIsOver(P.itemMenu) then P.itemMenu:Hide() end
                 if P.gridMoving then P:StopGridMove() end
                 P:EndGridItemDrag()
                 if P.dragItemID then P:EndItemDrag() end
             end
-        elseif event=="PLAYER_REGEN_DISABLED" then P:CancelBinding(); P.dragItemID=nil; P:CancelGridDrag(); if P.pouchMenu then P.pouchMenu:Hide() end
+        elseif event=="PLAYER_REGEN_DISABLED" then P:CancelBinding(); P.dragItemID=nil; P:CancelGridDrag(); if P.pouchMenu then P.pouchMenu:Hide() end; if P.itemMenu then P.itemMenu:Hide() end
         elseif event=="UNIT_AURA" then if arg=="player" then P:UpdateVisuals() end
         elseif event=="UPDATE_BINDINGS" then P.bindingsDirty=true; P.dirty=true
         elseif event=="BAG_UPDATE_COOLDOWN" then P:UpdateVisuals()

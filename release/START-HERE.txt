@@ -1,8 +1,9 @@
 BAGBUFFS - CURSEFORGE UPLOAD KIT
-Current build: 1.0.0-rc.6
+Current build: 1.0.0-rc.7
 
-1. Upload only addon/BagBuffs-1.0.0-rc.6.zip as the addon file.
-   The 1.0.0-rc.6 tag triggers the existing CurseForge packaging webhook.
+1. The 1.0.0-rc.7 GitHub tag triggers the configured CurseForge packager.
+   Do not manually upload a duplicate. addon/BagBuffs-1.0.0-rc.7.zip is the
+   verified fallback package if a manual recovery is actually needed.
 2. Use images/01-icon-400.png as the project avatar.
 3. Paste text/SUMMARY.txt and text/DESCRIPTION.md into the project fields.
 4. Add images/02-banner.png and images/03-features.png to the gallery.

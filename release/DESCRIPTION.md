@@ -1,89 +1,105 @@
-# BagBuffs
-
-**Auto Consumable Bar for WoW Forever**
+# BagBuffs — Auto Consumable Bar
 
 **Pick it up. See it. Use it.**
 
-**BagBuffs automatically finds supported scrolls, potions, buff food and item enhancements in your bags and adds them to a compact, clickable grid.** When you loot, buy or receive another eligible item, BagBuffs brings it into view automatically—without you opening your bags, remembering its name or adding another button yourself.
+**BagBuffs automatically discovers supported scrolls, potions, buff food, weapon enhancements and other useful consumables in your bags, then adds them to a compact, clickable grid.**
 
-That stat scroll you just looted? It appears alongside your other supplies. The buff food you forgot you were carrying? BagBuffs brings it into view. The health potion buried three bags deep? It is within reach.
+Loot a new scroll? Buy another potion? Pick up some buff food? **It appears automatically—without opening your bags or manually adding another button.**
 
-Built for **World of Warcraft: Forever**, BagBuffs helps useful items get noticed and used instead of forgotten at the bottom of a bag.
+Built for **World of Warcraft: Forever**, BagBuffs helps you notice and use the supplies you already carry.
 
 ## New supplies appear automatically
 
-BagBuffs scans what you already have when you log in and watches your carried bags as their contents change. Newly acquired supported items are added to your enabled categories automatically. Identical stacks combine into one icon with a total count, and the grid updates as supplies are used or removed.
+BagBuffs scans your carried bags when you log in and keeps watching as their contents change.
 
-**You do not have to build or maintain the item bar yourself.** Choose the categories you want, arrange them how you like, and let BagBuffs keep up with what you pick up.
+- Automatically adds newly acquired supported items from your enabled categories.
+- Combines identical stacks into one icon with a total count.
+- Updates as supplies are used, moved or removed.
+- Briefly highlights newly discovered items so they are easier to notice.
+- Sorts items and closes empty gaps automatically by default.
 
-Items acquired during combat join the grid after combat ends, keeping your existing buttons stable throughout the fight.
+**You do not have to build or maintain the item bar yourself.** Choose what you want to see, and BagBuffs keeps up with what you pick up. Items acquired during combat join the grid after combat ends, keeping existing buttons stable throughout the fight.
 
-## Your supplies, within reach
+## Useful items, within reach
 
-Automatic discovery covers recognized items such as:
+Automatic discovery covers recognized supplies such as:
 
 - Health and mana potions, healthstones and mana gems.
 - Stat scrolls, elixirs and flasks.
 - Food and drink that provide buffs.
 - Weapon oils, sharpening stones, weightstones and recognized poisons.
-- Other supported item enhancements, bandages and self-use utility items.
+- Bandages and other supported self-use consumables and item enhancements.
 
-Identical stacks share one icon and a total count. Plain food and water are optional, so ordinary refreshments do not crowd the default view. Hide individual items, choose categories, or explicitly include an unusual item that detection misses.
+Plain food and water are optional and disabled by default. Choose categories, mark favorites, hide individual items, or manually include an unusual item that detection misses.
 
-Click an item to use it on yourself. For coatings and other enhancements, click and select the compatible weapon or item using the game's normal targeting cursor. Native restrictions and replacement confirmations remain in place.
+Click an item to use it on yourself. For oils, stones and similar enhancements, click the icon and select the compatible weapon or item through the game’s normal targeting cursor.
 
-## A little grid. Your way.
+## Minimal, or a little more BagBuffs
 
-Start with a **3×3 square**, use a **1×8 vertical strip** or **8×1 horizontal strip**, or choose your own dimensions. Adjust icon size, spacing, scale and position. Empty buttons disappear, and the grid has no background.
+**Minimal is the default:** clean icons, transparent empty slots and no grid background.
 
-The charcoal-and-gold style matches Paladin TankKit, with soft icon corners, small counts and original pouch artwork. The settings window is movable too, so it can stay out of your way while you edit.
+Want a more distinctive look? Enable **Bag Trim** under **Layout → Appearance** for soft leather edging, muted stitching and an attached pouch-menu tab. Its center stays transparent, and the decoration does not intercept clicks.
+
+Bag Trim includes **64 fitted grid shapes**, covering squares, vertical strips, horizontal strips and custom layouts up to 8×8. Each complete edge is drawn once, avoiding repeated folds or waves. It follows the occupied area of each page and hides when no items are displayed.
+
+Start with a **3×3 square**, choose **1×8 vertical** or **8×1 horizontal**, or set your own dimensions. Adjust icon size, spacing, scale and position. The settings window is movable too.
 
 ## Automatically organized, or arranged your way
 
-Unlock the grid and drag items directly into the slots you want, with or without the edit window open. Drop into an empty slot to move an item, or onto another item to swap their positions. You can also drag editor icons, use move arrows, or sort by type/name. Dragging or using the arrows switches to Manual mode.
+**Auto sorting is on by default.** Supplies sort by type or name, with favorites first, and gaps close as items are used up or hidden.
 
-**Shift-right-click the pouch icon** to lock or unlock without opening settings. When unlocked, drag the pouch to move the whole grid. Lock the grid to keep everything in place and return to normal click-to-use.
+Prefer fixed positions? Choose **Manual** to preserve exact slots through bag changes and reloads. New discoveries are added after the saved layout. Switching to Auto retains your manual layout so you can restore it later.
 
-**Auto sorting is on by default.** New supported supplies sort into the grid by type, and empty spaces close as items are used up or hidden. Another page is only needed when the current items fill the earlier pages. Choose A - Z if you prefer alphabetical sorting.
+Unlock the grid to drag items directly into place, with or without settings open. Drop onto another item to swap positions. Dragging or using move arrows automatically selects Manual mode.
 
-Prefer fixed positions? Choose **Manual** to remember exact slots through bag changes and reloads, with new discoveries added after the saved layout. Switching to Auto retains your manual layout so you can restore it later. Empty slots remain transparent when locked.
+**Compact Only** closes gaps without changing the current item order.
 
-**Ctrl-left-click the pouch** to sort by type and close gaps immediately. **Right-click the pouch** for a quick menu, including Auto/Manual and **Compact only**, which closes gaps without changing your item order.
+## Quick item controls
 
-**New discoveries briefly glow gold**, so that scroll you just picked up is easier to notice. Existing supplies do not flash at login; extra stacks do not retrigger it. Turn the highlight off in Layout or the pouch menu.
+**Right-click a grid item** for **Favorite, Bind Key, Hide and Settings**. The menu works with the grid locked or unlocked, outside combat.
 
-**Middle-click any grid item to hide it immediately**, with the grid locked or unlocked, outside combat. Restore it under **Items & Keys** whenever you want. Hiding the icon keeps its item keybinding assigned.
+**Middle-click an item to hide it immediately.** To bring it back, open **Items & Keys**, find it near the bottom of the list, and click **Restore**. Hiding an icon keeps its item keybinding assigned.
+
+Pouch-menu shortcuts:
+
+- **Left-click:** settings.
+- **Right-click:** quick menu.
+- **Ctrl-left-click:** sort by type and close gaps.
+- **Shift-right-click:** lock or unlock the grid.
+- **Drag while unlocked:** move the whole grid.
+
+Use the mouse wheel over the grid to change pages outside combat.
 
 ## Bind an item, keep the key
 
-Open **Items & Keys**, click **Bind key** beside an item, and press a key or modifier combination. Middle/side mouse buttons and mouse-wheel directions are supported too.
+Choose **Bind Key** from an item’s right-click menu, or bind it under **Items & Keys**. Press a key or modifier combination; middle/side mouse buttons and mouse-wheel directions are supported too.
 
-Bindings follow the **item**, through sorting, grid pages and bag changes. Reusing an occupied key asks for confirmation. Escape cancels capture; Backspace or Delete clears the binding and restores the key's underlying action. Layout, filters, order and item keys save per character.
+Bindings follow the **item** through sorting, page changes and bag updates. Reusing an occupied key asks for confirmation. Escape cancels capture; Backspace or Delete clears the binding and restores the key’s underlying action.
 
 ## Know when it is ready
 
-Centered numbers show the item's reported cooldown, including shared potion cooldowns. Bandages also follow your actual **Recently Bandaged** expiry, including readable duration reductions. No fixed one-minute bandage timer is assumed. If the debuff is identifiable but its timing is hidden, a dim icon and `?` show the limitation.
+Centered numbers show the item’s reported cooldown, including shared potion cooldowns. Bandages also follow your actual **Recently Bandaged** expiry when that timing is available.
+
+If the debuff is identifiable but its expiration is hidden, the icon dims and displays **?** instead of inventing a timer.
+
+## Existing settings and keys carry over
+
+Updating BagBuffs preserves your layout, screen position, saved slots, sorting choice, filters, favorites, hidden items and keybindings. Existing characters stay in Minimal unless Bag Trim has already been selected.
+
+Upgrading from **SatchelSense** or the original **PocketBuffs**? Your settings and item keys import automatically. Older native grid-slot keys and slash commands remain supported.
+
+Install **all three folders** in the download—**BagBuffs, SatchelSense and PocketBuffs**—and keep both bundled **Settings Import** components enabled. They load old profiles without creating additional grids. Old saved data remains intact; no saved-variable files need to be edited or deleted.
+
+**Restart WoW after updating to load the new artwork.**
 
 ## Getting started
 
-**Type `/bagbuffs` to open settings.** Right-click an item or click the small pouch icon to open them too. Use the mouse wheel over the grid to change item pages outside combat. The pouch icon can be hidden for an even quieter display.
+Open settings with **/bagbuffs**, **/bb** or **/bagbuff**. Previous **/satchel**, **/satchelsense**, **/ss**, **/pbuff** and **/pocketbuffs** commands still work.
 
-### Upgrading from SatchelSense or PocketBuffs
+Built for **WoW Forever, interface 16001**. English name and tooltip detection is supported. Unusual items may need **/bagbuffs include ITEMID**.
 
-BagBuffs is the new name for SatchelSense. **Your existing settings and keybindings carry over automatically.** Layouts, screen position, exact manual slots, sorting choice, filters, favorites, hidden items and highlight preferences are preserved. Older PocketBuffs profiles are supported too.
+Item actions and positions remain fixed during combat. New discoveries, sorting, paging and key changes wait until combat ends.
 
-Install **all three folders** from the download: BagBuffs, SatchelSense and PocketBuffs. Keep both bundled **Settings Import** components enabled; they load old profiles without creating additional grids. Replace the older addon files, then **restart WoW** so the game discovers BagBuffs. No saved-variable files need to be edited or deleted.
+Every use requires your click or key press. The game enforces normal item-use restrictions; BagBuffs does not automatically consume supplies.
 
-Use **/bagbuffs**, **/bb** or **/bagbuff**. Previous /satchel, /satchelsense, /ss, /pbuff and /pocketbuffs commands and older grid-slot keys still work. A current Manual layout remains Manual after this rename.
-
-### Compatibility and behavior
-
-Built for **WoW Forever, interface 16001**. This download is a release candidate; new native input/combat behavior is still undergoing live verification.
-
-Item slots and actions stay fixed during combat. New items, sorting, paging and key changes wait until combat ends; editing hit areas hide during combat. Set up emergency supplies and item keys before a pull.
-
-English name/tooltip detection is supported. Numeric categories and selected item IDs also help on other clients, but full localization and detection of every unusual utility item are not included. Use `/bagbuffs include ITEMID` for a missed item. The game decides whether an item can be used with your level, class, skill, equipment or location.
-
-Every use requires your click or key press. BagBuffs does not automatically consume supplies or promise that different buffs stack.
-
-*The gallery uses original AI-assisted promotional illustrations, labeled as illustrations rather than in-game screenshots. The game interface uses its native item artwork.*
+*Gallery illustrations and optional leather artwork were created with AI assistance. Promotional illustrations are not in-game screenshots.*

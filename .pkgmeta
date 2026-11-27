@@ -16,6 +16,7 @@ ignore:
     - release
     - scripts
     - tests
+    - TESTING-UI.md
     - LICENSE.txt
     - NAMES.md
     - README.md

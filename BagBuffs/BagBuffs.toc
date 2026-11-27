@@ -3,7 +3,7 @@
 ## Notes: Your bag buffs, potions, food and weapon enhancements in one quiet grid.
 ## Author: Derek
 ## X-Curse-Project-ID: 1825109
-## Version: 1.0.0-rc.6
+## Version: 1.0.0-rc.7
 ## SavedVariablesPerCharacter: BagBuffsDB
 ## Dependencies: PocketBuffs, SatchelSense
 ## IconTexture: Interface\AddOns\BagBuffs\Media\AddonIcon
@@ -16,6 +16,8 @@ Editing.lua
 GridEditing.lua
 Cooldowns.lua
 Convenience.lua
+Appearance.lua
+ItemMenu.lua
 UI.lua
 Settings.lua
 Bootstrap.lua

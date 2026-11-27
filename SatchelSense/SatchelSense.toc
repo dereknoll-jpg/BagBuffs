@@ -2,7 +2,7 @@
 ## Title: BagBuffs - SatchelSense Settings Import
 ## Notes: Loads your previous SatchelSense profile for BagBuffs. Required bundled component; no separate interface.
 ## Author: Derek
-## Version: 1.0.0-rc.6
+## Version: 1.0.0-rc.7
 ## DefaultState: enabled
 ## SavedVariablesPerCharacter: SatchelSenseDB
 ## IconTexture: Interface\AddOns\BagBuffs\Media\AddonIcon
